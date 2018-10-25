@@ -105,7 +105,7 @@
                         <!-- Content -->
                         <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-4 px-4">
                             <div>
-                                <h3 class="card-title pt-2"><strong>Hospitals & Clinic's</strong></h3>
+                                <h3 class="card-title pt-2"><strong>Hospitals & Clinics</strong></h3>
                                 <p>Medspace makes patients to reach you easier and faster. Join us and help patients to find you.</p>
                                 <a target="_blank" href="https://medspaceit.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
