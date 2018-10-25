@@ -1,0 +1,10 @@
+
+FileETag none
+RewriteEngine On
+#RewriteBase /ci
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP_HOST} ^demo.medspaceit.com [NC]
+RewriteRule ^(.*)$ index.php?/$1 [L]
+Header append X-FRAME-OPTIONS "SAMEORIGIN"
+Header set Access-Control-Allow-Origin "*"

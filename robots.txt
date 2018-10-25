@@ -1,0 +1,5 @@
+User-agent: Googlebot
+Disallow: /local/
+Allow: /
+
+Sitemap: http://prachaedu.com/sitemap.xml
