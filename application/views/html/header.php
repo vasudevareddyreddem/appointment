@@ -66,12 +66,12 @@
 					<?php if(!$this->session->userdata('app_user')){ ?>
                         <li class="nav-item mr-2">
                             <a href="<?php echo base_url('users/login'); ?>" class="nav-link border border-light rounded waves-effect">
-                                <i class="fa fa-github mr-2"></i>Login
+                                <i class="fa fa-sign-in mr-2"></i>Login
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo base_url('users/register'); ?>" class="nav-link border border-light rounded waves-effect">
-                                <i class="fa fa-github mr-2"></i>Register
+                                <i class="fa fa-user-plus mr-2"></i>Register
                             </a>
                         </li>
 					<?php }else{ ?>

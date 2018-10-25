@@ -1,10 +1,10 @@
 
 <!--Main layout-->
-<main class="mt-5 pt-5">
+<main class="mt-5 mb-5">
     <div class="container">
 
         <!--Section: Post-->
-        <section class="mt-4 pt-5 pb-5 mb-5">
+        <section class="">
 
             <!--Grid row-->
             <div class="row">

@@ -107,7 +107,7 @@
                             <div>
                                 <h3 class="card-title pt-2"><strong>Hospitals & Clinic's</strong></h3>
                                 <p>Medspace makes patients to reach you easier and faster. Join us and help patients to find you.</p>
-                                <a class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
+                                <a target="_blank" href="https://medspaceit.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
                         </div>
 
