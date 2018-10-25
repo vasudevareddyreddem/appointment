@@ -74,7 +74,6 @@ class Users extends In_frontend {
 	public function login()
 	{	if(!$this->session->userdata('app_user'))
 		{
-			$this->load->view('html/header');
 			$this->load->view('html/login');
 			$this->load->view('html/footer');
 		}else{
@@ -86,7 +85,6 @@ class Users extends In_frontend {
 	{	
 		if(!$this->session->userdata('app_user'))
 		{
-			$this->load->view('html/header');
 			$this->load->view('html/register');
 			$this->load->view('html/footer');
 		}else{

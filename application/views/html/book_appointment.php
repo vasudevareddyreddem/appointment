@@ -1,6 +1,6 @@
 
 <!--Main layout-->
-<main class="mt-5 pt-5">
+<main class="pt-3">
     <div class="container">
 
         <!--Section: Post-->

@@ -29,7 +29,7 @@
     <header>
 
         <!-- Navbar -->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar mdb-color darken-6">
+        <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar mdb-color darken-6">
             <div class="container">
 
                 <!-- Brand -->
