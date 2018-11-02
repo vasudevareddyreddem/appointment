@@ -55,6 +55,9 @@
                         <li class="nav-item <?php if($this->uri->segment(1)=='appointment'){ echo "active"; } ?>">
                             <a class="nav-link waves-effect" href="<?php echo base_url('appointment'); ?>">Book Appointment</a>
                         </li>
+						<li class="nav-item <?php if($this->uri->segment(1)=='diagnostic'){ echo "active"; } ?>">
+                            <a class="nav-link waves-effect" href="<?php echo base_url('diagnostic'); ?>">Diagnostic Tests</a>
+                        </li>
                        
 						<!--<li class="nav-item">
                             <a class="nav-link waves-effect" href="order_medicine.php">Order Medicine</a>
