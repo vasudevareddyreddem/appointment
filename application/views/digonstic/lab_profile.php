@@ -70,38 +70,27 @@
 
                             <hr>
 						<?php foreach($lab_deatils['test_names'] as $list){ ?>
-                            <div class="d-block d-md-flex pb-0" id="myUL">
-                                <div class="mt-2">
-                                    <ul class="list-styled">
-                                        <li>
-                                            <h6 class="mb-1"><?php echo isset($list['test_name'])?$list['test_name']:''; ?></h6></li>
-                                        <li>
+                            <ul class="class="list-unstyled"">
+                                <li>
+                                    <div class="d-block d-md-flex pb-0" id="myUL">
+                                        <div class="mt-2">
+                                            <h6 class="mb-1"><?php echo isset($list['test_name'])?$list['test_name']:''; ?></h6>
                                             <small>Type: <?php echo isset($list['test_type'])?$list['test_type']:''; ?></small>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="d-block d-md-flex">
-                                        <div>
-                                            <ul class="list-styled">
-                                                <li>
-                                                    <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span><?php echo isset($list['test_amount'])?$list['test_amount']:''; ?></span></p>
-                                                </li>
-                                                <li class=""><span></span>Time :  <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></li>
-                                            </ul>
                                         </div>
-                                        <div class="">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
-                                                </li>
-                                            </ul>
+                                        <div class="ml-auto">
+                                            <div class="d-block d-md-flex">
+                                                <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span><?php echo isset($list['test_amount'])?$list['test_amount']:''; ?></span></p>
+                                                <a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
+                                            </div>
+                                            <div class="">
+                                                <ul class="list-unstyled">
+                                                    <li class=""><span></span>Time :  <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <hr class="mt-0">
+                                </li>
+                            </ul>
 						<?php } ?>
 
 
