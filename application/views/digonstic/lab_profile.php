@@ -1,4 +1,3 @@
-<?php include('header.php'); ?>
 
 <!--Main layout-->
 <main class="">
@@ -18,29 +17,42 @@
                         <div class="card-body pb-0">
 
                             <div class="media d-block d-md-flex">
-                                <img class="d-flex mb-3 mx-auto z-depth-1" src="https://mdbootstrap.com/img/Photos/Avatars/img (30).jpg" alt="Generic placeholder image" style="width: 100px;">
+							<?php 
+								$mail_url=$this->config->item('lab_url');
+								if($lab_deatils['profile_pic']==''){ ?>
+									<img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo base_url('assets/profile_pic/default.png'); ?>" alt="Logo" style="width: 100px;">
+								<?php }else{ ?>
+								<img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo $mail_url.'assets/profile_pic/'.$lab_deatils['profile_pic']; ?>" alt="<?php echo isset($lab_deatils['profile_pic'])?$lab_deatils['profile_pic']:''; ?>" style="width: 100px;">
+								<?php } ?>
                                 <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                                    <h4 class="mt-0 font-weight-bold">Thyrocare</h4>
-                                    <p class="mb-0">Domalguda, Hyderabad</p>
-                                    <p>Zip code : 500016</p>
+                                    <h4 class="mt-0 font-weight-bold"><?php echo isset($lab_deatils['name'])?$lab_deatils['name']:''; ?></h4>
+                                    <p class="mb-0">
+									<?php echo isset($lab_deatils['address1'])?$lab_deatils['address1']:''; ?>,
+									<?php echo isset($lab_deatils['address2'])?$lab_deatils['address2']:''; ?>
+									<?php echo isset($lab_deatils['city'])?$lab_deatils['city']:''; ?>	
+									<?php echo isset($lab_deatils['state'])?$lab_deatils['state']:''; ?>	
+									<?php echo isset($lab_deatils['country'])?$lab_deatils['country']:''; ?></p>	
+                                    <p>Zip code : <?php echo isset($lab_deatils['zipcode'])?$lab_deatils['zipcode']:''; ?></p>
                                 </div>
                             </div>
 
                             <div class="mt-3 d-block d-md-flex">
+							<?php if(isset($lab_deatils['test_names']) && count($lab_deatils['test_names'])>0){ ?>
                                 <div>
                                     <label class="mb-0">Facilities</label>
                                     <ul class="list-inline list-styled">
-                                        <li class="list-inline-item"><span>&#8226;</span> <small>Lorem ipsum</small></li>
-                                        <li class="list-inline-item"><span>&#8226;</span> <small>Phasellus iaculis</small></li>
-                                        <li class="list-inline-item"><span>&#8226;</span> <small>Nulla volutpat</small></li>
-                                    </ul>
+									<?php foreach($lab_deatils['test_names'] as $list){ ?>
+                                        <li class="list-inline-item"><span>&#8226;</span> <small><?php echo isset($list['test_name'])?$list['test_name']:''; ?></small></li>
+									<?php } ?>
+                                        </ul>
                                 </div>
-                                <div class="ml-5">
+								<?php } ?>
+                                <!--<div class="ml-5">
                                     <label class="mb-0">Next Slot</label>
                                     <ul class="list-inline list-styled">
                                         <li class="list-inline-item"><small>Tomorrow at 6:30PM</small></li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </div>
 
                         </div>
@@ -48,77 +60,40 @@
                         <hr>
 
                         <!--Card content-->
+						<?php if(isset($lab_deatils['test_names']) && count($lab_deatils['test_names'])>0){ ?>
                         <div class="card-body">
 
                             <div class="">
                                 <h5 class="mt-0 font-weight-bold">All Tests</h5>
-                                <input type="text" class="form-control" name="" id="" placeholder="Search all tests in thyrocare" style="width:70%;">
+                                <input type="text" onkeyup="myFunction()" class="form-control" name="myInput" id="myInput" placeholder="Search all tests in thyrocare" style="width:70%;">
                             </div>
 
                             <hr>
-
-                            <div class="d-block d-md-flex pb-0">
+						<?php foreach($lab_deatils['test_names'] as $list){ ?>
+                            <div class="d-block d-md-flex pb-0" id="myUL">
                                 <div class="mt-2">
-                                    <h6 class="mb-1">FISH - AMLI / ETO IN AML M - 2</h6>
-                                    <small>Also known as: Amli/Eto In Aml M2 Fish Blood.</small>
+                                    <h6 class="mb-1"><?php echo isset($list['test_name'])?$list['test_name']:''; ?></h6>
+                                    <small>Type: <?php echo isset($list['test_type'])?$list['test_type']:''; ?></small>
                                 </div>
                                 <div class="ml-auto">
                                     <div class="d-block d-md-flex">
-                                        <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span>8561</span></p>
-                                        <a id="" class="btn btn-outline-primary btn-sm ml-5" href="#" role="button">Book</a>
+                                        <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span><?php echo isset($list['test_amount'])?$list['test_amount']:''; ?></span></p>
+                                        <a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
                                     </div>
                                     <div class="">
                                         <ul class="list-unstyled">
-                                            <li class=""><span>&#8226;</span> <small>Lorem ipsum</small></li>
-                                            <li class=""><span>&#8226;</span> <small>Phasellus iaculis</small></li>
+                                            <li class=""><span></span>Time :  <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
                             <hr class="mt-0">
+						<?php } ?>
 
-                            <div class="d-block d-md-flex pb-0">
-                                <div class="mt-2">
-                                    <h6 class="mb-1">FISH - AMLI / ETO IN AML M - 2</h6>
-                                    <small>Also known as: Amli/Eto In Aml M2 Fish Blood.</small>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="d-block d-md-flex">
-                                        <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span>8561</span></p>
-                                        <a id="" class="btn btn-outline-primary btn-sm ml-5" href="#" role="button">Book</a>
-                                    </div>
-                                    <div class="">
-                                        <ul class="list-unstyled">
-                                            <li class=""><span>&#8226;</span> <small>Lorem ipsum</small></li>
-                                            <li class=""><span>&#8226;</span> <small>Phasellus iaculis</small></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mt-0">
-
-                            <div class="d-block d-md-flex pb-0">
-                                <div class="mt-2">
-                                    <h6 class="mb-1">FISH - AMLI / ETO IN AML M - 2</h6>
-                                    <small>Also known as: Amli/Eto In Aml M2 Fish Blood.</small>
-                                </div>
-                                <div class="ml-auto">
-                                    <div class="d-block d-md-flex">
-                                        <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span>8561</span></p>
-                                        <a id="" class="btn btn-outline-primary btn-sm ml-5" href="#" role="button">Book</a>
-                                    </div>
-                                    <div class="">
-                                        <ul class="list-unstyled">
-                                            <li class=""><span>&#8226;</span> <small>Lorem ipsum</small></li>
-                                            <li class=""><span>&#8226;</span> <small>Phasellus iaculis</small></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
+						<?php } ?>
 
                     </div>
 
@@ -188,5 +163,29 @@
 </main>
 <!--Main layout-->
 
+<script>
+function addtocard(id,l_id){
+	alert(id);
+	alert(l_id);
+	
+}
 
-<?php include('footer.php'); ?>
+
+</script>
+<script>
+function myFunction() {
+    var input, filter, div, h6, p, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myUL");
+    h6 = div.getElementsByTagName("h6");
+    for (i = 0; i < h6.length; i++) {
+        p = h6[i].getElementsByTagName("p")[0];
+        if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            h6[i].style.display = "";
+        } else {
+            h6[i].style.display = "none";
+        }
+    }
+}
+</script>

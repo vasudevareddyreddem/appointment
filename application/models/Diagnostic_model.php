@@ -60,6 +60,75 @@ class Diagnostic_model extends CI_Model
 		$this->db2->like('name',$name);		
         return $this->db2->get()->result_array();
 	}
+	public  function get_loication_and_lab_wise_lab_list($city,$test){
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('admin');
+		$this->db2->where('status',1);		
+		$this->db2->where('role',2);		
+		$this->db2->where('city',$city);		
+		$this->db2->like('name',$test);
+        return $this->db2->get()->result_array();
+	}
+	public  function get_loication_and_lab_wise_testy_list($city,$test){
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
+		$this->db2->where('admin.status',1);		
+		$this->db2->where('admin.role',2);		
+		$this->db2->where('admin.city',$city);		
+		$this->db2->like('lab_tests.test_name',$test);
+        return $this->db2->get()->result_array();
+	}
+	public  function get_all_loication_wise_lab_list($city){
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('admin');
+		$this->db2->where('status',1);		
+		$this->db2->where('role',2);		
+		$this->db2->like('city',$city);
+        return $this->db2->get()->result_array();
+	}
+	public  function get_all_test_names_list($city){
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
+		$this->db2->where('admin.status',1);		
+		$this->db2->where('admin.role',2);		
+		$this->db2->like('admin.city',$city);
+        return $this->db2->get()->result_array();
+	}
+	public  function get_test_name_list($test){
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
+		$this->db2->where('admin.status',1);		
+		$this->db2->where('admin.role',2);		
+		$this->db2->like('lab_tests.test_name',$test);
+        return $this->db2->get()->result_array();
+	}
+	public  function get_lab_name_list($name){
+		$this->db2->select('admin.name,admin.a_id,profile_pic')->from('admin');
+		$this->db2->where('status',1);		
+		$this->db2->where('role',2);		
+		$this->db2->like('name',$test);
+        return $this->db2->get()->result_array();
+	}
+	
+	/* lab test  names purpose*/
+	
+	public  function get_lab_test_lists($l_id){
+		$this->db2->select('test_name,lab_id,l_id,test_duartion,test_amount,test_type')->from('lab_tests');
+		$this->db2->where('status',1);		
+		$this->db2->where('lab_id',$l_id);		
+        return $this->db2->get()->result_array();
+	}
+	
+	public  function get_diagnostic_lab_deatils($a_id){
+		$this->db2->select('a_id,role,name,email,mobile,altmobile,gstin,address1,address2,city,state,country,zipcode,profile_pic,status,created_at')->from('admin');
+		$this->db2->where('a_id',$a_id);		
+        $return=$this->db2->get()->row_array();
+		$test_names_list=$this->get_lab_test_lists($return['a_id']);
+		$data=$return;
+		$data['test_names']=$test_names_list;
+		if(!empty($data)){
+			return $data;	
+		}
+	}
+	/* lab test  names purpose*/
 	
 	
 	
