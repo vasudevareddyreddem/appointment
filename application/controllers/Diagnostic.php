@@ -100,6 +100,20 @@ class Diagnostic extends In_frontend {
 				
 	}
 	
+	/* add to cart */
+	public  function add_to_cart(){
+		if($this->session->userdata('app_user'))
+		{	
+			$post=$this->input->post();
+			echo '<pre>';print_r($post);exit;
+			
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+	}
+	/* add to cart */
+	
 	
 	
 }

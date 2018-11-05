@@ -65,33 +65,23 @@
 
                             <div class="">
                                 <h5 class="mt-0 font-weight-bold">All Tests</h5>
-                                <input type="text" onkeyup="myFunction()" class="form-control" name="myInput" id="myInput" placeholder="Search all tests in thyrocare" style="width:70%;">
+                                                           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
                             </div>
 
                             <hr>
-						<?php foreach($lab_deatils['test_names'] as $list){ ?>
-                            <ul class="class="list-unstyled"">
-                                <li>
-                                    <div class="d-block d-md-flex pb-0" id="myUL">
-                                        <div class="mt-2">
-                                            <h6 class="mb-1"><?php echo isset($list['test_name'])?$list['test_name']:''; ?></h6>
-                                            <small>Type: <?php echo isset($list['test_type'])?$list['test_type']:''; ?></small>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="d-block d-md-flex">
-                                                <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span><?php echo isset($list['test_amount'])?$list['test_amount']:''; ?></span></p>
-                                                <a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
-                                            </div>
-                                            <div class="">
-                                                <ul class="list-unstyled">
-                                                    <li class=""><span></span>Time :  <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-						<?php } ?>
+
+						<ul id="myUL">
+						  <li><a href="#">Adele</a></li>
+						  <li><a href="#">Agnes</a></li>
+
+						  <li><a href="#">Billy</a></li>
+						  <li><a href="#">Bob</a></li>
+
+						  <li><a href="#">Calvin</a></li>
+						  <li><a href="#">Christina</a></li>
+						  <li><a href="#">Cindy</a></li>
+						</ul>
 
 
                         </div>
@@ -176,17 +166,17 @@ function addtocard(id,l_id){
 </script>
 <script>
 function myFunction() {
-    var input, filter, div, h6, p, i;
+    var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myUL");
-    h6 = div.getElementsByTagName("h6");
-    for (i = 0; i < h6.length; i++) {
-        p = h6[i].getElementsByTagName("p")[0];
-        if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            h6[i].style.display = "";
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
         } else {
-            h6[i].style.display = "none";
+            li[i].style.display = "none";
         }
     }
 }
