@@ -20,7 +20,7 @@
 							<?php 
 								$mail_url=$this->config->item('lab_url');
 								if($lab_deatils['profile_pic']==''){ ?>
-									<img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo base_url('assets/profile_pic/default.png'); ?>" alt="Logo" style="width: 100px;">
+									<img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo base_url('assets/profile_pic/dia-test.png'); ?>" alt="Logo" style="width: 100px;">
 								<?php }else{ ?>
 								<img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo $mail_url.'assets/profile_pic/'.$lab_deatils['profile_pic']; ?>" alt="<?php echo isset($lab_deatils['profile_pic'])?$lab_deatils['profile_pic']:''; ?>" style="width: 100px;">
 								<?php } ?>
