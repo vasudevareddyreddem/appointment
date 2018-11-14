@@ -13,7 +13,7 @@
                 <div class="col-md-9 mx-auto">
 
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-white">
                             <a href="<?php echo base_url('profile'); ?>" class="btn btn-sm btn-info">
                                 <i class="fa fa-chevron-left"></i>
                             </a>
@@ -65,6 +65,9 @@
 
     </div>
 </main>
+<br/>
+<br/>
+<br/>
 <!--Main layout-->
 
 <script type="text/javascript">

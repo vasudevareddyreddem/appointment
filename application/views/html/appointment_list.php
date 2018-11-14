@@ -1,18 +1,21 @@
 
 <!--Main layout-->
-<main class="mt-5 mb-5">
+<main class="pt-3">
     <div class="container">
 
         <!--Section: Post-->
         <section class="">
 
             <!--Grid row-->
-            <div class="row">
+            <div class="row ">
 
                 <!--Grid column-->
-                <div class="col-md-9 mx-auto">
-
-                    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				
+                <div class="col-md-12 mx-auto py-4">
+                <div class="card">
+				  <div class="card-header font-weight-bold bg-white">Book Appointment</div>
+				 <div class="card-body table-responsive">
+                    <table id="dtBasicExample" class="table table-striped table-bordered" >
                         <thead>
                             <tr>
                                 <th class="th-sm">City
@@ -69,6 +72,7 @@
                     </table>
 
                 </div>
+                </div>
                 <!--Grid column-->
 
             </div>
@@ -79,5 +83,7 @@
 
     </div>
 </main>
+<br/>
+<br/>
 <!--Main layout-->
 

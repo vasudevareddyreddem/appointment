@@ -23,18 +23,18 @@
 
 </head>
 
-<body class="grey lighten-3">
+<body class="grey lighten-5">
 
     <!--Main Navigation-->
     <header>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar mdb-color darken-6">
+        <nav class="navbar navbar-expand-lg   fixed-top navbar-dark  mdb-color darken-6">
             <div class="container">
 
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="<?php echo base_url(''); ?>">
-                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="100">
+                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="120px">
                 </a>
 
                 <!-- Collapse -->

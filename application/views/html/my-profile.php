@@ -1,4 +1,9 @@
-
+<style>
+.table td, .table th{
+	border-top:0px;
+	font-weight:600;
+}
+</style>
 <!--Main layout-->
 <main class="mt-5 pt-5 mb-5 pb-5">
     <div class="container">
@@ -13,10 +18,10 @@
                 <div class="col-md-9 mx-auto">
 
                     <div class="card">
-                        <div class="card-header font-weight-bold"><?php echo isset($user_details['name'])?ucfirst($user_details['name']):''; ?> Profile</div>
+                        <div class="card-header font-weight-bold bg-white"><?php echo isset($user_details['name'])?ucfirst($user_details['name']):''; ?> Profile</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4 text-center">
+                                <div class="col-md-4 text-center" style="border-right:1px solid #ddd;">
                                     <div class="mx-auto d-block">
 									<?php if($user_details['profile_pic']==''){ ?>
                                         <img class="rounded-circle mx-auto d-block" src="<?php echo base_url('assets/profile_pic/default.png'); ?>" alt="User pic" height="150px">
@@ -30,19 +35,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <table class="table mb-0" style="border-left:1px dotted #ccc;">
+                                    <table class="table mb-0">
                                         <tbody>
                                             <tr>
-                                                <td>Email Id</td>
-                                                <td><?php echo isset($user_details['email'])?$user_details['email']:''; ?></td>
+                                                <th>Email Id</th>
+                                                <th><?php echo isset($user_details['email'])?$user_details['email']:''; ?></th>
                                             </tr>
                                             <tr>
-                                                <td>Name</td>
-                                                <td><?php echo isset($user_details['name'])?$user_details['name']:''; ?></td>
+                                                <th>Name</th>
+                                                <th><?php echo isset($user_details['name'])?$user_details['name']:''; ?></th>
                                             </tr>
                                             <tr>
-                                                <td>Phone Number</td>
-                                                <td><?php echo isset($user_details['mobile'])?$user_details['mobile']:''; ?></td>
+                                                <th>Phone Number</th>
+                                                <th><?php echo isset($user_details['mobile'])?$user_details['mobile']:''; ?></th>
                                             </tr>
                                             
                                         </tbody>

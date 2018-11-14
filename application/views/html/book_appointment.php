@@ -1,6 +1,6 @@
 
 <!--Main layout-->
-<main class="pt-3">
+<main class="pt-3" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);" >
     <div class="container">
 
         <!--Section: Post-->
@@ -14,7 +14,7 @@
 
                     <!--Reply-->
                     <div class="card mb-3 wow fadeIn">
-                        <div class="card-header font-weight-bold">Book Appointment</div>
+                        <div class="card-header font-weight-bold bg-white">Book Appointment</div>
                         <div class="card-body">
 
                             <form onsubmit="return checkDate()" id="addappoinment" name="addappoinment" action="<?php echo base_url('appointment/post'); ?>" method="post">

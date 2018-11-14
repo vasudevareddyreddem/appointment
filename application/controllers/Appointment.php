@@ -19,7 +19,7 @@ class Appointment extends In_frontend {
 			$this->load->view('html/book_appointment',$data);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 				
@@ -221,7 +221,7 @@ class Appointment extends In_frontend {
 					redirect('dashboard');
 				}
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 				
