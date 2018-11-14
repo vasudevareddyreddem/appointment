@@ -22,7 +22,7 @@ class Diagnostic extends In_frontend {
 			$this->load->view('digonstic/diagnostic_tests',$data);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 				
@@ -38,7 +38,7 @@ class Diagnostic extends In_frontend {
 			$this->load->view('digonstic/lab_profile',$data);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 	}
@@ -96,7 +96,7 @@ class Diagnostic extends In_frontend {
 			$this->load->view('digonstic/tests_search',$details);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 				
@@ -142,7 +142,7 @@ class Diagnostic extends In_frontend {
 			//echo '<pre>';print_r($post);exit;
 			
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 	}

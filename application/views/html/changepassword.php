@@ -22,25 +22,25 @@
                         <div class="card-body">
                             <form id="changepassword" name="changepassword" method="post" action="<?php echo base_url('profile/changepwdpost'); ?>" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label">Old Password</label>
                                             <input type="password" id="oldpassword" name="oldpassword" value="" class="form-control">
                                         </div>
                                     </div>
-									<div class="col-md-8">
+									<div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label">New Password</label>
                                             <input type="password" id="newpassword" name="newpassword" value="" class="form-control">
                                         </div>
                                     </div>
-									<div class="col-md-8">
+									<div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label">Confirm Password</label>
                                             <input type="password" id="confirmpassword" name="confirmpassword" value="" class="form-control">
                                         </div>
                                     </div>
-                                 	<div class="col-md-8">   
+                                 	<div class="col-md-12">   
                                 <button type="submit" class="btn btn-sm btn-info text-center">
                                     Change
                                 </button>
@@ -60,6 +60,7 @@
 
     </div>
 </main>
+
 <!--Main layout-->
 
 <script type="text/javascript">

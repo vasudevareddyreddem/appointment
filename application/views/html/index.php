@@ -3,27 +3,27 @@
 <main class="">
 
     <!--Section: Jumbotron-->
-    <section style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+    <section style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/homebac1.png);">
 
         <!-- Content -->
-        <div class="text-white text-center mx-5 py-5 px-5">
+        <div class="text-white text-center mx-4 py-5 ">
 
-            <h1 class="mt-5 pt-1">
+            <h1 class="mt-5 pt-1 h1">
                 <strong>Medspace HIMS</strong>
             </h1>
-            <h4>
-                Now , doctor booking and ordering medicine is made simple with medspace
+            <h4 class="h4">
+                <i>Now , doctor booking and ordering medicine is made simple with medspace</i>
             </h4>
             <!--Card: Jumbotron-->
             <div class="row">
-                <div class="col-md-7 mx-auto">
-                    <div class="card mb-4 mt-4 wow fadeIn">
+                <div class="col-md-7 col-sm-12 col-xs-12 mx-auto">
+                    <div class="card mb-4  wow fadeIn">
 
                         <!-- Content -->
                         <div class="card-body text-center">
 						<form action="<?php echo base_url('users/search'); ?>" method="post">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-sm-12 col-xs-12">
                                     <div class="form-group mb-0">
                                         <select class="form-control" name="city" id="city" required>
                                             <option value="">Select city</option>
@@ -36,13 +36,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group mb-0">
                                         <input type="text" name="search_value" id="search_value" placeholder="Search hospitals / departments" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <button type="submit" class="btn btn-outline-black btn-md mt-0">Search</button>
+                                <div class="col-md-3 col-sm-12 col-xs-12">
+                                    <button type="submit" class="btn btn-outline-dark btn-md mt-0">Search</button>
                                 </div>
                             </div>
 						
@@ -56,18 +56,18 @@
             <div class="row">
                 <!--Card: Jumbotron-->
                 <div class="col-md-6 mx-auto mt-3 mb-5">
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="row count-home-banner">
+                        <div class="col-md-4 " >
                             <h1 class=""><?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?></h1>
-                            <h5 class="font-weight-bold">Hospitals</h5>
+                            <h6 class="font-weight-bold">Hospitals</h6>
                         </div>
                         <div class="col-md-4">
                             <h1 class=""><?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?></h1>
-                            <h5 class="font-weight-bold">Departments</h5>
+                            <h6 class="font-weight-bold">Departments</h6>
                         </div>
                         <div class="col-md-4">
                             <h1 class=""><?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?></h1>
-                            <h5 class="font-weight-bold">Doctors</h5>
+                            <h6 class="font-weight-bold">Doctors</h6>
                         </div>
                     </div>
 

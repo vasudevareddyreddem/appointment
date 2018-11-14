@@ -20,7 +20,7 @@ class Profile extends In_frontend {
 			$this->load->view('html/my-profile',$data);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 				
@@ -34,7 +34,7 @@ class Profile extends In_frontend {
 			$this->load->view('html/edit-profile',$data);
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 	}
@@ -81,7 +81,7 @@ class Profile extends In_frontend {
 			}
 					
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 	}
@@ -93,7 +93,7 @@ class Profile extends In_frontend {
 			$this->load->view('html/changepassword');
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
 		}
 	}

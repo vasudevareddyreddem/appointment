@@ -1,3 +1,20 @@
+p{
+	font-size:18px;
+	font-weight:400;
+	letter-spacing:0.2px;
+}
+main{
+	margin-top:50px;
+}
+.count-home-banner .col-md-4{
+	border:1px solid #ddd;
+	border-radius:8px;
+	max-width: 26.333333% !important;
+	margin:10px;
+	padding:10px 5px;
+	overflow:hidden;
+	
+}
 .help-block{
 	color:red;
 }
@@ -44,4 +61,9 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 @-webkit-keyframes signup-response{
     from {opacity :1;}
     to {opacity :0;}
+}
+@media (max-width:767.98px) {
+	.mx-4{
+		margin:20px !important;
+	}
 }

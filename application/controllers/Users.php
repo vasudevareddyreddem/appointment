@@ -77,7 +77,7 @@ class Users extends In_frontend {
 			$this->load->view('html/login');
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('dashboard');
 		}
 	}
@@ -88,7 +88,7 @@ class Users extends In_frontend {
 			$this->load->view('html/register');
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('dashboard');
 		}
 	}
@@ -109,7 +109,7 @@ class Users extends In_frontend {
 				redirect('users/login');
 			}
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('dashboard');
 		}
 	}
@@ -144,7 +144,7 @@ class Users extends In_frontend {
 				redirect('users/register');
 			}
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('dashboard');
 		}
 	}
@@ -156,7 +156,7 @@ class Users extends In_frontend {
 			$this->load->view('html/forgotpassword');
 			$this->load->view('html/footer');
 		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('dashboard');
 		}
 	}

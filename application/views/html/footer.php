@@ -1,10 +1,10 @@
     <!--Footer-->
-    <footer class="page-footer text-center font-small mdb-color darken-2 mt-4">
+    <footer class="page-footer text-center font-small mdb-color darken-2 mt-5">
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
             © 2018 Copyright:
-            <a href="#"> Medspace.com </a>
+            <a href="#"> medspaceit.com </a>
         </div>
         <!--/.Copyright-->
 

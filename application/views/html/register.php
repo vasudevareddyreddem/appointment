@@ -1,17 +1,17 @@
-
-    <main class="">
+<main class="">
         <div class="container">
 
             <!--Section: Post-->
-            <section class="mt-4">
+            <section class="mt-4" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/login-bg.png); background-repeat: no-repeat;background-attachment: fixed;background-position: center; ">
 
                 <!--Grid row-->
-                <div class="row">
+                <div class="row" >
 
                     <!--Grid column-->
                     <div class="col-md-5 mx-auto">
-                        <img src="<?php echo base_url(); ?>assets/vendor/img/logo.png" height="100px" width="100%" class="">
-                        <div class="card mt-3">
+                        
+                        <div class=" mt-3">
+						  <h1 class="py-2 text-center h2 ">Register</h1>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
