@@ -25,6 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/appointment/';
 $config['lab_url'] = 'http:localhost/mlab/';
+/*payment*/
+$config['keyId'] ='rzp_test_FMROR38S2ObKGw';
+$config['API_keySecret'] = '4ZAmE5b07syPo0P1WbFUNr7X';
+$config['smsusername']	= "cartinhour";
+$config['smspassword']	= "qwerty";
 
 /*
 |--------------------------------------------------------------------------
@@ -66,12 +71,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 | https://codeigniter.com/user_guide/general/urls.html
 */
 $config['url_suffix'] = '';
-$config['smsusername']	= "cartinhour";
-$config['smspassword']	= "qwerty";
-/*payment*/
-$config['keyId'] ='rzp_live_8oTwGtVqjBWSSb';
-$config['API_keySecret'] = 'oFONtkgjghPpeuviGy5B0O32';
-/*payment*/
+
 /*
 |--------------------------------------------------------------------------
 | Default Language

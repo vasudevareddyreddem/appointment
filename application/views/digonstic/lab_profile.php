@@ -71,38 +71,30 @@
 
                             <div class="">
                                 <h5 class="mt-0 font-weight-bold">All Tests</h5>
-                                <input type="text" class="form-control" name="" id="myInput" onkeyup="myFunction()" placeholder="Search all tests in thyrocare" style="width:70%;">
+                                <input type="text" class="form-control" name="" id="myInput" onkeyup="myFunction()" placeholder="Search all tests in lab" style="width:70%;">
                             </div>
 
                             <ul id="myUL" class="list-unstyled">
-                                <li><a href="#">Adele</a></li>
-                                <li><a href="#">Agnes</a></li>
-
-                                <li><a href="#">Billy</a></li>
-                                <li><a href="#">Bob</a></li>
-
-                                <li><a href="#">Calvin</a></li>
-                                <li><a href="#">Christina</a></li>
-                                <li><a href="#">sathwik</a></li>
-                                <li>
-                                    <hr>
-                                    <div class="d-block d-md-flex pb-0">
-                                        <div class="mt-2">
-                                            <h6 class="mb-1"><a href="#" class="">FISH - AMLI / ETO IN AML M - 2</a></h6>
-                                            <small>Also known as: Amli/Eto In Aml M2 Fish Blood.</small>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="d-block d-md-flex">
-                                                <p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span>8561</span></p>
-                                                <a id="" class="btn btn-outline-primary btn-sm ml-5" href="#" role="button">Book</a>
-                                            </div>
-                                            <div class="">
-                                                <p class="mb-0"><span>&#8226;</span> <small>Lorem ipsum</small></p>
-                                                <p class="mb-3"><span>&#8226;</span> <small>Phasellus iaculis</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+							<?php foreach($lab_deatils['test_names'] as $list){ ?>
+									<li>
+										<hr>
+										<div class="d-block d-md-flex pb-0">
+											<div class="mt-2">
+												<h6 class="mb-1"><a href="#" class=""> <?php echo isset($list['test_name'])?$list['test_name']:''; ?></a></h6>
+												<small>Type : <?php echo isset($list['test_type'])?$list['test_type']:''; ?></small>
+											</div>
+											<div class="ml-auto">
+												<div class="d-block d-md-flex">
+													<p class="mb-0 font-weight-bold mt-2"><span>&#8377;</span><span><?php echo isset($list['test_amount'])?$list['test_amount']:''; ?></span></p>
+													<a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
+												</div>
+												<div class="">
+													<p class="mb-0"><span></span>Time : <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></p>
+												</div>
+											</div>
+										</div>
+									</li>
+							<?php } ?>
                             </ul>
 
                         </div>
@@ -116,54 +108,8 @@
 
                 <!--Grid column-->
                 <div class="col-md-4">
-
-                    <div class="card mb-4">
-
-                        <!--Card content-->
-                        <div class="card-body pb-0 d-block d-md-flex">
-                            <div class="">
-                                <h6 class="mt-0 mb-0 font-weight-bold">Selected Tests</h6>
-                                <small class="mt-0">Thyrocare, Domalguda</small>
-                            </div>
-                            <div class="mt-auto ml-auto">
-                                <small>2 Tests</small>
-                            </div>
-                        </div>
-                        <hr class="mt-2 mb-2">
-
-                        <!--Card content-->
-                        <div class="card-body pt-0">
-                            <div class="d-block d-md-flex mt-2">
-                                <div>
-                                    <i class="fa fa-times"></i>
-                                    <small class="ml-2">FISH - AMLI / ETO IN AML M - 2</small>
-                                </div>
-                                <div class="ml-auto">
-                                    <small><span>&#8377;</span> <span>3500</span></small>
-                                </div>
-                            </div>
-                            <hr class="mt-2 mb-1">
-                            <div class="d-block d-md-flex mt-2">
-                                <div>
-                                    <i class="fa fa-times"></i>
-                                    <small class="ml-2">FISH - AMLI / ETO IN AML M - 2</small>
-                                </div>
-                                <div class="ml-auto">
-                                    <small><span>&#8377;</span> <span>3500</span></small>
-                                </div>
-                            </div>
-                            <hr class="mt-2 mb-1">
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
-                                <div>
-                                    <p class="mb-0">Total</p>
-                                </div>
-                                <div class="ml-auto">
-                                    <p class="mb-0"><span>&#8377;</span> <span>7000</span></p>
-                                </div>
-                            </div>
-                            <a class="btn btn-success btn-block mt-3" href="lab_test_booking.php">Checkout</a>
-                        </div>
-                    </div>
+					<span id="cart_item_count"></span>
+                    
 
                 </div>
                 <!--Grid column-->
@@ -176,13 +122,47 @@
     <!--Section: Post-->
 </main>
 <!--Main layout-->
+					 <div id="sucessmsg" style="display:none;"></div>
 
 <script>
-    function addtocard(id, l_id) {
-        alert(id);
-        alert(l_id);
+jQuery.ajax({
+   			url: "<?php echo base_url('diagnostic/get_cart_list');?>",
+   			data: {
+				test_id: '',
+				lab_id: '',
+			},
+   			type: "POST",
+   			format:"json",
+			dataType: 'html',
+   					success:function(data){
+						$('#cart_item_count').empty();
+						$('#cart_item_count').append(data);
 
-    }
+   					}
+           });
+  function addtocard(id,l_id){
+	if(id!='' && l_id!=''){
+		 jQuery.ajax({
+   			url: "<?php echo base_url('diagnostic/add_to_cart');?>",
+   			data: {
+				test_id: id,
+				lab_id: l_id,
+			},
+   			type: "POST",
+   			format:"json",
+			dataType: 'html',
+   					success:function(data){
+						$('#sucessmsg').show();
+						$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ">Product Successfully added to cart <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+						$('#cart_item_count').empty();
+						$('#cart_item_count').append(data);
+
+   					}
+           });
+	}
+	
+}
+
 </script>
 <script>
     function myFunction() {

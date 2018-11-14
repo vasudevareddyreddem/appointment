@@ -128,8 +128,72 @@ class Diagnostic_model extends CI_Model
 			return $data;	
 		}
 	}
+	
+	public  function save_item_cart($data){
+		$this->db2->insert('lab_cart',$data);
+		return $this->db->insert_id();
+	}
+	
+	public  function get_cart_item_list($a_id){
+		$this->db2->select('lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
+		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_cart.test_id', 'left');
+		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
+		$this->db2->where('lab_cart.a_id',$a_id);		
+        return $this->db2->get()->result_array();
+	}
+	
+	public  function check_item_exits($a_u_id,$test_id,$lab_id){
+		$this->db2->select('*')->from('lab_cart');
+		$this->db2->where('a_id',$a_u_id);		
+		$this->db2->where('test_id',$test_id);		
+		$this->db2->like('l_id',$lab_id);
+        return $this->db2->get()->row_array();
+	}
+	
+	public  function removecart_item_details($a_id,$c_id){
+		$this->db2->where('c_id',$c_id);	
+		$this->db2->where('a_id',$a_id);
+		return 	$this->db2->delete('lab_cart');	
+		
+	}
 	/* lab test  names purpose*/
 	
+	/*  checkout */
+	
+	public function save_patient_details($data){
+		$this->db2->insert('lab_patient_details',$data);
+		return $this->db->insert_id();
+	}
+	public function save_patient_billing($data){
+		$this->db2->insert('lab_patient_billing',$data);
+		return $this->db2->insert_id();
+	}
+	public  function get_customer_last_lab_id($a_id){
+		$this->db2->select('l_id')->from('lab_cart');
+		$this->db2->where('a_id',$a_id);		
+		$this->db2->order_by('c_id',"desc");		
+        return $this->db2->get()->row_array();	
+	}
+	/*  checkout */
+	
+	/* billing  address */
+	public  function get_patient_billing_details($b_id,$a_id){
+		$this->db2->select('*')->from('lab_patient_billing');
+		$this->db2->where('l_t_b_id',$b_id);		
+		$this->db2->where('a_id',$a_id);		
+        return $this->db2->get()->row_array();
+	}
+	public  function get_patient_details($a_id){
+		$this->db2->select('*')->from('lab_patient_details');
+		$this->db2->where('a_id',$a_id);		
+		$this->db2->order_by('l_t_a_id','desc');	
+		$this->db2->limit(1);
+        return $this->db2->get()->row_array();
+	}
+	public  function get_cart_item_details($a_id){
+		
+	}
+	/* billing  address */
 	
 	
 

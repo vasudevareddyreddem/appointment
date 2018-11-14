@@ -1,4 +1,3 @@
-<?php include('header.php'); ?>
 <style type="text/css">
     .form-box .card-body{
         height: 550px;
@@ -300,7 +299,6 @@
 </main>
 <!--Main layout-->
 
-<?php include('footer.php'); ?>
 
 <script type="text/javascript">
     $(document).ready(function() {
