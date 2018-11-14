@@ -50,6 +50,7 @@ class Users_model extends CI_Model
 	public  function get_hospital_city_list(){
 		$this->db->select('hospital.hos_bas_city')->from('hospital');
 		$this->db->where('hos_status',1);
+		$this->db->where('hos_undo',0);
 		$this->db->where('hos_bas_city!=','') ;
 		$this->db->group_by('hospital.hos_bas_city') ;
 		return $this->db->get()->result_array();
@@ -102,8 +103,10 @@ class Users_model extends CI_Model
 	}
 	public  function get_department_hos_list_with_names($h_id){
 		$this->db->select('t_name')->from('treament');
-		$this->db->like('hos_id', $h_id);
-		$this->db->where('t_status',1);
+		$this->db->join('hospital', 'hospital.hos_id = treament.hos_id', 'left');
+		$this->db->where('hospital.hos_undo',0);
+		$this->db->like('treament.hos_id', $h_id);
+		$this->db->where('treament.t_status',1);
 		return $this->db->get()->result_array();
 	}
 	public  function get_hospital_hos_list($h_id){
@@ -119,14 +122,18 @@ class Users_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	public  function get_clicnic_list_list(){
-		$this->db->select('COUNT(hos_id) as cnt')->from('treament');
-		$this->db->where('t_status',1);
+		$this->db->select('COUNT(treament.hos_id) as cnt')->from('treament');
+		$this->db->join('hospital', 'hospital.hos_id = treament.hos_id', 'left');
+		$this->db->where('hospital.hos_undo',0);
+		$this->db->where('treament.t_status',1);
 		return $this->db->get()->row_array();
 	}
 	public  function get_hospital_doctors_list(){
-		$this->db->select('COUNT(r_id) as cnt')->from('resource_list');
-		$this->db->where('r_status',1);
-		$this->db->where('role_id',6);
+		$this->db->select('COUNT(resource_list.r_id) as cnt')->from('resource_list');
+		$this->db->join('hospital', 'hospital.hos_id = resource_list.hos_id', 'left');
+		$this->db->where('hospital.hos_undo',0);
+		$this->db->where('resource_list.r_status',1);
+		$this->db->where('resource_list.role_id',6);
 		return $this->db->get()->row_array();
 	}
 		

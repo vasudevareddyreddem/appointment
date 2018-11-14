@@ -74,7 +74,7 @@
                             <img class="d-flex mb-3 mx-auto z-depth-1" src="<?php echo base_url('assets/vendor/default.png'); ?>" alt="Generic placeholder image" style="width: 100px;">
 
                             <?php }else{ ?>
-                            <img class="d-flex mb-3 mx-auto z-depth-1" src="http://staging.ehealthinfra.com/assets/hospital_logos/" <?php echo $lis['h_id']['hos_bas_logo']; ?> alt="Hospital Logo" style="width: 100px;">
+                            <img class="d-flex mb-3 mx-auto z-depth-1" src="https://ehealthinfra.com/assets/hospital_logos/<?php echo $lis['h_id']['hos_bas_logo']; ?>" alt="Hospital Logo" style="width: 100px;">
 
                             <?php } ?>
                             <div class="media-body text-center text-md-left ml-md-3 ml-0">
