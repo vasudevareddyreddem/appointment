@@ -62,3 +62,8 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
     from {opacity :1;}
     to {opacity :0;}
 }
+@media (max-width:767.98px) {
+	.mx-4{
+		margin:20px !important;
+	}
+}

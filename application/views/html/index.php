@@ -6,7 +6,7 @@
     <section style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/homebac1.png);">
 
         <!-- Content -->
-        <div class="text-white text-center mx-2 py-5 ">
+        <div class="text-white text-center mx-4 py-5 ">
 
             <h1 class="mt-5 pt-1 h1">
                 <strong>Medspace HIMS</strong>
