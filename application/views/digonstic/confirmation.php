@@ -47,6 +47,8 @@
                                             <td><b>Mobile</b></td>
                                             <td><?php echo isset($address_detail['mobile'])?$address_detail['mobile']:''; ?></td>
                                         </tr>
+										
+										 <tr>&nbsp;&nbsp;</tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -66,23 +68,30 @@
                                     <tbody>
                                         <tr>
                                             <td><b>Name</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($patient_detail['name'])?$patient_detail['name']:''; ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Mobile Number</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($patient_detail['mobile'])?$patient_detail['mobile']:''; ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Email Id</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($patient_detail['email'])?$patient_detail['email']:''; ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Gender</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($patient_detail['gender'])?$patient_detail['gender']:''; ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Age</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($patient_detail['age'])?$patient_detail['age']:''; ?></td>
+                                        </tr>
+										<tr>
+                                            <td><b>Date & Time</b></td>
+                                            <td>
+											<?php echo isset($patient_detail['date'])?$patient_detail['date']:''; ?>&nbsp;
+											<?php echo isset($patient_detail['time'])?$patient_detail['time']:''; ?>
+											</td>
                                         </tr>
                                     </tbody>
                                 </table>

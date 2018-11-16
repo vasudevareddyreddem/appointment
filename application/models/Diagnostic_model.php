@@ -190,6 +190,11 @@ class Diagnostic_model extends CI_Model
 		$this->db2->limit(1);
         return $this->db2->get()->row_array();
 	}
+	public  function get_user_details($a_id){
+		$this->db2->select('name,email,mobile,address1 as address')->from('admin');
+		$this->db2->where('a_id',$a_id);		
+        return $this->db2->get()->row_array();
+	}
 	
 	/* billing  address */
 	
@@ -210,6 +215,12 @@ class Diagnostic_model extends CI_Model
 	}
 	/* orders*/
 	/* order success*/
+	public  function get_order_patient_detail($order_id){
+		$this->db2->select('lab_patient_details.*')->from('lab_orders');
+		$this->db2->join('lab_patient_details', 'lab_patient_details.l_t_a_id = lab_orders.patient_details_id', 'left');
+		$this->db2->where('lab_orders.r_id',$order_id);		
+        return $this->db2->get()->row_array();	
+	}
 	public  function get_order_billing_address($order_id){
 		$this->db2->select('lab_patient_billing.*')->from('lab_orders');
 		$this->db2->join('lab_patient_billing', 'lab_patient_billing.l_t_b_id = lab_orders.billing_id', 'left');
@@ -241,7 +252,15 @@ class Diagnostic_model extends CI_Model
 		$this->db2->where('lab_patient_billing.created_by',$a_id);		
         return $this->db2->get()->result_array();
 	}
-	
+	  /* order list purpose */
+	  public  function get_customer_order_list($a_id){
+		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion')->from('lab_order_items');
+		$this->db2->join('lab_orders', 'lab_orders.r_id = lab_order_items.order_id', 'left');
+		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_order_items.test_id', 'left');
+		$this->db2->where('lab_order_items.created_by',$a_id);		
+        return $this->db2->get()->result_array();	 
+	  }
+	  /* order list purpose */
 	
 
 }

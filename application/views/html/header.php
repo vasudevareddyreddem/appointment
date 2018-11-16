@@ -83,7 +83,7 @@
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="<?php echo base_url('profile'); ?>">My Profile</a>
                                 <a class="dropdown-item" href="<?php echo base_url('appointment/lists'); ?>">Appointments List</a>
-                                <!--<a class="dropdown-item" href="<?php echo base_url('orders'); ?>">My Orders</a>-->
+                                <a class="dropdown-item" href="<?php echo base_url('diagnostic/orders'); ?>">My Diagnostic Orders</a>
                                 <a class="dropdown-item" href="<?php echo base_url('profile/changepassword'); ?>">Change Password</a>
                                 <a class="dropdown-item" href="<?php echo base_url('dashboard/logout'); ?>">Sign Out</a>
                             </div>

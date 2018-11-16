@@ -18,74 +18,65 @@
                                 </div>
                                 <div class="card-body">
                                     <!-- Default unchecked -->
+									<?php if(isset($billing_details) && count($billing_details)>0){ ?>
                                     <div class="row">
+									<?php foreach($billing_details as $list){ ?>
                                         <div class="col-md-4">
                                             <div class="card mb-4">
                                                 <div class="card-body">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input past_address" id="defaultUnchecked" value="1" onchange="valueChanged()">
-                                                        <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+                                                        <input type="checkbox" name="billingadress" class="custom-control-input past_address" id="billingadress<?php echo $list['l_t_b_id']; ?>" onclick="getbillingaddress_id(this.value);" value="<?php echo $list['l_t_b_id']; ?>">
+                                                        <label class="custom-control-label" for="billingadress<?php echo $list['l_t_b_id']; ?>"><?php echo isset($list['address_lable'])?$list['address_lable']:''; ?></label>
                                                     </div>
-                                                    <small class="">9-25,Narayanapuram</small><br>
-                                                    <small class="">Dachepalli, Guntur,A.p</small><br>
-                                                    <small class="">Pin Code : 500016</small><br>
-                                                    <small class="">Mobile Number : 98xxxxx230</small><br>
-                                                    <small class="">Email : admin@gmail.com</small>
+                                                    <small class=""><?php echo isset($list['address'])?$list['address']:''; ?></small><br>
+                                                    <small class=""><?php echo isset($list['landmark'])?$list['landmark']:''; ?></small><br>
+                                                    <small class=""><?php echo isset($list['locality'])?$list['locality']:''; ?></small><br>
+                                                    <small class="">Pin Code : <?php echo isset($list['pincode'])?$list['pincode']:''; ?></small><br>
+                                                    <small class="">Mobile Number : <?php echo isset($list['mobile'])?$list['mobile']:''; ?></small><br>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="card mb-4">
-                                                <div class="card-body">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input past_address" id="defaultUnchecked" value="1" onchange="valueChanged()">
-                                                        <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
-                                                    </div>
-                                                    <small class="">9-25,Narayanapuram</small><br>
-                                                    <small class="">Dachepalli, Guntur,A.p</small><br>
-                                                    <small class="">Pin Code : 500016</small><br>
-                                                    <small class="">Mobile Number : 98xxxxx230</small><br>
-                                                    <small class="">Email : admin@gmail.com</small>
-                                                </div>
-                                            </div>
-                                        </div>
+									<?php } ?>
                                     </div>
-                                        
-                                    <div class="new_address_form">
-                                        <div class="form-group">
-                                            <label>Mobile Number</label>
-                                            <input type="text" class="form-control" placeholder="Enter Number" id="mobile" name="mobile">
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6 col-sm-12">
-                                                <label>Locality</label>
-                                                <input type="text" class="form-control" placeholder="Enter Locality" id="locality" name="locality">
-                                            </div>
-                                            <div class="form-group col-md-6 col-sm-12">
-                                                <label>Pincode</label>
-                                                <input type="text" class="form-control" placeholder="Enter Pincode" id="pincode" name="pincode">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" id="address" name="address"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Landmark</label>
-                                            <input type="text" class="form-control" placeholder="Enter Landmark" id="landmark" name="landmark">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Label</label>
-                                            <select class="form-control" id="address_lable" name="address_lable">
-                                                <option value="">Select</option>
-                                                <option value="Home">Home</option>
-                                                <option value="Work">Work</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
+									<?php } ?>
+                                     <div id="newbillingaddress" >   
+										<div class="new_address_form">
+											<div class="form-group">
+												<label>Mobile Number</label>
+												<input type="text" class="form-control" placeholder="Enter Number" id="mobile" name="mobile">
+											</div>
+											<div class="row">
+												<div class="form-group col-md-6 col-sm-12">
+													<label>Locality</label>
+													<input type="text" class="form-control" placeholder="Enter Locality" id="locality" name="locality">
+												</div>
+												<div class="form-group col-md-6 col-sm-12">
+													<label>Pincode</label>
+													<input type="text" class="form-control" placeholder="Enter Pincode" id="pincode" name="pincode">
+												</div>
+											</div>
+											<div class="form-group">
+												<label>Address</label>
+												<textarea class="form-control" id="address" name="address"></textarea>
+											</div>
+											<div class="form-group">
+												<label>Landmark</label>
+												<input type="text" class="form-control" placeholder="Enter Landmark" id="landmark" name="landmark">
+											</div>
+											<div class="form-group">
+												<label>Label</label>
+												<select class="form-control" id="address_lable" name="address_lable">
+													<option value="">Select</option>
+													<option value="Home">Home</option>
+													<option value="Work">Work</option>
+													<option value="Other">Other</option>
+												</select>
+											</div>
+										</div>
+									</div>
 									<input type="hidden" name="lab_id" id="lab_id" value="<?php echo isset($lab_id)?$lab_id:''; ?>">
 									<input type="hidden" name="patient_details_id" id="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
+									<input type="hidden" name="billingaddressid" id="billingaddressid" value="">
 
                                     <a href="<?php echo base_url('diagnostic/patient_details/'.base64_encode($lab_id).'/'.base64_encode($patient_details_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md btn-next">Continue</button>
@@ -246,12 +237,23 @@
 
 
 <script type="text/javascript">
+function getbillingaddress_id(id){
+	$('#billingaddressid').val(id);
 
-    function valueChanged()
-    {
-        if($('.past_address').is(":checked"))   
-            $(".new_address_form").hide();
-        else
-            $(".new_address_form").show();
-    }
+}
+$("input:checkbox").on('click', function() {
+	
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    var group1 = $box.attr("id");
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+	$('#newbillingaddress').hide();
+	
+  } else {
+	 $('#newbillingaddress').show();
+    $box.prop("checked", false);
+  }
+});
 </script>

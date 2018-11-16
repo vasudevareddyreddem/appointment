@@ -66,9 +66,9 @@
                                         <label>Gender</label>
                                         <select class="form-control" name="gender" id="gender">
                                             <option value="">Select</option>
-                                            <option value="Male" <?php if($patient_details['gender']=='Male'){ echo "selected"; } ?>>Male</option>
-                                            <option value="Female" <?php if($patient_details['gender']=='Female'){ echo "selected"; } ?>>Female</option>
-                                            <option value="Others" <?php if($patient_details['gender']=='Others'){ echo "selected"; } ?>>Others</option>
+                                            <option value="Male" <?php if(isset($patient_details['gender']) && $patient_details['gender']=='Male'){ echo "selected"; } ?>>Male</option>
+                                            <option value="Female" <?php if(isset($patient_details['gender']) && $patient_details['gender']=='Female'){ echo "selected"; } ?>>Female</option>
+                                            <option value="Others" <?php if(isset($patient_details['gender']) && $patient_details['gender']=='Others'){ echo "selected"; } ?>>Others</option>
                                         </select>
                                     </div>
 									<input type="hidden" name="lab_id" id="lab_id" value="<?php echo isset($lab_id)?$lab_id:''; ?>">

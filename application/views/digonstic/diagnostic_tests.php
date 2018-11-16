@@ -54,6 +54,7 @@
                 <div class="col-md-11 mx-auto mb-5">
 
                     <div class="row">
+					<?php  //echo '<pre>';print_r($packages_list);exit; ?>
 					<?php if(isset($packages_list) && count($packages_list)>0){ ?>
 					<?php foreach($packages_list as $list){ ?>
                         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -95,7 +96,7 @@
                                         <label class="text-white font-weight-bold green lighten-1 p-1"><?php echo isset($list['percentage'])?$list['percentage']:''; ?> Off</label>
                                         <label class="font-weight-bold p-1 ml-auto mr-auto">Rs.<?php echo isset($list['discount'])?$list['discount']:''; ?> <strike class="dark-grey-text font-weight-bold">Rs.<?php echo isset($list['amount'])?$list['amount']:''; ?></strike></label>
                                         <div class="pull-right mt-0">
-                                            <a id="" class="btn btn-outline-primary btn-sm mt-0 pl-2 pr-2 font-weight-bold" href="#" role="button">Explore</a>
+                                            <a id="package_name" class="btn btn-outline-primary btn-sm mt-0 pl-2 pr-2 font-weight-bold" href="<?php echo base_url('diagnostic/cart/'.base64_encode($list['l_t_p_id'])); ?>"  role="button">Explore</a>
                                         </div>
                                     </div>
 
