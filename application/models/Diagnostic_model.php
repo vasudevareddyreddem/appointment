@@ -262,5 +262,27 @@ class Diagnostic_model extends CI_Model
 	  }
 	  /* order list purpose */
 	
+	/* cart page  details*/
+	public function get_package_details_list($l_t_p_id){
+		$this->db2->select('*')->from('test_packages');
+		$this->db2->where('l_t_p_id',$l_t_p_id);
+		$return=$this->db2->get()->row_array();
+			$test_list=$this->get_package_details($return['l_t_p_id']);
+			$data=$return;
+			$data['package_test_list']=$test_list;
+		
+		if(!empty($data)){
+			return $data;
+			
+		}
+	}
+	public  function get_package_details($pack_id){
+		$this->db2->select('packages_test_list.test_id,lab_tests.test_name,lab_tests.test_type,lab_tests.test_duartion')->from('packages_test_list');
+		$this->db2->join('lab_tests', 'lab_tests.l_id = packages_test_list.test_id', 'left');
+		$this->db2->where('packages_test_list.status !=',2);
+		$this->db2->where('packages_test_list.l_t_p_id',$pack_id);
+		return $this->db2->get()->result_array();
+	}	
+	
 
 }
