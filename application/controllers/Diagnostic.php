@@ -499,9 +499,9 @@ class Diagnostic extends In_frontend {
 		{
 			$log_details=$this->session->userdata('app_user');
 			$package_id=base64_decode($this->uri->segment(3));
-			$data['order_list']=$this->Diagnostic_model->get_package_details($package_id);
+			//$data['order_list']=$this->Diagnostic_model->get_package_details($package_id);
 			//echo '<pre>';print_r($data);exit;
-			$this->load->view('digonstic/cart',$data);
+			$this->load->view('digonstic/cart');
 			$this->load->view('html/footer');
 			//echo '<pre>';print_r($order_id);exit;
 		}else{
