@@ -135,7 +135,7 @@ class Diagnostic_model extends CI_Model
 	}
 	
 	public  function get_cart_item_list($a_id){
-		$this->db2->select('lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
+		$this->db2->select('lab_tests.lab_id,lab_cart.l_id,lab_cart.delivery_charge,lab_cart.test_id,lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_cart.test_id', 'left');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('lab_cart.a_id',$a_id);		
@@ -162,7 +162,7 @@ class Diagnostic_model extends CI_Model
 	
 	public function save_patient_details($data){
 		$this->db2->insert('lab_patient_details',$data);
-		return $this->db->insert_id();
+		return $this->db2->insert_id();
 	}
 	public function save_patient_billing($data){
 		$this->db2->insert('lab_patient_billing',$data);
@@ -190,10 +190,57 @@ class Diagnostic_model extends CI_Model
 		$this->db2->limit(1);
         return $this->db2->get()->row_array();
 	}
-	public  function get_cart_item_details($a_id){
+	
+	/* billing  address */
+	
+	/* orders*/
+	public  function save_orders($data){
+		$this->db2->insert('lab_orders',$data);
+		return $this->db2->insert_id();
 		
 	}
-	/* billing  address */
+	public  function save_order_items($data){
+		$this->db2->insert('lab_order_items',$data);
+		return $this->db2->insert_id();
+		
+	}
+	public function delete_cart_items_data($c_id){
+		$this->db2->where('c_id',$c_id);
+		return $this->db2->delete('lab_cart');
+	}
+	/* orders*/
+	/* order success*/
+	public  function get_order_billing_address($order_id){
+		$this->db2->select('lab_patient_billing.*')->from('lab_orders');
+		$this->db2->join('lab_patient_billing', 'lab_patient_billing.l_t_b_id = lab_orders.billing_id', 'left');
+		$this->db2->where('lab_orders.r_id',$order_id);		
+        return $this->db2->get()->row_array();	
+	}
+	public  function get_order_test_detail($order_id){
+		$this->db2->select('lab_order_items.*,lab_tests.test_name,lab_tests.test_duartion')->from('lab_orders');
+		$this->db2->join('lab_order_items', 'lab_order_items.order_id = lab_orders.r_id', 'left');
+		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_order_items.test_id', 'left');
+		$this->db2->where('lab_orders.r_id',$order_id);		
+        return $this->db2->get()->result_array();	
+	}
+	
+	/* patient  details purpose*/
+	public  function get_current_patient_details($patient_id){
+		$this->db2->select('lab_patient_details.*')->from('lab_patient_details');
+		$this->db2->where('lab_patient_details.l_t_a_id',$patient_id);		
+        return $this->db2->get()->row_array();
+	}
+	
+	public  function update_patient_details($p_b_id,$data){
+		$this->db2->where('l_t_a_id',$p_b_id);
+		return $this->db2->update('lab_patient_details',$data);
+	}
+	
+	public  function get_billing_address_list($a_id){
+		$this->db2->select('*')->from('lab_patient_billing');
+		$this->db2->where('lab_patient_billing.created_by',$a_id);		
+        return $this->db2->get()->result_array();
+	}
 	
 	
 

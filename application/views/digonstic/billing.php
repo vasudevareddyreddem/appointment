@@ -49,9 +49,10 @@
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
-																		<input type="hidden" name="lab_id" id="lab_id" value="<?php echo isset($lab_id)?$lab_id:''; ?>">
+									<input type="hidden" name="lab_id" id="lab_id" value="<?php echo isset($lab_id)?$lab_id:''; ?>">
+									<input type="hidden" name="patient_details_id" id="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
 
-                                    <a href="<?php echo base_url('diagnostic/patient_details/'.base64_encode($lab_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
+                                    <a href="<?php echo base_url('diagnostic/patient_details/'.base64_encode($lab_id).'/'.base64_encode($patient_details_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md btn-next">Continue</button>
                                 </div>
                             </fieldset>

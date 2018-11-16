@@ -29,23 +29,23 @@
                                     <tbody>
                                         <tr>
                                             <td><b>Address</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($address_detail['address'])?$address_detail['address']:''; ?></td>
                                         </tr>
                                         <tr>
-                                            <td><b>City</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><b>Landmark</b></td>
+                                            <td><?php echo isset($address_detail['landmark'])?$address_detail['landmark']:''; ?></td>
                                         </tr>
                                         <tr>
-                                            <td><b>State</b></td>
-                                            <td>xxxxxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Country</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><b>Locality</b></td>
+                                            <td><?php echo isset($address_detail['locality'])?$address_detail['locality']:''; ?></td>
                                         </tr>
                                         <tr>
                                             <td><b>Zipcode</b></td>
-                                            <td>xxxxxxxxx</td>
+                                            <td><?php echo isset($address_detail['pincode'])?$address_detail['pincode']:''; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Mobile</b></td>
+                                            <td><?php echo isset($address_detail['mobile'])?$address_detail['mobile']:''; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -100,7 +100,7 @@
                 <!--Grid column-->
                 <div class="col-md-8 mx-auto text-center">
                     
-                    <img src="img/confirm-booking.png" height="100px">
+                    <img src="<?php echo base_url(); ?>assets/vendor/img/confirm-booking.png" height="100px">
                     <h1>Booking Confirmed</h1>
 
                 </div>

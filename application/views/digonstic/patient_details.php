@@ -14,7 +14,7 @@
                 <div class="col-md-8">
                     <div class="form-box">
                         <form role="form" method="post" class="payment_form" id="patient_details" name="patient_details" action="<?php echo base_url('diagnostic/patient_details_post'); ?>">
-
+							<input type="hidden" name="l_t_a_id" id="l_t_a_id" value="<?php echo isset($patient_details['l_t_a_id'])?$patient_details['l_t_a_id']:''; ?>">
 
                             <fieldset class="card">
                                 <div class="card-header unique-color">
@@ -27,43 +27,48 @@
                                         <select class="form-control" name="time" id="time">
                                           	<option value="">Select</option>
 											<?php foreach($time_list as $list){ ?>
+											<?php if($list==$patient_details['time']){ ?>
+												<option selected value="<?php echo $list; ?>"><?php echo $list; ?></option>
+											<?php }else{ ?>
 												<option value="<?php echo $list; ?>"><?php echo $list; ?></option>
+
+											<?php } ?>
 											<?php } ?>
                                         </select>
 									 </div>
 									 <div class="form-group">
                                         <label>Time</label>
-                                         <input type="date" class="form-control" id="date" name="date">
+                                         <input type="date" class="form-control" id="date" name="date" value="<?php echo isset($patient_details['date'])?$patient_details['date']:''; ?>">
 
 									 </div>
                                 
                                     <div class="form-group">
                                         <label>Patient Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name">
+                                        <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name" value="<?php echo isset($patient_details['name'])?$patient_details['name']:''; ?>">
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6 col-sm-12 mb-0">
                                             <label>Patient Mobile Number</label>
-                                            <input type="text" class="form-control" placeholder="Enter Number" id="mobile" name="mobile">
+                                            <input type="text" class="form-control" placeholder="Enter Number" id="mobile" name="mobile" value="<?php echo isset($patient_details['mobile'])?$patient_details['mobile']:''; ?>">
                                         </div>
                                         <div class="form-group col-md-6 col-sm-12 mb-0">
                                             <label>Age</label>
-                                                    <input type="text" class="form-control" placeholder="Age" id="age" name="age">
+                                                    <input type="text" class="form-control" placeholder="Age" id="age" name="age"  value="<?php echo isset($patient_details['age'])?$patient_details['age']:''; ?>">
                                               
                                            
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Email Id</label>
-                                        <input type="text" name="email" placeholder="Enter email address" class="form-control" id="email">
+                                        <input type="text" name="email" placeholder="Enter email address" class="form-control" id="email" value="<?php echo isset($patient_details['email'])?$patient_details['email']:''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Gender</label>
                                         <select class="form-control" name="gender" id="gender">
                                             <option value="">Select</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Others">Others</option>
+                                            <option value="Male" <?php if($patient_details['gender']=='Male'){ echo "selected"; } ?>>Male</option>
+                                            <option value="Female" <?php if($patient_details['gender']=='Female'){ echo "selected"; } ?>>Female</option>
+                                            <option value="Others" <?php if($patient_details['gender']=='Others'){ echo "selected"; } ?>>Others</option>
                                         </select>
                                     </div>
 									<input type="hidden" name="lab_id" id="lab_id" value="<?php echo isset($lab_id)?$lab_id:''; ?>">
