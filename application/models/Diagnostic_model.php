@@ -136,7 +136,7 @@ class Diagnostic_model extends CI_Model
 	}
 	
 	public  function get_cart_item_list($a_id){
-		$this->db2->select('lab_tests.lab_id,lab_cart.l_id,lab_cart.delivery_charge,lab_cart.test_id,lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
+		$this->db2->select('lab_tests.lab_id,lab_cart.l_id,lab_cart.amount,lab_cart.org_amount,lab_cart.percentage,lab_cart.package_id,lab_cart.type,lab_cart.delivery_charge,lab_cart.test_id,lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_cart.test_id', 'left');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('lab_cart.a_id',$a_id);		
@@ -263,9 +263,11 @@ class Diagnostic_model extends CI_Model
 	}
 	  /* order list purpose */
 	  public  function get_customer_order_list($a_id){
-		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion')->from('lab_order_items');
+		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion,test_packages.test_package_name,lab_patient_details.name as p_name,lab_patient_details.mobile,')->from('lab_order_items');
 		$this->db2->join('lab_orders', 'lab_orders.r_id = lab_order_items.order_id', 'left');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_order_items.test_id', 'left');
+		$this->db2->join('test_packages', 'test_packages.l_t_p_id = lab_order_items.package_id', 'left');
+		$this->db2->join('lab_patient_details', 'lab_patient_details.l_t_a_id = lab_orders.patient_details_id', 'left');
 		$this->db2->where('lab_order_items.created_by',$a_id);		
         return $this->db2->get()->result_array();	 
 	  }
@@ -286,7 +288,7 @@ class Diagnostic_model extends CI_Model
 		}
 	}
 	public  function get_package_details($pack_id){
-		$this->db2->select('packages_test_list.test_id,lab_tests.test_name,lab_tests.test_type,lab_tests.test_duartion')->from('packages_test_list');
+		$this->db2->select('packages_test_list.test_id,packages_test_list.test_id,lab_tests.test_name,lab_tests.test_type,lab_tests.test_duartion')->from('packages_test_list');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = packages_test_list.test_id', 'left');
 		$this->db2->where('packages_test_list.status !=',2);
 		$this->db2->where('packages_test_list.l_t_p_id',$pack_id);

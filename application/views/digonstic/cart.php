@@ -42,9 +42,9 @@
 													</p>
 													
                                                 <p>
-                                                    <b>&#8377;</b><b class="mr-2"><?php echo isset($list['discount'])?$list['discount']:''; ?></b>
+                                                    <b>&#8377;</b><b class="mr-2"><?php echo isset($list['amount'])?$list['amount']:''; ?></b>
                                                     <small>
-                                                        <del class="mr-2">&#8377;<?php echo isset($list['amount'])?$list['amount']:''; ?></del>
+                                                        <del class="mr-2">&#8377;<?php echo isset($list['org_amount'])?$list['org_amount']:''; ?></del>
                                                         <u class="text-success"><?php echo isset($list['percentage'])?$list['percentage']:''; ?> % Off</u>
                                                     </small>
                                                 </p>

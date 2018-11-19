@@ -41,7 +41,7 @@
 										  
 											  <input type="hidden" id="patient_details_id" name="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
 											  <input type="hidden" id="billing_id" name="billing_id" value="<?php echo isset($billing_id)?$billing_id:''; ?>">
-									<a href="<? echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>" class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
+									<a href="<?php echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>" class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md mt-2">Confirm</button>
 									
 									</form>
@@ -80,7 +80,7 @@
 											  <input type="hidden" id="patient_details_id" name="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
 											  <input type="hidden" id="billing_id" name="billing_id" value="<?php echo isset($billing_id)?$billing_id:''; ?>">
                                     
-                                    <a href="<? echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
+                                    <a href="<?php echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md mt-2">Confirm</button>
 									</form>
 									</div>

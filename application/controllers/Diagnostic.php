@@ -150,6 +150,7 @@ class Diagnostic extends In_frontend {
 			'updated_at'=>date('Y-m-d H:i:s'),
 			'created_by'=>$log_details['a_u_id']
 			);
+			//echo '<pre>';print_r($add);exit;
 			$check=$this->Diagnostic_model->check_item_exits($log_details['a_u_id'],$post['test_id'],$post['lab_id']);
 			if(count($check)>0){
 					$details=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
@@ -233,6 +234,111 @@ class Diagnostic extends In_frontend {
 		}
 	}
 	/* add to cart */
+	/* cart list */
+	public  function cart(){
+		if($this->session->userdata('app_user'))
+		{
+			$log_details=$this->session->userdata('app_user');
+			$cart_details=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
+			if(count($cart_details)>0){
+				foreach($cart_details as $list){
+					$d_list[]=$list;
+					
+				}
+			}else{
+				$this->session->set_flashdata('error',"Cart having no items");
+				redirect('diagnostic');
+			}
+			$data['cart_details']=$d_list;
+			//echo $this->db2->last_query();
+			//echo '<pre>';print_r($data);exit;
+			$this->load->view('digonstic/cart',$data);
+			$this->load->view('html/footer');
+			//echo '<pre>';print_r($order_id);exit;
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+		
+	}
+	public  function addcart(){
+		if($this->session->userdata('app_user'))
+		{
+			$log_details=$this->session->userdata('app_user');
+			$package_id=base64_decode($this->uri->segment(3));
+			if($package_id==''){
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('diagnostic');	
+			}
+			/* remove code */
+			$log_details=$this->session->userdata('app_user');
+			$cart_items=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
+			if(isset($cart_items)  && count($cart_items)>0){
+				foreach($cart_items as $list){
+				  $this->Diagnostic_model->delete_cart_items_data($list['c_id']);
+				}
+			}
+			/* remove code */
+			$item_details=$this->Diagnostic_model->get_package_details_list($package_id);
+			$add=array(
+			'a_id'=>$log_details['a_u_id'],
+			'package_id'=>isset($package_id)?$package_id:'',
+			'l_id'=>isset($item_details['lab_id'])?$item_details['lab_id']:'',
+			'delivery_charge'=>isset($item_details['delivery_charge'])?$item_details['delivery_charge']:'',
+			'amount'=>isset($item_details['amount'])?$item_details['amount']-$item_details['discount']:'',
+			'org_amount'=>isset($item_details['amount'])?$item_details['amount']:'',
+			'discount'=>isset($item_details['discount'])?$item_details['discount']:'',
+			'percentage'=>isset($item_details['percentage'])?$item_details['percentage']:'',
+			//'package_id'=>isset($cart_details['l_t_p_id'])?$cart_details['l_t_p_id']:'',
+			'qty'=>1,
+			'type'=>0,
+			'status'=>1,
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at'=>date('Y-m-d H:i:s'),
+			'created_by'=>$log_details['a_u_id']
+			);
+			//echo '<pre>';print_r($add);exit;
+			$check=$this->Diagnostic_model->check_package_exist($log_details['a_u_id'],$package_id);
+			if(count($check)>0){
+				$save=array(1);
+			}else{
+				$save=$this->Diagnostic_model->save_item_cart($add);
+			}
+			if(count($save)>0){
+				$this->session->set_flashdata('success',"item successfully added to cart");
+				redirect('diagnostic/cart');
+			}else{
+				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
+				redirect('diagnostic');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+		
+	}
+	public  function removecartitem(){
+		if($this->session->userdata('app_user'))
+		{
+			$log_details=$this->session->userdata('app_user');
+			$c_id=base64_decode($this->uri->segment(3));
+			
+			$remove=$this->Diagnostic_model->removecart_item_details($log_details['a_u_id'],$c_id);
+			if(count($remove)>0){
+				$this->session->set_flashdata('success',"Cart item successfully removed");
+				redirect('diagnostic/cart/');
+			}else{
+				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
+				redirect('diagnostic/cart/');
+			}
+			
+			//echo '<pre>';print_r($order_id);exit;
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+		
+	}
 	/*  check out */
 	public  function patient_details(){
 		if($this->session->userdata('app_user'))
@@ -460,14 +566,19 @@ class Diagnostic extends In_frontend {
 					$item_data=array(
 					'order_id'=>$order_save,
 					'a_id'=>$log_details['a_u_id'],
+					'package_id'=>isset($list['package_id'])?$list['package_id']:'',
 					'test_id'=>isset($list['test_id'])?$list['test_id']:'',
 					'l_id'=>isset($list['l_id'])?$list['l_id']:'',
 					'delivery_charge'=>isset($list['delivery_charge'])?$list['delivery_charge']:'',
-					'total_amt'=>(($list['delivery_charge'])+($list['test_amount'])),
-					'amount'=>isset($list['test_amount'])?$list['test_amount']:'',
+					'percentage'=>isset($list['percentage'])?$list['percentage']:'',
+					'total_amt'=>(($list['delivery_charge'])+($list['amount'])),
+					'amount'=>isset($list['amount'])?$list['amount']:'',
+					'org_amount'=>isset($list['org_amount'])?$list['org_amount']:'',
+					'percentage'=>isset($list['percentage'])?$list['percentage']:'',
 					'payment_type'=>isset($list[''])?$list['']:'',
 					'created_by'=>$log_details['a_u_id'],
 					);
+					
 					$this->Diagnostic_model->save_order_items($item_data);
 				}
 				/* saving  purpose*/
@@ -525,107 +636,7 @@ class Diagnostic extends In_frontend {
 		}
 		
 	}
-	/* cart list */
-	public  function cart(){
-		if($this->session->userdata('app_user'))
-		{
-			$log_details=$this->session->userdata('app_user');
-			$cart_details=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
-			if(count($cart_details)>0){
-				foreach($cart_details as $list){
-					$d_list[]=$list;
-					
-				}
-			}else{
-				$this->session->set_flashdata('error',"Cart having no items");
-				redirect('diagnostic');
-			}
-			$data['cart_details']=$d_list;
-			//echo $this->db2->last_query();
-			//echo '<pre>';print_r($data);exit;
-			$this->load->view('digonstic/cart',$data);
-			$this->load->view('html/footer');
-			//echo '<pre>';print_r($order_id);exit;
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('users/login');
-		}
-		
-	}
-	public  function addcart(){
-		if($this->session->userdata('app_user'))
-		{
-			$log_details=$this->session->userdata('app_user');
-			$package_id=base64_decode($this->uri->segment(3));
-			if($package_id==''){
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('diagnostic');	
-			}
-			/* remove code */
-			$log_details=$this->session->userdata('app_user');
-			$cart_items=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
-			if(isset($cart_items)  && count($cart_items)>0){
-				foreach($cart_items as $list){
-				  $this->Diagnostic_model->delete_cart_items_data($list['c_id']);
-				}
-			}
-			/* remove code */
-			$cart_details=$this->Diagnostic_model->get_package_details_list($package_id);
-			$add=array(
-			'a_id'=>$log_details['a_u_id'],
-			'package_id'=>isset($package_id)?$package_id:'',
-			'l_id'=>isset($cart_details['lab_id'])?$cart_details['lab_id']:'',
-			'delivery_charge'=>isset($cart_details['delivery_charge'])?$cart_details['delivery_charge']:'',
-			'amount'=>isset($cart_details['amount'])?$cart_details['amount']:'',
-			'discount'=>isset($cart_details['discount'])?$cart_details['discount']:'',
-			'qty'=>1,
-			'type'=>0,
-			'status'=>1,
-			'created_at'=>date('Y-m-d H:i:s'),
-			'updated_at'=>date('Y-m-d H:i:s'),
-			'created_by'=>$log_details['a_u_id']
-			);
-			$check=$this->Diagnostic_model->check_package_exist($log_details['a_u_id'],$package_id);
-			if(count($check)>0){
-				$save=array(1);
-			}else{
-				$save=$this->Diagnostic_model->save_item_cart($add);
-			}
-			if(count($save)>0){
-				$this->session->set_flashdata('success',"item successfully added to cart");
-				redirect('diagnostic/cart');
-			}else{
-				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
-				redirect('diagnostic');
-			}
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('users/login');
-		}
-		
-	}
-	public  function removecartitem(){
-		if($this->session->userdata('app_user'))
-		{
-			$log_details=$this->session->userdata('app_user');
-			$c_id=base64_decode($this->uri->segment(3));
-			
-			$remove=$this->Diagnostic_model->removecart_item_details($log_details['a_u_id'],$c_id);
-			if(count($remove)>0){
-				$this->session->set_flashdata('success',"Cart item successfully removed");
-				redirect('diagnostic/cart/');
-			}else{
-				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
-				redirect('diagnostic/cart/');
-			}
-			
-			//echo '<pre>';print_r($order_id);exit;
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('users/login');
-		}
-		
-	}
+	
 	
 	
 }
