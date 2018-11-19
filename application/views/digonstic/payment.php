@@ -41,7 +41,7 @@
 										  
 											  <input type="hidden" id="patient_details_id" name="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
 											  <input type="hidden" id="billing_id" name="billing_id" value="<?php echo isset($billing_id)?$billing_id:''; ?>">
-									<a type="button" class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
+									<a href="<? echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>" class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md mt-2">Confirm</button>
 									
 									</form>
@@ -80,7 +80,7 @@
 											  <input type="hidden" id="patient_details_id" name="patient_details_id" value="<?php echo isset($patient_details_id)?$patient_details_id:''; ?>">
 											  <input type="hidden" id="billing_id" name="billing_id" value="<?php echo isset($billing_id)?$billing_id:''; ?>">
                                     
-                                    <a type="button" class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
+                                    <a href="<? echo base_url('diagnostic/billing/'.base64_encode($patient_details_id)); ?>"  class="btn btn-secoundary btn-md btn-previous black-text">Back</a>
                                     <button type="submit" class="btn btn-info btn-md mt-2">Confirm</button>
 									</form>
 									</div>
@@ -90,67 +90,67 @@
                     </div>
                 </div>
                 <!--Grid column-->
-
-                <!--Grid column-->
                 <div class="col-md-4">
 
-                    <?php if(isset($cart_item_details) && count($cart_item_details)>0){ ?>
-               <div class="card mb-4">
-
-                        <!--Card content-->
+                    <div class="card mb-4">
+					 <!--Card content-->
                         <div class="card-body pb-0 d-block d-md-flex">
                             <div class="">
-                                <h6 class="mt-0 mb-0 font-weight-bold">Selected Tests</h6>
+                                <h6 class="mt-0 mb-0 font-weight-bold">Selected Cart Items</h6>
                             </div>
-                            <div class="mt-auto ml-auto">
-                                <small><?php echo count($cart_item_details); ?> Tests</small>
-                            </div>
+                          
                         </div>
                         <hr class="mt-2 mb-2">
+					<?php $total='';$delivery_charge='';foreach($cart_details as $list){ ?>
+                       
 
                         <!--Card content-->
                         <div class="card-body pt-0">
-						<?php $total='';$delivery_charge='';foreach($cart_item_details as $li){  ?>
                             <div class="d-block d-md-flex mt-2">
                                 <div>
-                                    <a href="javascript:void(0);" onclick="remove_item(<?php echo $li['c_id']; ?>);"><i class="fa fa-times"></i></a>
-                                    <small class="ml-2"><?php echo isset($li['test_name'])?$li['test_name']:''; ?> ( Lab Name: <?php echo isset($li['name'])?$li['name']:''; ?> ) </small>
+								<?php if($list['type']==1){ ?>
+                                    <small class="ml-2"><?php echo isset($list['test_name'])?$list['test_name']:''; ?></small>
+								<?php }else{ ?>
+								    <small class="ml-2"><?php echo isset($list['test_package_name'])?$list['test_package_name']:''; ?></small>
+								<?php } ?>
                                 </div>
                                 <div class="ml-auto">
-                                    <small><span>&#8377;</span> <span><?php echo isset($li['test_amount'])?$li['test_amount']:''; ?></span></small>
+                                    <small><span>&#8377;</span> <span><?php echo isset($list['amount'])?$list['amount']:''; ?></span></small>
                                 </div>
                             </div>
                             <hr class="mt-2 mb-1">
-							<?php 
-								$total +=$li['test_amount'];
-								$delivery_charge +=$li['delivery_charge'];
-							}
-
-							?>
-							<div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+                           
+                            
+                        </div>
+					<?php 
+					$total +=$list['amount'];
+								$delivery_charge +=$list['delivery_charge'];
+					} ?>
+							<hr class="mt-2 mb-1">
+                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
                                 <div>
-                                    <p class="mb-0">Delivery Charges</p>
+                                    <p class="mb-0">Sample pickup Charges</p>
                                 </div>
                                 <div class="ml-auto">
-                                    <p class="mb-0"><span>₹</span> <span><?php echo isset($delivery_charge)?$delivery_charge:''; ?></span></p>
+                                    <p class="mb-0"><span>&#8377;</span> <span><?php  
+									echo isset($delivery_charge)?$delivery_charge:'';
+									
+									?></span></p>
                                 </div>
                             </div>
-							<div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
                                 <div>
                                     <p class="mb-0">Total</p>
                                 </div>
                                 <div class="ml-auto">
-                                    <p class="mb-0"><span>₹</span> <span>
-									<?php 
+                                    <p class="mb-0"><span>&#8377;</span> <span><?php  
 									$overall_amount=(($total)+($delivery_charge));
-									echo isset($overall_amount)?$overall_amount:''; ?>
-									</span></p>
+									echo isset($overall_amount)?$overall_amount:'';
+									
+									?></span></p>
                                 </div>
                             </div>
-                            
-                        </div>
                     </div>
-		<?php } ?>
 
                 </div>
                 <!--Grid column-->

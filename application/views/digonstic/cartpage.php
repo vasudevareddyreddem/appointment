@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             
-                            <a class="btn btn-success btn-block mt-3" href="<?php echo base_url('diagnostic/patient_details/'.base64_encode($lab_id)); ?>">Checkout</a>
+                            <a class="btn btn-success btn-block mt-3" href="<?php echo base_url('diagnostic/cart/'); ?>">checkout</a>
                         </div>
                     </div>
 		<?php } ?>

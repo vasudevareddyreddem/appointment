@@ -16,6 +16,15 @@ class Diagnostic extends In_frontend {
 	{	
 		if($this->session->userdata('app_user'))
 		{	
+			
+			$log_details=$this->session->userdata('app_user');
+			$cart_items=$this->Diagnostic_model->get_cart_package_item_list($log_details['a_u_id']);
+			if(isset($cart_items) && count($cart_items)>0){
+				foreach($cart_items as $list){
+					$this->Diagnostic_model->delete_cart_items_data($list['c_id']);
+				}
+			}
+			
 			$data['city_list']=$this->Diagnostic_model->get_diagnostic_city_list();
 			$data['packages_list']=$this->Diagnostic_model->get_packages_test_lists();
 			//echo '<pre>';print_r($data);exit;
@@ -31,6 +40,18 @@ class Diagnostic extends In_frontend {
 	public  function profile(){
 		if($this->session->userdata('app_user'))
 		{	
+			
+			
+			/* remove code */
+			// $log_details=$this->session->userdata('app_user');
+			// $cart_items=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
+			// if(isset($cart_items)  && count($cart_items)>0){
+				// foreach($cart_items as $list){
+				  // $this->Diagnostic_model->delete_cart_items_data($list['c_id']);
+				// }
+			// }
+			/* remove code */
+			$log_details=$this->session->userdata('app_user');
 			$l_id=base64_decode($this->uri->segment(3));
 			$data['lab_id']=base64_decode($this->uri->segment(3));
 			$data['lab_deatils']=$this->Diagnostic_model->get_diagnostic_lab_deatils($l_id);
@@ -107,12 +128,22 @@ class Diagnostic extends In_frontend {
 		if($this->session->userdata('app_user'))
 		{	
 			$log_details=$this->session->userdata('app_user');
-			//echo '<pre>';print_r($log_details);exit;
+			$cart_items=$this->Diagnostic_model->get_package_cart_item_list($log_details['a_u_id']);
+			if(isset($cart_items)  && count($cart_items)>0){
+				foreach($cart_items as $list){
+				  $this->Diagnostic_model->delete_cart_items_data($list['c_id']);
+				}
+			}
 			$post=$this->input->post();
+			$detail=$this->Diagnostic_model->get_lab_test_details($post['test_id']);
 			$add=array(
 			'a_id'=>$log_details['a_u_id'],
 			'test_id'=>isset($post['test_id'])?$post['test_id']:'',
 			'l_id'=>isset($post['lab_id'])?$post['lab_id']:'',
+			'test_duartion'=>isset($detail['test_duartion'])?$detail['test_duartion']:'',
+			'delivery_charge'=>isset($detail['delivery_charge'])?$detail['delivery_charge']:'',
+			'discount'=>isset($detail['discount'])?$detail['discount']:'',
+			'amount'=>isset($detail['test_amount'])?$detail['test_amount']:'',
 			'qty'=>isset($post['qty'])?$post['qty']:'',
 			'status'=>1,
 			'created_at'=>date('Y-m-d H:i:s'),
@@ -207,14 +238,15 @@ class Diagnostic extends In_frontend {
 		if($this->session->userdata('app_user'))
 		{	
 			$log_details=$this->session->userdata('app_user');
-			$data['lab_id']=base64_decode($this->uri->segment(3));
-			$patient_deetails_id=base64_decode($this->uri->segment(4));
+			$patient_deetails_id=base64_decode($this->uri->segment(3));
 			//echo '<pre>';print_r($data);exit;
 			if(isset($patient_deetails_id) && $patient_deetails_id!=''){
 				$data['patient_details']=$this->Diagnostic_model->get_current_patient_details($patient_deetails_id);
 			}else{
 				$data['patient_details']=$this->Diagnostic_model->get_user_details($log_details['a_u_id']);
 			}
+			$data['cart_details']=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
+
 			//echo '<pre>';print_r($data);exit;
 			$data['cart_item_details']=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
 			$this->load->view('digonstic/patient_details',$data);
@@ -254,13 +286,13 @@ class Diagnostic extends In_frontend {
 			if(count($save)>0){
 				$this->session->set_flashdata('success',"Patient details successfully updated");
 				if(isset($post['l_t_a_id']) && $post['l_t_a_id']!=''){
-				  redirect('diagnostic/billing/'.base64_encode($post['lab_id']).'/'.(base64_encode($post['l_t_a_id'])));
+				  redirect('diagnostic/billing/'.(base64_encode($post['l_t_a_id'])));
 				}else{
-					redirect('diagnostic/billing/'.base64_encode($post['lab_id']).'/'.(base64_encode($save)));
+					redirect('diagnostic/billing/'.(base64_encode($save)));
 				}
 			}else{
 				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again.");
-				redirect('diagnostic/patient_details/'.base64_encode($post['lab_id']));
+				redirect('diagnostic/patient_details/');
 			}
 			//echo '<pre>';print_r($post);exit;
 			
@@ -273,9 +305,8 @@ class Diagnostic extends In_frontend {
 		if($this->session->userdata('app_user'))
 		{	
 			$log_details=$this->session->userdata('app_user');
-			$data['lab_id'] =base64_decode($this->uri->segment(3));
-			$data['patient_details_id'] =base64_decode($this->uri->segment(4));
-			$data['cart_item_details']=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
+			$data['patient_details_id'] =base64_decode($this->uri->segment(3));
+			$data['cart_details']=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
 			$data['billing_details']=$this->Diagnostic_model->get_billing_address_list($log_details['a_u_id']);
 			//echo '<pre>';print_r($data);exit;
 			$this->load->view('digonstic/billing',$data);
@@ -307,7 +338,7 @@ class Diagnostic extends In_frontend {
 			'created_by'=>$log_details['a_u_id']
 			);
 			if(isset($post['billingaddressid']) && $post['billingaddressid']!=''){
-				$save=array(1);
+				$save=array($post['billingaddressid']);
 			}else{
 				$save=$this->Diagnostic_model->save_patient_billing($add);
 			}
@@ -321,7 +352,7 @@ class Diagnostic extends In_frontend {
 			
 			}else{
 				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again.");
-				redirect('diagnostic/billing/'.base64_encode($post['lab_id']).'/'.base64_encode($post['patient_details_id']));
+				redirect('diagnostic/billing/'.base64_encode($post['patient_details_id']));
 			}
 			//echo '<pre>';print_r($post);exit;
 			
@@ -337,21 +368,22 @@ class Diagnostic extends In_frontend {
 			$post=$this->input->post();
 			$data['billing_id']=base64_decode($this->uri->segment(3));
 			$data['patient_details_id']=base64_decode($this->uri->segment(4));
-			
+			$data['cart_details']=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
+
 			//echo '<pre>';print_r($data);exit;
-			$data['cart_item_details']=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
+			$data['cart_item_details']=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
 			$patient_details=$this->Diagnostic_model->get_patient_details($log_details['a_u_id']);
 			$billing_details=$this->Diagnostic_model->get_patient_billing_details(base64_decode($this->uri->segment(3)),$log_details['a_u_id']);
 			if(isset($data['cart_item_details']) && count($data['cart_item_details'])>0){
 				$total='';$delivery_charge='';
 				foreach($data['cart_item_details'] as $li){
-								$total +=$li['test_amount'];
+								$total +=$li['amount'];
 								$delivery_charge +=$li['delivery_charge'];
 				}
 				$overall_amount=(($total)+($delivery_charge));
 			}
 			//echo $this->db->last_query();
-			//echo '<pre>';print_r($post);exit;
+			//echo '<pre>';print_r($data);exit;
 			$log_details=$this->session->userdata('app_user');
 			$api_id= $this->config->item('keyId');
 			$api_Secret= $this->config->item('API_keySecret');
@@ -497,12 +529,96 @@ class Diagnostic extends In_frontend {
 	public  function cart(){
 		if($this->session->userdata('app_user'))
 		{
-//			$log_details=$this->session->userdata('app_user');
-//			$package_id=base64_decode($this->uri->segment(3));
-//			$data['order_list']=$this->Diagnostic_model->get_package_details($package_id);
+			$log_details=$this->session->userdata('app_user');
+			$cart_details=$this->Diagnostic_model->get_cart_package_details_list($log_details['a_u_id']);
+			if(count($cart_details)>0){
+				foreach($cart_details as $list){
+					$d_list[]=$list;
+					
+				}
+			}else{
+				$this->session->set_flashdata('error',"Cart having no items");
+				redirect('diagnostic');
+			}
+			$data['cart_details']=$d_list;
+			//echo $this->db2->last_query();
 			//echo '<pre>';print_r($data);exit;
-			$this->load->view('digonstic/cart');
+			$this->load->view('digonstic/cart',$data);
 			$this->load->view('html/footer');
+			//echo '<pre>';print_r($order_id);exit;
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+		
+	}
+	public  function addcart(){
+		if($this->session->userdata('app_user'))
+		{
+			$log_details=$this->session->userdata('app_user');
+			$package_id=base64_decode($this->uri->segment(3));
+			if($package_id==''){
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('diagnostic');	
+			}
+			/* remove code */
+			$log_details=$this->session->userdata('app_user');
+			$cart_items=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
+			if(isset($cart_items)  && count($cart_items)>0){
+				foreach($cart_items as $list){
+				  $this->Diagnostic_model->delete_cart_items_data($list['c_id']);
+				}
+			}
+			/* remove code */
+			$cart_details=$this->Diagnostic_model->get_package_details_list($package_id);
+			$add=array(
+			'a_id'=>$log_details['a_u_id'],
+			'package_id'=>isset($package_id)?$package_id:'',
+			'l_id'=>isset($cart_details['lab_id'])?$cart_details['lab_id']:'',
+			'delivery_charge'=>isset($cart_details['delivery_charge'])?$cart_details['delivery_charge']:'',
+			'amount'=>isset($cart_details['amount'])?$cart_details['amount']:'',
+			'discount'=>isset($cart_details['discount'])?$cart_details['discount']:'',
+			'qty'=>1,
+			'type'=>0,
+			'status'=>1,
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at'=>date('Y-m-d H:i:s'),
+			'created_by'=>$log_details['a_u_id']
+			);
+			$check=$this->Diagnostic_model->check_package_exist($log_details['a_u_id'],$package_id);
+			if(count($check)>0){
+				$save=array(1);
+			}else{
+				$save=$this->Diagnostic_model->save_item_cart($add);
+			}
+			if(count($save)>0){
+				$this->session->set_flashdata('success',"item successfully added to cart");
+				redirect('diagnostic/cart');
+			}else{
+				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
+				redirect('diagnostic');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+		
+	}
+	public  function removecartitem(){
+		if($this->session->userdata('app_user'))
+		{
+			$log_details=$this->session->userdata('app_user');
+			$c_id=base64_decode($this->uri->segment(3));
+			
+			$remove=$this->Diagnostic_model->removecart_item_details($log_details['a_u_id'],$c_id);
+			if(count($remove)>0){
+				$this->session->set_flashdata('success',"Cart item successfully removed");
+				redirect('diagnostic/cart/');
+			}else{
+				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
+				redirect('diagnostic/cart/');
+			}
+			
 			//echo '<pre>';print_r($order_id);exit;
 		}else{
 			$this->session->set_flashdata('error',"you don't have permission to access");
