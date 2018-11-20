@@ -106,7 +106,7 @@
                             <div>
                                 <h3 class="card-title pt-2"><strong>Hospitals & Clinics</strong></h3>
                                 <p>MedArogya acts as a bridge in between medical care seekers and hospitals. Join us to help medical care seekers to find and reach you in a fast and easy way.</p>
-                                <a target="_blank" href="https://MedArogyait.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
+                                <a target="_blank" href="https://Medspaceit.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
                         </div>
 
