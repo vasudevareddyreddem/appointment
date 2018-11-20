@@ -34,13 +34,14 @@ class Diagnostic extends REST_Controller {
 		$this->load->library('session');
 		$this->load->helper('security');
 		$this->load->model('Diagnosticapp_model');
+		
     }
 
  
 	public function cities_post(){
 		$city_list=$this->Diagnosticapp_model->get_city_list();
 		if(count($city_list)>0){
-			$message = array('status'=>1,'list'=>$city_list,'message'=>'Cities list are not found.');
+			$message = array('status'=>1,'list'=>$city_list,'message'=>'Cities list are found.');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}else{
 			$message = array('status'=>0,'message'=>'Cities list are not found.');
@@ -62,90 +63,81 @@ class Diagnostic extends REST_Controller {
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
-	public function changepassword_post(){
-		$s_id=$this->post('s_id');
-		$oldpassword=$this->post('oldpassword');
-		$password=$this->post('password');
-		$confirmpassword=$this->post('confirmpassword');
-		if($s_id==''){
-			$message = array('status'=>0,'message'=>'User Id is required');
-			$this->response($message, REST_Controller::HTTP_OK);
-		}if($password==''){
-			$message = array('status'=>0,'message'=>'Password is required');
-			$this->response($message, REST_Controller::HTTP_OK);
-		}
-		if(strlen($password)<6){
-			$message = array('status'=>0,'message'=>'Passwords must be at least 6 characters long');
-			$this->response($message, REST_Controller::HTTP_OK);
-		}if($confirmpassword==''){
-			$message = array('status'=>0,'message'=>'Confirm password is required');
-			$this->response($message, REST_Controller::HTTP_OK);
-		}
-		if(strlen($confirmpassword)<6){
-			$message = array('status'=>0,'message'=>'Confirm password  must be at least 6 characters long');
-			$this->response($message, REST_Controller::HTTP_OK);
-		}
-		if(md5($password)==md5($confirmpassword)){
-			
-			$check_user=$this->Cardnumber_model->check_user_details($s_id);
-			if(count($check_user)>0){
-				
-				if(md5($oldpassword)==$check_user['password']){
-						$update=$this->Cardnumber_model->update_user_password($s_id,$confirmpassword);
-						if(count($update)>0){
-								$message = array('status'=>1,'s_id'=>$s_id,'message'=>'Password Successfully Updated');
-								$this->response($message, REST_Controller::HTTP_OK);
-						}else{
-								$message = array('status'=>0,'s_id'=>$s_id,'message'=>'Technical problem will occured. Please try again.');
-								$this->response($message, REST_Controller::HTTP_OK);
-						}
+	public function search_post(){
+		$city=$this->post('city');
+		$search=$this->post('search_value');
+		if($city!='' && $search!=''){
+				$lab_list=$this->Diagnosticapp_model->get_loication_and_lab_wise_lab_list($city,$search);
+				$test_list=$this->Diagnosticapp_model->get_loication_and_lab_wise_testy_list($city,$search);
+				$all_data=array_merge($lab_list,$test_list);
+			}else if($city!='' && $search==''){
+				$lab_list=$this->Diagnosticapp_model->get_all_loication_wise_lab_list($city);
+				$test_list=$this->Diagnosticapp_model->get_all_test_names_list($city);
+				$all_data=array_merge($lab_list,$test_list);
+			}else if($city=='' && $search!=''){
+				$lab_list=$this->Diagnosticapp_model->get_lab_name_list($search);
+				$test_list=$this->Diagnosticapp_model->get_test_name_list($search);
+				$all_data=array_merge($lab_list,$test_list);
+			}
+			if(isset($all_data) && count($all_data)>0){
+					
+					$pageNos = array();
+					foreach($all_data as $el) {
+						//echo '<pre>';print_r($el);
+					   $pageno = $el['a_id'];
+					   if(!in_array($pageno, $pageNos))
+					   {
+							$deta=$this->Diagnosticapp_model->get_lab_test_lists($pageno);
+							if($el['a_id']!=''){
+								$data[$el['a_id']]=$el;
+								$data[$el['a_id']]['test_names']=isset($deta)?$deta:'';
+							}
+							//echo '<pre>';print_r($el);exit;							
+							//echo $pageno ;
+						   array_push($pageNos,$pageno);
+					   }
+					}
+					
+					$all_labs_lists=$data;
+					
+				}
+			if(isset($all_labs_lists) && count($all_labs_lists)>0){
+				foreach($all_labs_lists as $lists){
+					$labs_lists[]=$lists;
+				}
 				}else{
-					$message = array('status'=>0,'s_id'=>$s_id,'message'=>'Old password does not match. Please try again');
-					$this->response($message, REST_Controller::HTTP_OK);
+					$labs_lists=array();
 				}
 				
-			}else{
-				$message = array('status'=>0,'s_id'=>$s_id,'message'=>'Invalid User id.Please try again');
-				$this->response($message, REST_Controller::HTTP_OK);
-			}
 			
+		if(isset($labs_lists) && count($labs_lists)>0){
+			$message = array('status'=>1,'list'=>$labs_lists,'imgpath'=>'http://mlab.ehealthinfra.com/assets/profile_pic','message'=>'Test list are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>0,'s_id'=>$s_id,'message'=>'Your password and confirmation password do not match');
-				$this->response($message, REST_Controller::HTTP_OK);
+			$message = array('status'=>0,'message'=>'Test list are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
 		}
+		
 		
 	}
 	
-	public function forgotpassword_post(){
-		$email=$this->post('email');
+	public function test_list_post(){
+		$a_id=$this->post('a_id');
 		
-		if($email==''){
-			$message = array('status'=>0,'message'=>'Email Id is required');
+		if($a_id==''){
+			$message = array('status'=>0,'message'=>'Lab Id is required');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
-			$check_email=$this->Cardnumber_model->check_email_already_already_exits($email);
-				if(count($check_email)>0){
-					
-					
-					
-					/*test*/
-					$this->load->library('email');
-					$this->email->set_newline("\r\n");
-					$this->email->set_mailtype("html");
-					$this->email->to($check_email['email_id']);
-					$this->email->from('admin@Ehealthinfra', 'Ehealthinfra'); 
-					$this->email->subject($check_email['name'].' - Forgot password'); 
-					$body = "<b> Your Account login Password is </b> : ".$check_email['org_password'];
-					$this->email->message($body);
-					$this->email->send();
-					$message = array('status'=>1,'s_id'=>$check_email['s_id'],'message'=>'Password sent to your registered email address. Please Check your registered email address');
-					$this->response($message, REST_Controller::HTTP_OK);
-					
-			
-				}else{
-				$message = array('status'=>0,'message'=>'Entered Email id not registered.Please try again');
-				$this->response($message, REST_Controller::HTTP_OK);
-				}
+		$test_list=$this->Diagnosticapp_model->get_lab_details_with_test_list($a_id);
+		//echo '<pre>';print_r($test_list);exit;
+		
+		if(isset($test_list) && count($test_list)>0){
+			$message = array('status'=>1,'details'=>$test_list,'message'=>'Test details are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}else{
+			$message = array('status'=>0,'message'=>'Test details are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
 	}
 	public  function updateprofile_post(){
 		$s_id=$this->post('s_id');
