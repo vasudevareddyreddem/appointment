@@ -88,13 +88,13 @@
                 <div class="col-md-8">
                     <p class="h3"> About Us </p>
 
-                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to go physically to the hospital to book a doctor appointment, but now through the expeditious expansion in software one can book the doctor’s appointment through mobile app, all you need is a smart phone with an internet connection.</p>
+                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to go physically to the hospital to book a doctor appointment, but now through the expeditious expansion in software one can book the doctor’s appointment through mobile app or on website, all you need is a smart phone with an internet connection.</p>
 
-                    <p>We at MedArogya Softtech Pvt. Ltd. has developed a hospital management system to benefit both the hospitals and medical care seekers. The company deals with hospital management system, health cards, online medicine, lab and etc.</p>
+                    <p>We at MedArogya has developed a software to book online doctor appointment. This is  very helpful to medical care seekers as they can book doctor/hospital/laboratory appointment online anytime and from anywhere. We offer 10% discount through health cards issued by MedArogya.</p>
 
                     <p>It helps people to find online medical services like choosing the right hospital, booking doctor appointment, booking diagnostic center appointment, storing medical records, purchasing online medicines etc.</p>
                     
-                    <p> MedArogya Softtech Pvt. Ltd. is located in Hyderabad and has its branches in Tirupati, Guntur and Bangalore and is planning to launch more branches across India.</p>
+                    
                 </div>
                 <!--Grid column-->
                 <div class="col-md-4">
@@ -106,7 +106,7 @@
                         <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-4 px-4">
                             <div>
                                 <h3 class="card-title pt-2"><strong>Hospitals & Clinics</strong></h3>
-                                <p>MedArogya makes patients to reach you easier and faster. Join us and help patients to find you.</p>
+                                <p>MedArogya acts as a bridge in between medical care seekers and hospitals. Join us to help medical care seekers to find and reach you in a fast and easy way.</p>
                                 <a target="_blank" href="https://MedArogyait.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
                         </div>
