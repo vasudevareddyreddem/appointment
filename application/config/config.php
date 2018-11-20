@@ -28,8 +28,9 @@ $config['lab_url'] = 'http:localhost/mlab/';
 /*payment*/
 $config['keyId'] ='rzp_test_FMROR38S2ObKGw';
 $config['API_keySecret'] = '4ZAmE5b07syPo0P1WbFUNr7X';
-$config['smsusername']	= "cartinhour";
-$config['smspassword']	= "qwerty";
+$config['smsusername']="pracha";
+$config['smspassword']="123456";
+$config['sender']="TESTNG";
 
 /*
 |--------------------------------------------------------------------------
