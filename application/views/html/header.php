@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Medspace Appointment</title>
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/vendor/img/fav.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/vendor/img/logo1.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -34,7 +34,7 @@
 
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="<?php echo base_url(''); ?>">
-                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="120px">
+                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="100px">
                 </a>
 
                 <!-- Collapse -->
