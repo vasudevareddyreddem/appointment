@@ -88,13 +88,13 @@
                 <div class="col-md-8">
                     <p class="h3"> About Us </p>
 
-                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to go physically to the hospital to book a doctor appointment, but now through the expeditious expansion in software one can book the doctor’s appointment through mobile app or on website, all you need is a smart phone with an internet connection.</p>
+                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to go physically to the hospital to book a doctor appointment, but now through the expeditious expansion in software one can book the doctor’s appointment through mobile app, all you need is a smart phone with an internet connection.</p>
 
-                    <p>We at MedArogya has developed a software to book online doctor appointment. This is  very helpful to medical care seekers as they can book doctor/hospital/laboratory appointment online anytime and from anywhere. We offer 10% discount through health cards issued by MedArogya.</p>
+                    <p>We at MedArogya Softtech Pvt. Ltd. has developed a hospital management system to benefit both the hospitals and medical care seekers. The company deals with hospital management system, health cards, online medicine, lab and etc.</p>
 
                     <p>It helps people to find online medical services like choosing the right hospital, booking doctor appointment, booking diagnostic center appointment, storing medical records, purchasing online medicines etc.</p>
                     
-                    
+                    <p> MedArogya Softtech Pvt. Ltd. is located in Hyderabad and has its branches in Tirupati, Guntur and Bangalore and is planning to launch more branches across India.</p>
                 </div>
                 <!--Grid column-->
                 <div class="col-md-4">
@@ -106,7 +106,7 @@
                         <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-4 px-4">
                             <div>
                                 <h3 class="card-title pt-2"><strong>Hospitals & Clinics</strong></h3>
-                                <p>MedArogya acts as a bridge in between medical care seekers and hospitals. Join us to help medical care seekers to find and reach you in a fast and easy way.</p>
+                                <p>MedArogya makes patients to reach you easier and faster. Join us and help patients to find you.</p>
                                 <a target="_blank" href="https://MedArogyait.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
                         </div>
@@ -117,15 +117,18 @@
                     <!--Card-->
                     <div class="card mb-4">
                         
-                        <div class="media pt-3 pl-2 pr-3 pb-3">
+                        <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
                             <img class="d-flex mr-3" src="<?php echo base_url(); ?>assets/vendor/img/telecom.png" alt="Support">
                             <div class="media-body">
-                                <h4 class="mt-0 font-weight-bold">Customer Care</h4>
-                                <p class="mb-1"><strong>Email</strong> : support@medarogya.com</p>
-                                <p class="mb-1"><strong>Phone Number</strong> : 7997999105</p>
-                                <p class="mb-1"><strong>Mobile Number</strong> : 7095103103</p>
+                                <h4 class=" font-weight-bold py-4">Customer Care</h4>
+                                
                             </div>
                         </div>
+						<div class="px-3 py-2">
+								<p class="mb-1 "><strong><i class="text-success fa fa-envelope" aria-hidden="true"></i></strong> : support@medarogya.com</p>
+                                <p class="mb-1 "><strong><i class=" text-success fa fa-phone" aria-hidden="true"></i></strong> : 7997999105</p>
+                                <p class="mb-1 "><strong><i class=" text-success fa fa-whatsapp" aria-hidden="true" style="font-weight:600"></i></strong> : 7095103103</p>
+								</div>
                         
                     </div>
                     <!--/.Card-->

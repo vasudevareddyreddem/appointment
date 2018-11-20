@@ -66,4 +66,33 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 	.mx-4{
 		margin:20px !important;
 	}
+	.mar-l50{
+	margin-left:0px !important;
+}
+}
+
+.header-back-color {
+    background-color: #f5f5f5;
+}
+.navbar-nav a{
+	color:#003f7f !important;
+	font-weight:400;
+}
+.navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link {
+    background-color: rgb(76, 178, 53) !important;
+	color:#fff !important;
+	
+}
+.navbar-nav .nav-item {
+	padding-left:20px;
+}
+.navbar-nav .nav-item a:hover{
+	 background-color: rgb(76, 178, 53) !important;
+	color:#fff !important;
+}
+.bg-f5f5f5{
+	background:#f5f5f5;
+}
+.mar-l50{
+	margin-left:100px;
 }

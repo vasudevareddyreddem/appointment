@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Medspace Appointment</title>
+    <title>MedArogya</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/vendor/img/logo1.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,7 +29,7 @@
     <header>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg   fixed-top navbar-dark  mdb-color darken-6">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark  header-back-color ">
             <div class="container">
 
                 <!-- Brand -->
@@ -46,9 +46,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item  <?php if($this->uri->segment(1)==''){ echo "active"; } ?>">
-                            <a class="nav-link waves-effect" href="<?php echo base_url(); ?>">Home
+                    <ul class="navbar-nav mr-auto mar-l50">
+                        <li class="nav-item black-text  <?php if($this->uri->segment(1)==''){ echo "active"; } ?>">
+                            <a class="nav-link waves-effect black-text" href="<?php echo base_url(); ?>">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
