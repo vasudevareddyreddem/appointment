@@ -92,14 +92,14 @@
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item mr-3 depts-name">
                                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo<?php echo $cnt; ?>" aria-expanded="true" aria-controls="collapseOne" style="padding:0px;font-size:15px;">
-                                            <i class="fa fa-building-o"></i>
-                                            <small>
+                                            <i class="fa fa-building-o blue-text"></i>
+                                            <small class="blue-text">
                                                 <?php echo isset($lis['h_id']['department_list'])?$lis['h_id']['department_list']:''; ?> Department(s)</small>
                                         </button>
                                     </li>
                                     <li class="list-inline-item mr-3">
-                                        <i class="fa fa-user-md"></i>
-                                        <small>
+                                        <i class="fa fa-user-md blue-text"></i>
+                                        <small class="blue-text">
                                             <?php echo isset($lis['h_id']['doctor_list'])?$lis['h_id']['doctor_list']:''; ?> Doctor(s)</small>
                                     </li>
                                 </ul>

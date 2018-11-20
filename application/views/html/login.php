@@ -20,17 +20,14 @@
                                             <div class="md-form form-group">
                                                 <i class="fa fa-user prefix grey-text"></i>
                                                 <input type="text" id="email_id" name="email_id" class="form-control">
-                                                <label for="">Email Id</label>
+                                                <label for="email_id">Email Id</label>
                                             </div>
                                             <div class="md-form form-group">
                                                 <i class="fa fa-lock prefix grey-text"></i>
                                                 <input type="password" id="password" name="password" class="form-control">
-                                                <label for="">Password</label>
-                                                <p class="font-small blue-text d-flex justify-content-end"><a href="<?php echo base_url('users/forgotpassword'); ?>" class="blue-text ml-1">Forgot Password?</a></p>
+                                                <label for="password">Password</label>
                                             </div>
-                                            <div class="md-form">
-                                                <label for=""></label>
-                                            </div>
+                                            <p class="font-small blue-text d-flex justify-content-end"><a href="<?php echo base_url('users/forgotpassword'); ?>" class="blue-text ml-1">Forgot Password?</a></p>
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light" >Login</button>
                                             </div>

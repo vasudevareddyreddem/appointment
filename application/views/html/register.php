@@ -16,37 +16,31 @@
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
                                         <form id="defaultForm" action="<?php echo base_url('users/registerpost'); ?>" method="post">
-                                            
-                                            <div class="form-row">
-                                                <div class="col form-group">
-                                                    <!-- First name -->
-                                                    <div class="md-form">
-                                                        <input type="text" id="name" name="name" class="form-control">
-                                                        <label for="">Name</label>
-                                                    </div>
-                                                </div>
+                                            <div class="md-form form-group">
+                                                <input type="text" id="name" name="name" class="form-control">
+                                                <label for="name">Name</label>
                                             </div>
-                                            <div class="md-form mt-0 form-group">
+                                            <div class="md-form form-group">
                                                 <input type="text" id="email" name="email" class="form-control">
-                                                <label for="">Email</label>
+                                                <label for="email">Email</label>
                                             </div>
                                             <div class="md-form form-group">
                                                 <input type="password" id="password" name="password" class="form-control">
-                                                <label for="">Password</label>
+                                                <label for="password">Password</label>
                                             </div>
 											<div class="md-form form-group">
                                                 <input type="password" id="confirmpassword" name="confirmpassword" class="form-control">
-                                                <label for="">Confirm Password</label>
+                                                <label for="confirmpassword">Confirm Password</label>
                                             </div>
                                             <div class="md-form form-group">
                                                 <input type="text" id="mobile" name="mobile" class="form-control">
-                                                <label for="">Mobile Number</label>
+                                                <label for="mobile">Mobile Number</label>
                                             </div>
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-outline-primary btn-md btn-block mb-4 waves-effect waves-light"  role="button">Sign Up</button>
                                             </div>
                                             <div class="md-form">
-                                                <p class="font-small d-flex justify-content-center">Are you a already a member? <a href="<?php echo base_url('users/login'); ?>" class="blue-text ml-1">Login</a></p>
+                                                <p class="font-small d-flex justify-content-center">Are you already a member? <a href="<?php echo base_url('users/login'); ?>" class="blue-text ml-1">Login</a></p>
                                             </div>
                                         </form>
                                     </div>
