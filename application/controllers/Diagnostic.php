@@ -101,7 +101,7 @@ class Diagnostic extends In_frontend {
 							}
 							if($el['a_id']!=''){
 								$data[$el['a_id']]=$el;
-								$data[$el['a_id']]['test_names']=$t_n_lists;
+								$data[$el['a_id']]['test_names']=isset($t_n_lists)?$t_n_lists:'';
 							}
 							//echo '<pre>';print_r($el);exit;							
 							//echo $pageno ;
@@ -626,6 +626,7 @@ class Diagnostic extends In_frontend {
 		{
 			$log_details=$this->session->userdata('app_user');
 			$data['order_list']=$this->Diagnostic_model->get_customer_order_list($log_details['a_u_id']);
+			//g104
 			//echo '<pre>';print_r($data);exit;
 			$this->load->view('digonstic/order_list',$data);
 			$this->load->view('html/footer');
