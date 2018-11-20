@@ -1,6 +1,6 @@
 
 <!--Main layout-->
-<main class="mt-5 pt-5 pb-5 mb-5">
+<main class="mt-5 pt-5 pb-5 mb-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
     <div class="container">
 
         <!--Section: Post-->

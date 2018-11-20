@@ -1,10 +1,10 @@
 
 <!--Main layout-->
-<main class="">
+<main class="pt-3" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
     <div class="container">
 
         <!--Section: Post-->
-        <section class="mt-4">
+        <section class="mt-4 pt-4">
 
             <!--Grid row-->
             <div class="row">

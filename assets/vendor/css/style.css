@@ -96,3 +96,6 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 .mar-l50{
 	margin-left:100px;
 }
+.navbar {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0); 
+}

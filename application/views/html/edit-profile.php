@@ -1,10 +1,10 @@
 
 <!--Main layout-->
-<main class="mt-5 pt-5">
+<main class="mt-5 pt-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
     <div class="container">
 
         <!--Section: Post-->
-        <section class="mt-4">
+        <section class="mt-5">
 
             <!--Grid row-->
             <div class="row">
@@ -65,8 +65,6 @@
 
     </div>
 </main>
-<br/>
-<br/>
 <br/>
 <!--Main layout-->
 

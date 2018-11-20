@@ -4,7 +4,7 @@
     <div class="container">
 
         <!--Section: Post-->
-        <section class="mt-4">
+        <section class="mt-4 pt-4">
 
             <!--Grid row-->
             <div class="row">
@@ -96,8 +96,6 @@
                                 <div class="text-center mt-4">
                                     <button type="submit" class="btn btn-primary btn-md mb-4 waves-effect waves-light"  role="button">Booking Confirmation</button>
                                 </div>
-
-
 
                             </form>
 

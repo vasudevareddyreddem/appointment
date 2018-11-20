@@ -1,6 +1,6 @@
 
 <!--Main layout-->
-<main class="pt-4 pb-4">
+<main class="pt-4 pb-4" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
 
     <!--Section: Jumbotron-->
     <section class="mt-4">
