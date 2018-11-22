@@ -555,6 +555,7 @@ class Diagnostic extends In_frontend {
 				$cart_items=$this->Diagnostic_model->get_cart_item_list($log_details['a_u_id']);
 				//echo '<pre>';print_r($cart_items);exit;
 				/* saving  purpose*/
+				$get_details=array();
 				foreach($cart_items as $list){
 					$item_data=array(
 					'order_id'=>$order_save,
@@ -572,7 +573,27 @@ class Diagnostic extends In_frontend {
 					'created_by'=>$log_details['a_u_id'],
 					);
 					
-					$this->Diagnostic_model->save_order_items($item_data);
+					
+					$o_item_id=$this->Diagnostic_model->save_order_items($item_data);
+					if($list['type']==0){
+						$get_details=$this->Diagnostic_model->get_order_packages_test_lists($list['package_id']);
+						if(count($get_details)>0){
+							foreach($get_details as $li){
+							$d_add=array(
+							'order_item_id'=>isset($o_item_id)?$o_item_id:'',
+							'test_id'=>isset($li['test_id'])?$li['test_id']:'',
+							);
+							$this->Diagnostic_model->save_order_packages_item_ids($d_add);
+							}
+						}
+						
+					}else{
+						$ds_add=array(
+							'order_item_id'=>isset($o_item_id)?$o_item_id:'',
+							'test_id'=>isset($list['test_id'])?$list['test_id']:'',
+							);
+							$this->Diagnostic_model->save_order_packages_item_ids($ds_add);
+					}
 				}
 				/* saving  purpose*/
 				/* deleteing  purpose*/

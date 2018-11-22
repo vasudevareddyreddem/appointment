@@ -37,7 +37,25 @@ class Diagnostic extends REST_Controller {
 		
     }
 
- 
+	public function time_list_post(){
+		$a_id=$this->post('a_id');
+		
+		if($a_id==''){
+			$message = array('status'=>0,'message'=>'Lab Id is required');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
+		$time_list=array("06:00 am","06:30 am","07:00 am","07:30 am","08:00 am","08:30 am","09:00 am","09:30 am","10:00 am","10:30 am","11:00 am","11:30 am","12:00 pm","12:30 pm","01:00 pm","01:30 pm","02:00 pm","02:30 pm","03:00 pm","03:30 pm","04:00 pm","04:30 pm","05:00 pm","05:30 pm","06:00 pm");
+		foreach($time_list as $lis){
+			$lists[]=array('time'=>$lis);
+		}
+		if(count($lists)>0){
+			$message = array('status'=>1,'list'=>$lists,'message'=>'TIme list are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}else{
+			$message = array('status'=>0,'message'=>'Cities list are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
+	}
 	public function cities_post(){
 		$city_list=$this->Diagnosticapp_model->get_city_list();
 		if(count($city_list)>0){

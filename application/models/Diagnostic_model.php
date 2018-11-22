@@ -342,6 +342,17 @@ public  function get_cart_package_item_list($a_id){
 	$this->db2->where('l_id',$l_id);		
 	return $this->db2->get()->row_array();
  }
+ 
+ /* package test list purpose*/
+ public  function get_order_packages_test_lists($pack_id){
+	$this->db2->select('test_id')->from('packages_test_list');
+	$this->db2->where('l_t_p_id',$pack_id);		
+	return $this->db2->get()->result_array(); 
+ }
+ public  function save_order_packages_item_ids($data){
+	 $this->db2->insert('order_package_test_list',$data);
+	return $this->db2->insert_id();
+ }
 	
 
 }
