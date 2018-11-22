@@ -449,7 +449,7 @@ class Diagnostic extends In_frontend {
 				$save=$this->Diagnostic_model->save_patient_billing($add);
 			}
 			if(count($save)>0){
-				$this->session->set_flashdata('success',"Patient details successfully updated");
+				$this->session->set_flashdata('success',"Patient billing details successfully added");
 				if(isset($post['billingaddressid']) && $post['billingaddressid']!=''){
 					redirect('diagnostic/payment/'.base64_encode($post['billingaddressid']).'/'.base64_encode($post['patient_details_id']));
 				}else{

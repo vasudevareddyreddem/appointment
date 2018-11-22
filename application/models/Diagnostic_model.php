@@ -132,7 +132,7 @@ class Diagnostic_model extends CI_Model
 	
 	public  function save_item_cart($data){
 		$this->db2->insert('lab_cart',$data);
-		return $this->db->insert_id();
+		return $this->db2->insert_id();
 	}
 	
 	public  function get_cart_item_list($a_id){
