@@ -28,7 +28,7 @@
 
 										 <div class="custom-control custom-radio mt-2">
                                         <input type="radio" class="custom-control-input p-type" id="radio3" name="payment" onclick="payment_type(this.value);" value="1">
-                                        <label class="custom-control-label" for="radio3">Online Paymen</label>
+                                        <label class="custom-control-label" for="radio3">Online Payment</label>
                                     </div>
 										<div class="custom-control custom-radio mt-2 mb-2">
 											<input type="radio" class="custom-control-input p-type"  id="radio2" name="payment" onclick="payment_type(this.value);"  value="3">
@@ -50,7 +50,7 @@
 									<form action="<?php echo base_url('diagnostic/orderpaymenttype'); ?>" method="post" onSubmit="return checkvalidation(this.form);">
 									 <div class="custom-control custom-radio mt-2">
                                         <input type="radio" class="custom-control-input p-type" id="radio33" name="payment" onclick="payment_type(this.value);"  value="1">
-                                        <label class="custom-control-label" for="radio3">Online Paymen</label>
+                                        <label class="custom-control-label" for="radio3">Online Payment</label>
                                     </div>
 										<div class="custom-control custom-radio mt-2 mb-2">
 											<input type="radio" class="custom-control-input p-type"  id="radio22" name="payment" onclick="payment_type(this.value);"  value="3">

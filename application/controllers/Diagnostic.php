@@ -18,13 +18,6 @@ class Diagnostic extends In_frontend {
 		{	
 			
 			$log_details=$this->session->userdata('app_user');
-			$cart_items=$this->Diagnostic_model->get_cart_package_item_list($log_details['a_u_id']);
-			if(isset($cart_items) && count($cart_items)>0){
-				foreach($cart_items as $list){
-					$this->Diagnostic_model->delete_cart_items_data($list['c_id']);
-				}
-			}
-			
 			$data['city_list']=$this->Diagnostic_model->get_diagnostic_city_list();
 			$data['packages_list']=$this->Diagnostic_model->get_packages_test_lists();
 			//echo '<pre>';print_r($data);exit;

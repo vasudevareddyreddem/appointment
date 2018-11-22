@@ -33,13 +33,16 @@
 								<th class="th-sm">Delivery charges
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">Time
+                                <th class="th-sm">Sample Pickup Date & Time
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
                                 <th class="th-sm">Payment Type
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th> 
 								<th class="th-sm">Created Date & Time
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+								<th class="th-sm">Status
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
 								
@@ -57,13 +60,18 @@
 								
 								</td>
                                 <td><?php echo isset($lis['amount'])?$lis['amount']:''; ?></td>
-                                <td><?php echo isset($lis['delivery_charge'])?$lis['delivery_charge']:''; ?></td>
+                               
                                 <td><?php echo isset($lis['test_duartion'])?$lis['test_duartion']:''; ?></td>
+								 <td>
+								<?php echo isset($lis['date'])?$lis['date']:''; ?>&nbsp;
+								<?php echo isset($lis['time'])?$lis['time']:''; ?>
+								</td>
                                 <td>
 								<?php if($lis['payment_type']==1){ echo "Online"; } else if($lis['payment_type']==3){ echo "Swipe on Delivery";}else if($lis['payment_type']==2){  echo "Cash On Delivery"; } ?>
 								</td>
 								<td><?php echo isset($lis['created_at'])?$lis['created_at']:''; ?></td>
-                            
+                            	<td><?php if($lis['lab_status']==0){ echo "Pending";}else if($lis['lab_status']==1){ echo "Success"; } ?></td>
+
                             </tr>
 							
 						<?php } ?>

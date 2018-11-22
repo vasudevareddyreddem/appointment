@@ -1,5 +1,5 @@
 <!--Main layout-->
-<main class="">
+<main class="pt-3">
 
     <!--Section: Post-->
     <section class="mt-5">
@@ -27,6 +27,7 @@
                                     <h4 class="mt-0 font-weight-bold">
                                         <?php echo isset($lab_deatils['name'])?$lab_deatils['name']:''; ?>
                                     </h4>
+									<?php echo isset($lab_deatils['accrediations'])?$lab_deatils['accrediations']:''; ?>
                                     <p class="mb-0">
                                         <?php echo isset($lab_deatils['address1'])?$lab_deatils['address1']:''; ?>,
                                         <?php echo isset($lab_deatils['address2'])?$lab_deatils['address2']:''; ?>

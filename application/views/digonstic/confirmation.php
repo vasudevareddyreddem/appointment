@@ -87,7 +87,7 @@
                                             <td><?php echo isset($patient_detail['age'])?$patient_detail['age']:''; ?></td>
                                         </tr>
 										<tr>
-                                            <td><b>Date & Time</b></td>
+                                            <td><b>Sample Pickup - Date & Time</b></td>
                                             <td>
 											<?php echo isset($patient_detail['date'])?$patient_detail['date']:''; ?>&nbsp;
 											<?php echo isset($patient_detail['time'])?$patient_detail['time']:''; ?>

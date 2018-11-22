@@ -18,8 +18,11 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public function get_packages_test_lists(){
-		$this->db2->select('*')->from('test_packages');
-		$this->db2->where('status',1);
+		$this->db2->select('test_packages.*,admin.accrediations,admin.name as lab_name')->from('test_packages');
+		$this->db2->join('admin', 'admin.a_id = test_packages.lab_id', 'left');
+
+		$this->db2->where('test_packages.status',1);
+		$this->db2->order_by('test_packages.l_t_p_id',"desc");
 		$return=$this->db2->get()->result_array();
 		foreach($return as $lis){
 			$test_list=$this->get_package_test_name($lis['l_t_p_id']);
@@ -62,7 +65,7 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public  function get_loication_and_lab_wise_lab_list($city,$test){
-		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('admin');
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic,admin.accrediations')->from('admin');
 		$this->db2->where('status',1);		
 		$this->db2->where('role',2);		
 		$this->db2->where('city',$city);		
@@ -70,7 +73,7 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public  function get_loication_and_lab_wise_testy_list($city,$test){
-		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic,admin.accrediations')->from('lab_tests');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('admin.status',1);		
 		$this->db2->where('admin.role',2);		
@@ -79,14 +82,14 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public  function get_all_loication_wise_lab_list($city){
-		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('admin');
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic,admin.accrediations')->from('admin');
 		$this->db2->where('status',1);		
 		$this->db2->where('role',2);		
 		$this->db2->like('city',$city);
         return $this->db2->get()->result_array();
 	}
 	public  function get_all_test_names_list($city){
-		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic,admin.accrediations')->from('lab_tests');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('admin.status',1);		
 		$this->db2->where('admin.role',2);		
@@ -94,7 +97,7 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public  function get_test_name_list($test){
-		$this->db2->select('admin.name,admin.a_id,admin.profile_pic')->from('lab_tests');
+		$this->db2->select('admin.name,admin.a_id,admin.profile_pic,admin.accrediations')->from('lab_tests');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('admin.status',1);		
 		$this->db2->where('admin.role',2);		
@@ -102,7 +105,7 @@ class Diagnostic_model extends CI_Model
         return $this->db2->get()->result_array();
 	}
 	public  function get_lab_name_list($name){
-		$this->db2->select('admin.name,admin.a_id,profile_pic')->from('admin');
+		$this->db2->select('admin.name,admin.a_id,profile_pic,admin.accrediations')->from('admin');
 		$this->db2->where('status',1);		
 		$this->db2->where('role',2);		
 		$this->db2->like('name',$test);
@@ -119,7 +122,7 @@ class Diagnostic_model extends CI_Model
 	}
 	
 	public  function get_diagnostic_lab_deatils($a_id){
-		$this->db2->select('a_id,role,name,email,mobile,altmobile,gstin,address1,address2,city,state,country,zipcode,profile_pic,status,created_at')->from('admin');
+		$this->db2->select('a_id,role,name,email,mobile,altmobile,gstin,address1,address2,city,state,country,zipcode,profile_pic,status,created_at,accrediations')->from('admin');
 		$this->db2->where('a_id',$a_id);		
         $return=$this->db2->get()->row_array();
 		$test_names_list=$this->get_lab_test_lists($return['a_id']);
@@ -263,7 +266,7 @@ class Diagnostic_model extends CI_Model
 	}
 	  /* order list purpose */
 	  public  function get_customer_order_list($a_id){
-		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion,test_packages.test_package_name,lab_patient_details.name as p_name,lab_patient_details.mobile,')->from('lab_order_items');
+		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion,test_packages.test_package_name,lab_patient_details.name as p_name,lab_patient_details.mobile,lab_patient_details.date,lab_patient_details.time,lab_order_items.lab_status')->from('lab_order_items');
 		$this->db2->join('lab_orders', 'lab_orders.r_id = lab_order_items.order_id', 'left');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_order_items.test_id', 'left');
 		$this->db2->join('test_packages', 'test_packages.l_t_p_id = lab_order_items.package_id', 'left');

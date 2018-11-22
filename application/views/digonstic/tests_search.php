@@ -1,5 +1,5 @@
 <!--Main layout-->
-<main class="">
+<main class="pt-3">
     <section class="py-4">
         <div class="container">
             <div class="row">
@@ -73,6 +73,7 @@
                                     <h5 class="mt-0 font-weight-bold">
                                         <?php echo isset($list['name'])?$list['name']:''; ?>
                                     </h5>
+									<?php echo isset($list['accrediations'])?$list['accrediations']:''; ?>
                                     <ul class="list-inline mb-0">
                                         <li class="list-block mr-3">
                                             <i class="fa fa-building-o"></i>

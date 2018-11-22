@@ -38,7 +38,7 @@
 									 </div>
 									 <div class="form-group">
                                         <label>Sample Pickup Date</label>
-                                         <input type="date" class="form-control" id="date" name="date" value="<?php echo isset($patient_details['date'])?$patient_details['date']:''; ?>">
+                                         <input type="date" class="form-control"  min="<?php echo date('Y-m-d'); ?>" id="date" name="date" value="<?php echo isset($patient_details['date'])?$patient_details['date']:''; ?>">
 
 									 </div>
                                 
