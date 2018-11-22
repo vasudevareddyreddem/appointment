@@ -121,7 +121,7 @@
 					<div class="col-md-12" style="display:none" id="showmore1">
 					<div class="row">
                        <?php $cnt=1;foreach($packages_list as $list){ ?>
-					<?php if($cnt>3){ ?>
+					  <?php if($cnt>3){ ?>
                         <div class="col-md-4 col-sm-6 col-xs-12">
 
                             <!-- Card -->
