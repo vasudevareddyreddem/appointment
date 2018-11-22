@@ -1,6 +1,4 @@
-<style type="text/css">
-    
-</style>
+
 <!--Main layout-->
 <main class="pt-3">
 
@@ -12,14 +10,46 @@
 
                 <!--Grid column-->
                 <div class="col-md-8">
+				
                     <div class="form-box">
                         <form role="form" method="post" class="payment_form" id="patient_details" name="patient_details" action="<?php echo base_url('diagnostic/patient_details_post'); ?>">
 							<input type="hidden" name="l_t_a_id" id="l_t_a_id" value="<?php echo isset($patient_details['l_t_a_id'])?$patient_details['l_t_a_id']:''; ?>">
 
                             <fieldset class="card">
-                                <div class="card-header unique-color">
-                                    <h4 class="mb-0 white-text">Patient Details</h4>
-                                </div>
+								<div class="col-md-12">
+
+								<!-- Stepers Wrapper -->
+								<ul class="stepper stepper-horizontal">
+
+								  <!-- First Step -->
+								  <li class="completed">
+									<a href="#!">
+									  <span class="circle">1</span>
+									  <span class="label">Patient Details</span>
+									</a>
+								  </li>
+
+								  <!-- Second Step -->
+								  <li class="">
+									<a href="#!">
+									  <span class="circle">2</span>
+									  <span class="label">Patient Address</span>
+									</a>
+								  </li>
+
+								  <!-- Third Step -->
+								  <li class="">
+									<a href="#!">
+									  <span class="circle">3</i></span>
+									  <span class="label">Payment Process</span>
+									</a>
+								  </li>
+
+								</ul>
+								<!-- /.Stepers Wrapper -->
+
+							  </div>
+							   <hr style="margin:0px;">
                                 <div class="card-body">
 								 <?php $time_list=array("06:00 am","06:30 am","07:00 am","07:30 am","08:00 am","08:30 am","09:00 am","09:30 am","10:00 am","10:30 am","11:00 am","11:30 am","12:00 pm","12:30 pm","01:00 pm","01:30 pm","02:00 pm","02:30 pm","03:00 pm","03:30 pm","04:00 pm","04:30 pm","05:00 pm","05:30 pm","06:00 pm"); ?>
                                     <div class="form-group">
@@ -118,8 +148,8 @@
 					$total +=$list['amount'];
 								$delivery_charge +=$list['delivery_charge'];
 					} ?>
-							<hr class="mt-2 mb-1">
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+							
+                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5 px-4">
                                 <div>
                                     <p class="mb-0">Sample pickup Charges</p>
                                 </div>
@@ -130,7 +160,7 @@
 									?></span></p>
                                 </div>
                             </div>
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+                            <div class="d-block d-md-flex p-2 green lighten-5 px-4" style="border-top:1px solid #ddd">
                                 <div>
                                     <p class="mb-0">Total</p>
                                 </div>

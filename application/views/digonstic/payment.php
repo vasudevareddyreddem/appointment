@@ -4,7 +4,7 @@
 }
 </style>
 <!--Main layout-->
-<main class="">
+<main class="pt-3">
 
     <!--Section: Post-->
     <section class="mt-5">
@@ -15,13 +15,40 @@
                 <!--Grid column-->
                 <div class="col-md-8">
                     <div class="form-box">
+					<fieldset class="card">
+                               <div class="col-md-12">
+								 <!-- Stepers Wrapper -->
+									<ul class="stepper stepper-horizontal">
 
-                           
+									  <!-- First Step -->
+									  <li class="site-green-color">
+										<a href="#!">
+										  <span class="circle ">1</span>
+										  <span class="label">Patient Details</span>
+										</a>
+									  </li>
 
-                            <fieldset class="card">
-                                <div class="card-header unique-color">
-                                    <h4 class="mb-0 white-text">Payment Process </h4>
-                                </div>
+									  <!-- Second Step -->
+									  <li class="site-green-color">
+										<a href="#!">
+										  <span class="circle">2</span>
+										  <span class="label">Patient Address</span>
+										</a>
+									  </li>
+
+									  <!-- Third Step -->
+									  <li class="completed">
+										<a href="#!">
+										  <span class="circle">3</i></span>
+										  <span class="label">Payment Process</span>
+										</a>
+									  </li>
+
+									</ul>
+									<!-- /.Stepers Wrapper -->
+
+								  </div>
+								  <hr style="margin:0px;">
                                 <div class="card-body">
 									<div id="online_amt_1">
 											<form action="<?php echo base_url('diagnostic/orderpaymenttype'); ?>" method="post" onSubmit="return checkvalidation_payment(this.form);">
@@ -126,8 +153,9 @@
 					$total +=$list['amount'];
 								$delivery_charge +=$list['delivery_charge'];
 					} ?>
-							<hr class="mt-2 mb-1">
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+						
+                            <div class="">
+                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5 px-4">
                                 <div>
                                     <p class="mb-0">Sample pickup Charges</p>
                                 </div>
@@ -138,7 +166,7 @@
 									?></span></p>
                                 </div>
                             </div>
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+                            <div class="d-block d-md-flex p-2 green lighten-5 px-4" style="border-top:1px solid #ddd">
                                 <div>
                                     <p class="mb-0">Total</p>
                                 </div>
@@ -149,6 +177,7 @@
 									
 									?></span></p>
                                 </div>
+                            </div>
                             </div>
                     </div>
 
@@ -162,6 +191,8 @@
     </section>
     <!--Section: Post-->
 </main>
+<br/>
+<br/>
 <!--Main layout-->
 
 

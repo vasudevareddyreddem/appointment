@@ -19,7 +19,7 @@
 <body class="grey lighten-3">
 
     <!--Main layout-->
-    <main class="pt-5">
+    <main class="pt-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
         <div class="container">
 
             <!--Section: Post-->
@@ -30,7 +30,7 @@
 
                     <!--Grid column-->
                     <div class="col-md-5 mx-auto">
-                        <img src="<?php echo base_url(); ?>assets/vendor/img/logo.png" height="100px" width="100%" class="">
+                        
                         <div class="card mt-5">
                             <div class="card-body">
                                 <div class="row">
@@ -58,9 +58,16 @@
 
             </section>
             <!--Section: Post-->
-
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
         </div>
     </main>
+
+
     <!--Main layout-->
 
     <!-- SCRIPTS -->

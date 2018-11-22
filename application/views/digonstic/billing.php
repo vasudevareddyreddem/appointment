@@ -1,4 +1,4 @@
-<main class="">
+<main class="pt-3">
 
     <!--Section: Post-->
     <section class="mt-5">
@@ -13,9 +13,39 @@
 
 
                             <fieldset class="card">
-                                <div class="card-header unique-color">
-                                    <h4 class="mb-0 white-text">Patient Address </h4>
-                                </div>
+                                 <div class="col-md-12">
+								 <!-- Stepers Wrapper -->
+									<ul class="stepper stepper-horizontal">
+
+									  <!-- First Step -->
+									  <li class="site-green-color">
+										<a href="#!">
+										  <span class="circle ">1</span>
+										  <span class="label">Patient Details</span>
+										</a>
+									  </li>
+
+									  <!-- Second Step -->
+									  <li class="completed">
+										<a href="#!">
+										  <span class="circle">2</span>
+										  <span class="label">Patient Address</span>
+										</a>
+									  </li>
+
+									  <!-- Third Step -->
+									  <li class="">
+										<a href="#!">
+										  <span class="circle">3</i></span>
+										  <span class="label">Payment Process</span>
+										</a>
+									  </li>
+
+									</ul>
+									<!-- /.Stepers Wrapper -->
+
+								  </div>
+								  <hr style="margin:0px;">
                                 <div class="card-body">
                                     <!-- Default unchecked -->
 									<?php if(isset($billing_details) && count($billing_details)>0){ ?>
@@ -42,8 +72,8 @@
                                      <div id="newbillingaddress" >   
 										<div class="new_address_form">
 											<div class="form-group">
-												<label>Mobile Number</label>
-												<input type="text" class="form-control" placeholder="Enter Number" id="mobile" name="mobile">
+												<label>Address</label>
+												<textarea class="form-control" id="address" name="address"></textarea>
 											</div>
 											<div class="row">
 												<div class="form-group col-md-6 col-sm-12">
@@ -55,10 +85,7 @@
 													<input type="text" class="form-control" placeholder="Enter Pincode" id="pincode" name="pincode">
 												</div>
 											</div>
-											<div class="form-group">
-												<label>Address</label>
-												<textarea class="form-control" id="address" name="address"></textarea>
-											</div>
+											
 											<div class="form-group">
 												<label>Landmark</label>
 												<input type="text" class="form-control" placeholder="Enter Landmark" id="landmark" name="landmark">
@@ -125,8 +152,8 @@
 					$total +=$list['amount'];
 								$delivery_charge +=$list['delivery_charge'];
 					} ?>
-							<hr class="mt-2 mb-1">
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+							
+                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5 px-4">
                                 <div>
                                     <p class="mb-0">Sample pickup Charges</p>
                                 </div>
@@ -137,7 +164,7 @@
 									?></span></p>
                                 </div>
                             </div>
-                            <div class="d-block d-md-flex mt-2 p-2 green lighten-5">
+                            <div class="d-block d-md-flex  p-2 green lighten-5 px-4" style="border-top:1px solid #ddd">
                                 <div>
                                     <p class="mb-0">Total</p>
                                 </div>

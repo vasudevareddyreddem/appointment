@@ -9,58 +9,27 @@
 
 </style>
 <!--Main layout-->
-<main class="">
+<main class="pt-3">
     <div class="container">
 
         <!--Section: Post-->
         <section class="mt-5 mb-5">
     
             <!--Grid row-->
+			<!--Grid row-->
             <div class="row">
-
-                <!--Grid column-->
-                <div class="col-md-6">
-            
-                    <div class="card mb-5">
-                        <div class="card-header font-weight-bold">Address</div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td><b>Address</b></td>
-                                            <td><?php echo isset($address_detail['address'])?$address_detail['address']:''; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Landmark</b></td>
-                                            <td><?php echo isset($address_detail['landmark'])?$address_detail['landmark']:''; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Locality</b></td>
-                                            <td><?php echo isset($address_detail['locality'])?$address_detail['locality']:''; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Zipcode</b></td>
-                                            <td><?php echo isset($address_detail['pincode'])?$address_detail['pincode']:''; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Mobile</b></td>
-                                            <td><?php echo isset($address_detail['mobile'])?$address_detail['mobile']:''; ?></td>
-                                        </tr>
-										
-										 <tr>&nbsp;&nbsp;</tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-            
-                </div>
-                
-                <!--Grid column-->
-                <div class="col-md-6">
-            
-                    <div class="card mb-5">
+				<!--Grid column-->
+					<div class="col-md-8 mx-auto text-center">
+						<img src="<?php echo base_url(); ?>assets/vendor/img/confirm-booking.png" height="100px">
+						<h1>Booking Confirmed</h1>
+					</div>
+				<!--Grid column-->
+			</div>
+			<div class="clearfix">&nbsp;</div>
+            <!--Grid row-->
+            <div class="row">
+				<div class="col-md-6">
+                    <div class="card mb-5" style="min-height:350px;">
                         <div class="card-header font-weight-bold">Patient Details</div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -100,23 +69,49 @@
                     </div>
             
                 </div>
+                <!--Grid column-->
+                <div class="col-md-6">
+            
+                    <div class="card mb-5" style="min-height:350px;">
+                        <div class="card-header font-weight-bold">Address</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Address</b></td>
+                                            <td><?php echo isset($address_detail['address'])?$address_detail['address']:''; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Landmark</b></td>
+                                            <td><?php echo isset($address_detail['landmark'])?$address_detail['landmark']:''; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Locality</b></td>
+                                            <td><?php echo isset($address_detail['locality'])?$address_detail['locality']:''; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Zipcode</b></td>
+                                            <td><?php echo isset($address_detail['pincode'])?$address_detail['pincode']:''; ?></td>
+                                        </tr>
+                                       
+										
+									
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+					
+                    </div>
+            
+                </div>
+                
+                <!--Grid column-->
+                
                 
             </div>
 
-            <!--Grid row-->
-            <div class="row">
-
-                <!--Grid column-->
-                <div class="col-md-8 mx-auto text-center">
-                    
-                    <img src="<?php echo base_url(); ?>assets/vendor/img/confirm-booking.png" height="100px">
-                    <h1>Booking Confirmed</h1>
-
-                </div>
-                <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
+            
 
         </section>
         <!--Section: Post-->

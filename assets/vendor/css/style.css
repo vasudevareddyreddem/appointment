@@ -3,6 +3,24 @@ p{
 	font-weight:400;
 	letter-spacing:0.2px;
 }
+.site-blue-color{
+	background:#003f7f;
+	color:#fff;
+}
+.primary-color, ul.stepper li.active a .circle, ul.stepper li.site-green-color a .circle{
+	background-color: #4cb235!important;
+}
+.ul.stepper{
+	padding:0px !important;
+}
+
+.site-blue-color-text{
+	color:#003f7f;
+	
+}
+.list-style-view-more .list-group{
+	margin-top:10px;
+}
 main{
 	margin-top:50px;
 }
