@@ -66,7 +66,7 @@
                                 <div class="card-img-top" style="background-image: url(img/tests.jpg);">
 
                                     <!-- Content -->
-                                    <div class="text-white rgba-black-strong py-4 px-4">
+                                    <div class="text-white site-blue-color py-4 px-4">
                                         <div>
                                             <h4 class="card-title mb-0"><strong><?php echo isset($list['test_package_name'])?$list['test_package_name']:''; ?></strong></h4>
                                             <small><?php echo isset($list['accrediations'])?$list['accrediations']:''; ?></small><br>
@@ -82,11 +82,16 @@
                                     <div class="media d-block d-md-flex">
                                         <i class="d-flex mt-1 mx-auto fa fa-user fa-1x"></i>
                                         <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                                            <h5 class="font-weight-bold mb-1">Includes <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?> Tests (Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?>)</h5>
+                                            <h5 class="font-weight-bold mb-1">Includes Tests  <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?> </h5>
+											<h6>Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?></h6>
 											<?php foreach($list['package_test_list'] as $li){ ?>
                                             <label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
+											
 											<?php } ?>
-											<p>Reports TIme :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
+											<label class="d-block mt-0 mb-0">
+											<a class="text-primary" data-toggle="modal" data-target="#centralModal">View All</a>
+											</label>
+											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
                                         </div>
                                     </div>
                                    
@@ -114,7 +119,7 @@
 					<div class="clearfix">&nbsp;</div>
                     <div class="col-md-12">
                     <div class="text-center py-2">
-                        <a id="readmore1" class="btn btn-primary">More Packages</a>
+                        <a id="readmore1" class="btn btn-success">More Packages</a>
                     </div>
                     </div>
 					<?php } ?>
@@ -130,7 +135,7 @@
                                 <div class="card-img-top" style="background-image: url(img/tests.jpg);">
 
                                     <!-- Content -->
-                                    <div class="text-white rgba-black-strong py-4 px-4">
+                                    <div class="text-white site-blue-color py-4 px-4">
                                         <div>
                                             <h4 class="card-title mb-0"><strong><?php echo isset($list['test_package_name'])?$list['test_package_name']:''; ?></strong></h4>
                                             <small><?php echo isset($list['accrediations'])?$list['accrediations']:''; ?></small><br>
@@ -146,11 +151,15 @@
                                     <div class="media d-block d-md-flex">
                                         <i class="d-flex mt-1 mx-auto fa fa-user fa-1x"></i>
                                         <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                                            <h5 class="font-weight-bold mb-1">Includes <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?> Tests (Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?>)</h5>
+                                            <h5 class="font-weight-bold mb-1">Includes Tests <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?>  </h5>
+											<h6>Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?></h6>
 											<?php foreach($list['package_test_list'] as $li){ ?>
                                             <label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
 											<?php } ?>
-											<p>Reports TIme :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
+											<label class="d-block mt-0 mb-0">
+											<a class="text-primary" data-toggle="modal" data-target="#centralModal">View All</a>
+											</label>
+											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
                                         </div>
                                     </div>
                                    
@@ -191,6 +200,63 @@
     </section>
     <!--Section: Post-->
 </main>
+<!-- Central Modal Small -->
+<div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Change class .modal-sm to change the size of the modal -->
+    <div class="modal-dialog" role="document" style="overflow-y: initial !important">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel"> Tests</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body list-style-view-more" style="height:400px;overflow-y: auto;">
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+			<div class="list-group">
+				<a href="#" class="list-group-item">Second item</a>
+			</div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- Central Modal Small -->
 <!--Main layout-->
 <script>
 var cnt=2;

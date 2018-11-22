@@ -1,8 +1,8 @@
-<main class="">
+<main class="pt-3" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
         <div class="container">
 
             <!--Section: Post-->
-            <section class="mt-4" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/login-bg.png); background-repeat: no-repeat;background-attachment: fixed;background-position: center; ">
+            <section class="mt-4" >
 
                 <!--Grid row-->
                 <div class="row" >
@@ -10,9 +10,10 @@
                     <!--Grid column-->
                     <div class="col-md-5 mx-auto">
                         
-                        <div class=" mt-3">
-						  <h1 class="py-2 text-center h2 ">Register</h1>
-                            <div class="card-body">
+                        <div class="card mt-3">
+						  <h1 style="padding-top:20px;" class=" text-center h2 ">Register</h1>
+						  <hr>
+                            <div class="card-body ">
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
                                         <form id="defaultForm" action="<?php echo base_url('users/registerpost'); ?>" method="post">

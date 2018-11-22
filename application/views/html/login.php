@@ -1,18 +1,19 @@
 <!--Main layout-->
-    <main class="pt-5" >
+    <main class="pt-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
         <div class="container">
 
             <!--Section: Post-->
             <section class="mt-4"  >
 
                 <!--Grid row-->
-                <div class="row" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/login-bg.png); background-repeat: no-repeat;background-attachment: fixed;background-position: center; ">
+                <div class="row">
 
                     <!--Grid column-->
                     <div class="col-md-5 mx-auto" >
                       
-                        <div class="">
+                        <div class="card">
 						  <h1 class="py-2 text-center h2 ">Login</h1>
+						  <hr>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
