@@ -139,7 +139,7 @@ class Diagnostic_model extends CI_Model
 	}
 	
 	public  function get_cart_item_list($a_id){
-		$this->db2->select('lab_tests.lab_id,lab_cart.l_id,lab_cart.amount,lab_cart.org_amount,lab_cart.percentage,lab_cart.package_id,lab_cart.type,lab_cart.delivery_charge,lab_cart.test_id,lab_tests.test_type,lab_tests.delivery_charge,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
+		$this->db2->select('lab_tests.lab_id,lab_cart.l_id,lab_cart.amount,lab_cart.org_amount,lab_cart.percentage,lab_cart.package_id,lab_cart.type,lab_cart.delivery_charge,lab_cart.test_id,lab_tests.test_type,lab_tests.test_name,lab_tests.test_duartion,lab_tests.test_amount,lab_cart.c_id,admin.name')->from('lab_cart');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_cart.test_id', 'left');
 		$this->db2->join('admin', 'admin.a_id = lab_tests.lab_id', 'left');
 		$this->db2->where('lab_cart.a_id',$a_id);		

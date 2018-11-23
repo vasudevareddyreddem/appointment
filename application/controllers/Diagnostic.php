@@ -658,7 +658,7 @@ class Diagnostic extends In_frontend {
 					$order_item_id=base64_decode($this->uri->segment(3));
 					$data['order_item_id']=$order_item_id;
 					$data['order_list']=$this->Diagnostic_model->get_order_item_details($order_item_id);
-					echo '<pre>';print_r($data);exit;
+					//echo '<pre>';print_r($data);exit;
 					$this->load->view('digonstic/upload_reports_file',$data);
 					$this->load->view('html/footer');
 			

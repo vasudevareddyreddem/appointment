@@ -67,7 +67,7 @@
 								</td>
                                 <td><?php echo isset($lis['amount'])?$lis['amount']:''; ?></td>
                                
-                                <td><?php echo isset($lis['test_duartion'])?$lis['test_duartion']:''; ?></td>
+                                <td><?php echo isset($lis['delivery_charge'])?$lis['delivery_charge']:''; ?></td>
 								 <td>
 								<?php echo isset($lis['date'])?$lis['date']:''; ?>&nbsp;
 								<?php echo isset($lis['time'])?$lis['time']:''; ?>
