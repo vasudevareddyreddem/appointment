@@ -141,12 +141,7 @@
 					<?php } ?>
 					<?php $cnt++;} ?>
 
-					<div class="clearfix">&nbsp;</div>
-                    <div class="col-md-12">
-                    <div class="text-center py-2">
-                        <a id="readmore1" class="btn btn-success">More Packages</a>
-                    </div>
-                    </div>
+					
 					<?php } ?>
 					<div class="col-md-12" style="display:none" id="showmore1">
 					<div class="row">
@@ -236,6 +231,12 @@
 					<?php $cnt++;} ?>
 					</div>
 					</div>
+					<div class="clearfix">&nbsp;</div>
+                    <div class="col-md-12">
+                    <div class="text-center py-2">
+                        <a id="readmore1" class="btn btn-success">More Packages</a>
+                    </div>
+                    </div>
 
                     </div>
                     
