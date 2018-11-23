@@ -11,8 +11,8 @@
             <h1 class="mt-5 pt-1 h1">
                 <strong>MedArogya</strong>
             </h1>
-            <h4 class="h4">
-                <i>Now , doctor booking and ordering medicine is made simple with MedArogya</i>
+            <h4 class="h4 py-4">
+                Now , doctor booking and ordering medicine is made simple with MedArogya
             </h4>
             <!--Card: Jumbotron-->
             <div class="row">
@@ -125,8 +125,8 @@
                         </div>
 						<div class="px-3 py-2">
 								<p class="mb-1 "><strong><i class="text-success fa fa-envelope" aria-hidden="true"></i></strong> : support@medarogya.com</p>
-                                <p class="mb-1 "><strong><i class=" text-success fa fa-phone" aria-hidden="true"></i></strong> : 7997999105</p>
-                                <p class="mb-1 "><strong><i class=" text-success fa fa-whatsapp" aria-hidden="true" style="font-weight:600"></i></strong> : 7095103103</p>
+                                <p class="mb-1 "><strong><i class=" text-success fa fa-phone" aria-hidden="true"></i></strong> : 7997999108</p>
+                                <p class="mb-1 "><strong><i class=" text-success fa fa-whatsapp" aria-hidden="true" style="font-weight:600"></i></strong> : 7997999105</p>
 								</div>
                         
                     </div>
