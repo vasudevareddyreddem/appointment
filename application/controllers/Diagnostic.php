@@ -62,6 +62,7 @@ class Diagnostic extends In_frontend {
 		{	
 			$post=$this->input->post();
 			$details['city_list']=$this->Diagnostic_model->get_diagnostic_city_list();
+			//echo "cccc";exit;
 			//echo '<pre>';print_r($post);exit;
 			if($post['city']!='' && $post['search_value']!=''){
 				$lab_list=$this->Diagnostic_model->get_loication_and_lab_wise_lab_list($post['city'],$post['search_value']);

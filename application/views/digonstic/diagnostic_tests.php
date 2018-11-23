@@ -84,13 +84,38 @@
                                         <div class="media-body text-center text-md-left ml-md-3 ml-0">
                                             <h5 class="font-weight-bold mb-1">Includes Tests  <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?> </h5>
 											<h6>Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?></h6>
-											<?php foreach($list['package_test_list'] as $li){ ?>
-                                            <label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
-											
-											<?php } ?>
+											<?php $count=1;foreach($list['package_test_list'] as $li){ ?>
+												<?php if($count<=2){ ?>
+												<label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
+												<?php } ?>
+											<?php $count++;} ?>
 											<label class="d-block mt-0 mb-0">
-											<a class="text-primary" data-toggle="modal" data-target="#centralModal">View All</a>
+											<a class="text-primary" data-toggle="modal" data-target="#centralModal<?php echo $cnt; ?>">View All</a>
 											</label>
+											<div class="modal fade" id="centralModal<?php echo $cnt; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+												<!-- Change class .modal-sm to change the size of the modal -->
+												<div class="modal-dialog" role="document" style="overflow-y: initial !important">
+
+
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <h4 class="modal-title w-100" id="myModalLabel"> Tests</h4>
+													  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													  </button>
+													</div>
+													<div class="modal-body list-style-view-more" style="height:400px;overflow-y: auto;">
+														<?php foreach($list['package_test_list'] as $li){ ?>
+														<div class="list-group">
+															<a href="#" class="list-group-item"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></a>
+														</div>
+													  <?php } ?>
+													</div>
+												   
+												  </div>
+												</div>
+											  </div>
 											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
                                         </div>
                                     </div>
@@ -153,12 +178,38 @@
                                         <div class="media-body text-center text-md-left ml-md-3 ml-0">
                                             <h5 class="font-weight-bold mb-1">Includes Tests <?php echo isset($list['instruction'])?count($list['package_test_list']):''; ?>  </h5>
 											<h6>Lab Name : <?php echo isset($list['lab_name'])?$list['lab_name']:''; ?></h6>
-											<?php foreach($list['package_test_list'] as $li){ ?>
-                                            <label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
-											<?php } ?>
+											<?php $count=1;foreach($list['package_test_list'] as $li){ ?>
+												<?php if($count<=2){ ?>
+												<label class="d-block mt-0 mb-0"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></label>
+												<?php } ?>
+											<?php $count++;} ?>
 											<label class="d-block mt-0 mb-0">
-											<a class="text-primary" data-toggle="modal" data-target="#centralModal">View All</a>
+											<a class="text-primary" data-toggle="modal" data-target="#centralModal<?php echo $cnt; ?>">View All</a>
 											</label>
+											<div class="modal fade" id="centralModal<?php echo $cnt; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+												<!-- Change class .modal-sm to change the size of the modal -->
+												<div class="modal-dialog" role="document" style="overflow-y: initial !important">
+
+
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <h4 class="modal-title w-100" id="myModalLabel"> Tests</h4>
+													  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													  </button>
+													</div>
+													<div class="modal-body list-style-view-more" style="height:400px;overflow-y: auto;">
+														<?php foreach($list['package_test_list'] as $li){ ?>
+														<div class="list-group">
+															<a href="#" class="list-group-item"><?php echo isset($li['test_name'])?$li['test_name']:''; ?></a>
+														</div>
+													  <?php } ?>
+													</div>
+												   
+												  </div>
+												</div>
+											  </div>
 											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
                                         </div>
                                     </div>
@@ -201,61 +252,7 @@
     <!--Section: Post-->
 </main>
 <!-- Central Modal Small -->
-<div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <!-- Change class .modal-sm to change the size of the modal -->
-    <div class="modal-dialog" role="document" style="overflow-y: initial !important">
-
-
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel"> Tests</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body list-style-view-more" style="height:400px;overflow-y: auto;">
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Second item</a>
-			</div>
-        </div>
-       
-      </div>
-    </div>
-  </div>
   <!-- Central Modal Small -->
 <!--Main layout-->
 <script>

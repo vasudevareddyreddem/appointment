@@ -124,7 +124,11 @@
 </main>
 <!--Main layout-->
 					 <div id="sucessmsg" style="display:none;"></div>
-
+					 <script>
+window.location.hash="";
+window.location.hash="";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="";}
+</script> 
 <script>
 jQuery.ajax({
    			url: "<?php echo base_url('diagnostic/get_cart_list');?>",
