@@ -266,7 +266,7 @@ class Diagnostic_model extends CI_Model
 	}
 	  /* order list purpose */
 	  public  function get_customer_order_list($a_id){
-		 $this->db2->select('lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion,test_packages.test_package_name,lab_patient_details.name as p_name,lab_patient_details.mobile,lab_patient_details.date,lab_patient_details.time,lab_order_items.lab_status')->from('lab_order_items');
+		$this->db2->select('lab_order_items.order_item_id,lab_orders.created_at,lab_orders.payment_type,lab_order_items.delivery_charge,lab_order_items.amount,lab_tests.test_name,lab_tests.test_duartion,test_packages.test_package_name,lab_patient_details.name as p_name,lab_patient_details.mobile,lab_patient_details.date,lab_patient_details.time,lab_order_items.lab_status,lab_order_items.status')->from('lab_order_items');
 		$this->db2->join('lab_orders', 'lab_orders.r_id = lab_order_items.order_id', 'left');
 		$this->db2->join('lab_tests', 'lab_tests.l_id = lab_order_items.test_id', 'left');
 		$this->db2->join('test_packages', 'test_packages.l_t_p_id = lab_order_items.package_id', 'left');
@@ -353,6 +353,42 @@ public  function get_cart_package_item_list($a_id){
 	 $this->db2->insert('order_package_test_list',$data);
 	return $this->db2->insert_id();
  }
+ 
+ /* order reports view purpose*/
+ public  function get_order_item_details($order_item_id){
+		$this->db2->select('lab_order_items.order_item_id,lab_order_items.package_id')->from('lab_order_items');
+		$this->db2->where('order_item_id',$order_item_id);
+		$return=$this->db2->get()->row_array();
+		//echo '<pre>';print_r($return);exit;
+		$data['order_item_id']=$return['order_item_id'];
+		if($return['package_id']==0){
+		$data=$this->get_test_order_test_details($return['order_item_id']);
+		}else{
+			$data=$this->get_test_order_test_details($return['order_item_id']);
+		}
 	
+		if(!empty($data)){
+			return $data;
+		}
+	}	
+	public  function get_test_order_test_details($order_item_id){
+		$this->db2->select('lab_tests.*,order_package_test_list.o_p_t_id,order_package_test_list.report_file,order_package_test_list.org_report_file')->from('order_package_test_list');
+		$this->db2->join('lab_tests', 'lab_tests.l_id = order_package_test_list.test_id', 'left');
+		$this->db2->where('order_item_id',$order_item_id);
+		return $this->db2->get()->result_array();
+	}
+ /* order reports view purpose*/
+	/* order status*/
+	public  function update_order_item_status($order_item_id,$data){
+		$this->db2->where('order_item_id',$order_item_id);
+		return $this->db2->update('lab_order_items',$data);
+	}
+	public  function order_item_details($order_item_id){
+		$this->db2->select('lab_patient_details.date,lab_patient_details.time,lab_patient_details.name,lab_patient_details.mobile')->from('lab_order_items');
+		$this->db2->join('lab_orders', 'lab_orders.r_id = lab_order_items.order_id', 'left');
+		$this->db2->join('lab_patient_details', 'lab_patient_details.l_t_a_id = lab_orders.patient_details_id', 'left');
+		$this->db2->where('order_item_id',$order_item_id);
+		return $this->db2->get()->row_array();
+	}
 
 }

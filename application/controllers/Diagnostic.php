@@ -62,7 +62,7 @@ class Diagnostic extends In_frontend {
 		{	
 			$post=$this->input->post();
 			$details['city_list']=$this->Diagnostic_model->get_diagnostic_city_list();
-			//echo '<pre>';print_r($post);
+			//echo '<pre>';print_r($post);exit;
 			if($post['city']!='' && $post['search_value']!=''){
 				$lab_list=$this->Diagnostic_model->get_loication_and_lab_wise_lab_list($post['city'],$post['search_value']);
 				$test_list=$this->Diagnostic_model->get_loication_and_lab_wise_testy_list($post['city'],$post['search_value']);
@@ -640,7 +640,6 @@ class Diagnostic extends In_frontend {
 		{
 			$log_details=$this->session->userdata('app_user');
 			$data['order_list']=$this->Diagnostic_model->get_customer_order_list($log_details['a_u_id']);
-			//g104
 			//echo '<pre>';print_r($data);exit;
 			$this->load->view('digonstic/order_list',$data);
 			$this->load->view('html/footer');
@@ -651,6 +650,74 @@ class Diagnostic extends In_frontend {
 		}
 		
 	}
+	public function orderreports(){
+		if($this->session->userdata('app_user'))
+			{
+			   $login_details=$this->session->userdata('app_user');
+					$order_item_id=base64_decode($this->uri->segment(3));
+					$data['order_item_id']=$order_item_id;
+					$data['order_list']=$this->Diagnostic_model->get_order_item_details($order_item_id);
+					echo '<pre>';print_r($data);exit;
+					$this->load->view('digonstic/upload_reports_file',$data);
+					$this->load->view('html/footer');
+			
+
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+	}
+	public  function orderstatus_cancel(){
+		if($this->session->userdata('app_user'))
+		{
+			$admindetails=$this->session->userdata('app_user');
+			
+			$post=$this->input->post();
+			//echo '<pre>';print_r($post);exit;
+					$order_item_id_id=base64_decode($post['order_item_id_id']);
+					if($order_item_id_id!=''){
+						$stusdetails=array(
+							'reason'=>isset($post['reason'])?$post['reason']:'',
+							'status'=>2,
+							'updated_at'=>date('Y-m-d H:i:s')
+							);
+							$statusdata= $this->Diagnostic_model->update_order_item_status($order_item_id_id,$stusdetails);
+							if(count($statusdata)>0){
+								
+								$details=$this->Diagnostic_model->order_item_details($order_item_id_id);
+								//echo '<pre>';print_r($details);exit;
+								$username=$this->config->item('smsusername');
+								$pass=$this->config->item('smspassword');
+								$sender=$this->config->item('sender');
+								$msg="Dear ".$details['name']." ,your lab tests order is cancelled . if you paid any amount it will automatically reflects to your bank in 5-7 working days. Any queries call 7997999108 ";
+								$ch2 = curl_init();
+								curl_setopt($ch2, CURLOPT_URL,"http://trans.smsfresh.co/api/sendmsg.php");
+								curl_setopt($ch2, CURLOPT_POST, 1);
+								curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender='.$sender.'&phone='.$details['mobile'].'&text='.$msg.'&priority=ndnd&stype=normal');
+								curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+								//echo '<pre>';print_r($ch2);exit;
+								$server_output = curl_exec ($ch2);
+								curl_close ($ch2);
+								//echo '<pre>';print_r($server_output);exit;
+								
+								$this->session->set_flashdata('success',"Order successfully calceled.");
+								redirect('diagnostic/orders');
+							}else{
+									$this->session->set_flashdata('error',"Technical problem will occurred. Please try again.");
+									redirect('diagnostic/orders');
+							}
+					
+					
+					}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('diagnostic/orders');
+					}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+	}
+	
 	
 	
 	

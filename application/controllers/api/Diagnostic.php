@@ -392,7 +392,7 @@ class Diagnostic extends REST_Controller {
 	}
 	public  function billing_address_post(){
 		$a_u_id=$this->post('a_u_id');
-		$mobile=$this->post('mobile');
+		//$mobile=$this->post('mobile');
 		$locality=$this->post('locality');
 		$address=$this->post('address');
 		$pincode=$this->post('pincode');
@@ -402,10 +402,10 @@ class Diagnostic extends REST_Controller {
 				$message = array('status'=>0,'message'=>'User Id is required');
 				$this->response($message, REST_Controller::HTTP_OK);
 			}
-			if($mobile==''){
+			/*if($mobile==''){
 			   $message = array('status'=>0,'message'=>'Mobile number Id is required');
 			   $this->response($message, REST_Controller::HTTP_OK);
-			}
+			}*/
 			if($locality==''){
 			   $message = array('status'=>0,'message'=>'Locality is required');
 			  $this->response($message, REST_Controller::HTTP_OK);
