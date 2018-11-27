@@ -101,6 +101,46 @@ class Appointment extends In_frontend {
 				echo json_encode($data);exit;
 			}
 	}
+	public function get_doctors_time_list(){
+		$post=$this->input->post();
+		//echo '<pre>';print_r($post);exit;
+		$doctor_list=$this->Appointment_model->get_doctors_time_list($post['d_id'],$post['h_id']);
+		
+		if(count($doctor_list)>0){
+			$time_list=array("12:00 am","12:30 am","01:00 am","01:30 am","02:00 am","02:30 am","03:00 am","03:30 am","04:00 am","04:30 am","05:00 am","05:30 am","06:00 am","06:30 am","07:00 am","07:30 am","08:00 am","08:30 am","09:00 am","09:30 am","10:00 am","10:30 am","11:00 am","11:30 am","12:00 pm","12:30 pm","01:00 pm","01:30 pm","02:00 pm","02:30 pm","03:00 pm","03:30 pm","04:00 pm","04:30 pm","05:00 pm","05:30 pm","06:00 pm","06:30 pm","07:00 pm","07:30 pm","08:00 pm","08:30 pm","09:00 pm","09:30 pm","10:00 pm","10:30 pm","11:00 pm","11:30 pm");
+			$start_date =$doctor_list['in_time'];
+			$end_date = $doctor_list['out_time'];
+			$interval = '30 mins';
+			$format = '12';
+			$startTime = strtotime($start_date); 
+			$endTime   = strtotime($end_date);
+			$returnTimeFormat = ($format == '12')?'h:i a':'G:i:s';
+
+			$current   = time(); 
+			$addTime   = strtotime('+'.$interval, $current); 
+			$diff      = $addTime - $current;
+
+			$times = array(); 
+			while ($startTime < $endTime) { 
+			$times[] = date($returnTimeFormat, $startTime); 
+			$startTime += $diff; 
+			} 
+			$times[] = date($returnTimeFormat, $startTime);
+			
+	
+		}
+	
+		//echo '<pre>';print_r($times);exit;
+			if(count($times) > 0)
+			{
+			 $data['msg']=1;
+			 $data['list']=$times;
+			 echo json_encode($data);exit;	
+			}else{
+				$data['msg']=2;
+				echo json_encode($data);exit;
+			}
+		}
 	
 	public  function post(){
 		if($this->session->userdata('app_user'))

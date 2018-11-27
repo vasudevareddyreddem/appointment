@@ -94,6 +94,15 @@ class Appointment_model extends CI_Model
 		
 	}
 	
+	/* doctor time  slot */
+	
+	public  function get_doctors_time_list($doc_id,$hos_id){
+		$this->db->select('in_time,out_time')->from('resource_list');		
+		$this->db->where('a_id',$doc_id);
+		$this->db->where('hos_id',$hos_id);
+        return $this->db->get()->row_array();
+	}
+	
 	
 	
 	

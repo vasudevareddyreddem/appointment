@@ -701,7 +701,7 @@ class Diagnostic extends In_frontend {
 								curl_close ($ch2);
 								//echo '<pre>';print_r($server_output);exit;
 								
-								$this->session->set_flashdata('success',"Order successfully calceled.");
+								$this->session->set_flashdata('success',"Order successfully cancelled");
 								redirect('diagnostic/orders');
 							}else{
 									$this->session->set_flashdata('error',"Technical problem will occurred. Please try again.");

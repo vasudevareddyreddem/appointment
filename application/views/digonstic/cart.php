@@ -45,7 +45,7 @@
                                                     <b>&#8377;</b><b class="mr-2"><?php echo isset($list['amount'])?$list['amount']:''; ?></b>
                                                     <small>
                                                         <del class="mr-2">&#8377;<?php echo isset($list['org_amount'])?$list['org_amount']:''; ?></del>
-                                                        <u class="text-success"><?php echo isset($list['percentage'])?$list['percentage']:''; ?> % Off</u>
+                                                        <u class="text-success"><?php echo number_format(floatval($list['percentage']), 0); ?> %off </u>
                                                     </small>
                                                 </p>
                                                 <a href="<?php echo base_url('diagnostic/removecartitem/'.base64_encode($list['c_id'])); ?>">Remove</a>
@@ -65,7 +65,7 @@
                                                     <b>&#8377;</b><b class="mr-2"><?php echo isset($list['amount'])?$list['amount']:''; ?></b>
                                                     <small>
                                                         <b class="mr-12">Sample pickup charges : <?php echo isset($list['delivery_charge'])?$list['delivery_charge']:''; ?></b>
-                                                        <b class="mr-12">Time : <?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></b>
+                                                        <b class="mr-12">Reports In : <?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></b>
                                                     </small>
                                                 </p>
                                                 <a href="<?php echo base_url('diagnostic/removecartitem/'.base64_encode($list['c_id'])); ?>">Remove</a>

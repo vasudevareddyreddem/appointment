@@ -529,7 +529,26 @@ class Diagnostic extends REST_Controller {
 					'created_by'=>$a_u_id,
 					);
 					
-					$this->Diagnosticapp_model->save_order_items($item_data);
+					$o_item_id=$this->Diagnosticapp_model->save_order_items($item_data);
+					if($list['type']==0){
+						$get_details=$this->Diagnosticapp_model->get_order_packages_test_lists($list['package_id']);
+						if(count($get_details)>0){
+							foreach($get_details as $li){
+							$d_add=array(
+							'order_item_id'=>isset($o_item_id)?$o_item_id:'',
+							'test_id'=>isset($li['test_id'])?$li['test_id']:'',
+							);
+							$this->Diagnosticapp_model->save_order_packages_item_ids($d_add);
+							}
+						}
+						
+					}else{
+						$ds_add=array(
+							'order_item_id'=>isset($o_item_id)?$o_item_id:'',
+							'test_id'=>isset($list['test_id'])?$list['test_id']:'',
+							);
+							$this->Diagnosticapp_model->save_order_packages_item_ids($ds_add);
+					}
 				}
 				/* saving  purpose*/
 				/* deleteing  purpose*/
@@ -592,6 +611,73 @@ class Diagnostic extends REST_Controller {
 			}
 		
 	}
+	public  function cancel_order_post(){
+		$a_u_id=$this->post('a_u_id');
+		$order_item_id=$this->post('order_item_id');
+		$reason=$this->post('reason');
+		if($a_u_id==''){
+				$message = array('status'=>0,'message'=>'User Id is required');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}if($order_item_id==''){
+				$message = array('status'=>0,'message'=>'Order Item Id is required');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}if($reason==''){
+				$message = array('status'=>0,'message'=>'Reason is required');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}
+		$stusdetails=array(
+			'reason'=>isset($reason)?$reason:'',
+			'status'=>2,
+			'updated_at'=>date('Y-m-d H:i:s')
+			);
+		$statusdata=$this->Diagnosticapp_model->update_order_item_status($order_item_id,$stusdetails);
+		if(count($statusdata)>0){
+				$details=$this->Diagnosticapp_model->order_item_details($order_item_id);
+				//echo '<pre>';print_r($details);exit;
+				$username=$this->config->item('smsusername');
+				$pass=$this->config->item('smspassword');
+				$sender=$this->config->item('sender');
+				$msg="Dear ".$details['name']." ,your lab tests order is cancelled . if you paid any amount it will automatically reflects to your bank in 5-7 working days. Any queries call 7997999108 ";
+				$ch2 = curl_init();
+				curl_setopt($ch2, CURLOPT_URL,"http://trans.smsfresh.co/api/sendmsg.php");
+				curl_setopt($ch2, CURLOPT_POST, 1);
+				curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender='.$sender.'&phone='.$details['mobile'].'&text='.$msg.'&priority=ndnd&stype=normal');
+				curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+				//echo '<pre>';print_r($ch2);exit;
+				$server_output = curl_exec ($ch2);
+				//echo '<pre>';print_r($server_output);exit;
+				curl_close ($ch2);
+			 $message = array('status'=>1,'order_item_id'=>$order_item_id,'message'=>'Order successfully calceled');
+			 $this->response($message, REST_Controller::HTTP_OK);
+		}else{
+				$message = array('status'=>0,'message'=>'Technical problem will occurred. Please try again once');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}
+
+	}
+	public  function download_reports_post(){
+		$a_u_id=$this->post('a_u_id');
+		$order_item_id=$this->post('order_item_id');
+		if($a_u_id==''){
+				$message = array('status'=>0,'message'=>'User Id is required');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}if($order_item_id==''){
+				$message = array('status'=>0,'message'=>'Order Item Id is required');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}
+		$reports_list=$this->Diagnosticapp_model->get_order_item_details($order_item_id);
+		//echo '<pre>';print_r($reports_list);exit;
+		if(count($reports_list)>0){
+			 $report_url=$this->config->item('reports_url');
+			 $message = array('status'=>1,'order_item_id'=>$order_item_id,'reports'=>$reports_list,'path'=>$report_url.'assets/reportfiles/','message'=>'Reports file are found');
+			 $this->response($message, REST_Controller::HTTP_OK);
+		}else{
+				$message = array('status'=>0,'message'=>'Reports file are  not found');
+				$this->response($message, REST_Controller::HTTP_OK);
+		}
+
+	}
+	
 	
 
 }

@@ -116,7 +116,7 @@
 												  </div>
 												</div>
 											  </div>
-											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
+											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> </p>
                                         </div>
                                     </div>
                                    
@@ -126,8 +126,8 @@
                                 <div class="card-footer bt-none mdb-color lighten-5 pb-2" style="border-top:none;">
 
                                     <div class="d-inline-block d-md-flex">
-                                        <label class="text-white font-weight-bold green lighten-1 p-1"><?php echo isset($list['percentage'])?$list['percentage']:''; ?> Off</label>
-                                        <label class="font-weight-bold p-1 ml-auto mr-auto">Rs.<?php echo isset($list['discount'])?$list['discount']:''; ?> <strike class="dark-grey-text font-weight-bold">Rs.<?php echo isset($list['amount'])?$list['amount']:''; ?></strike></label>
+                                        <label class="text-white font-weight-bold green lighten-1 p-1"><?php echo number_format(floatval($list['percentage']), 0); ?> %off </label>
+                                        <label class="font-weight-bold p-1 ml-auto mr-auto">Rs.<?php echo isset($list['amount'])?($list['amount']-$list['discount']):''; ?> <strike class="dark-grey-text font-weight-bold">Rs.<?php echo isset($list['amount'])?$list['amount']:''; ?></strike></label>
                                         <div class="pull-right mt-0">
                                             <a id="package_name" class="btn btn-outline-primary btn-sm mt-0 pl-2 pr-2 font-weight-bold" href="<?php echo base_url('diagnostic/addcart/'.base64_encode($list['l_t_p_id'])); ?>"  role="button">Book nOw</a>
                                         </div>
@@ -205,7 +205,7 @@
 												  </div>
 												</div>
 											  </div>
-											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?> Hrs</p>
+											<p>Reports In :<?php echo isset($list['reports_time'])?$list['reports_time']:''; ?></p>
                                         </div>
                                     </div>
                                    
@@ -215,8 +215,8 @@
                                 <div class="card-footer bt-none mdb-color lighten-5 pb-2" style="border-top:none;">
 
                                     <div class="d-inline-block d-md-flex">
-                                        <label class="text-white font-weight-bold green lighten-1 p-1"><?php echo isset($list['percentage'])?$list['percentage']:''; ?> Off</label>
-                                        <label class="font-weight-bold p-1 ml-auto mr-auto">Rs.<?php echo isset($list['discount'])?$list['discount']:''; ?> <strike class="dark-grey-text font-weight-bold">Rs.<?php echo isset($list['amount'])?$list['amount']:''; ?></strike></label>
+                                        <label class="text-white font-weight-bold green lighten-1 p-1"><?php echo number_format(floatval($list['percentage']), 0); ?> %off </label>
+                                        <label class="font-weight-bold p-1 ml-auto mr-auto">Rs.<?php echo isset($list['amount'])?($list['amount']-$list['discount']):''; ?> <strike class="dark-grey-text font-weight-bold">Rs.<?php echo isset($list['amount'])?$list['amount']:''; ?></strike></label>
                                         <div class="pull-right mt-0">
                                             <a id="package_name" class="btn btn-outline-primary btn-sm mt-0 pl-2 pr-2 font-weight-bold" href="<?php echo base_url('diagnostic/addcart/'.base64_encode($list['l_t_p_id'])); ?>"  role="button">Book nOw</a>
                                         </div>

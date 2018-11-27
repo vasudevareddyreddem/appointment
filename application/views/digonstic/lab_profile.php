@@ -90,7 +90,7 @@
 													<a id="" class="btn btn-outline-primary btn-sm ml-5" href="javascript:void(0);" onclick="addtocard('<?php echo $list['l_id']; ?>','<?php echo $list['lab_id']; ?>');" role="button">Book</a>
 												</div>
 												<div class="">
-													<p class="mb-0"><span></span>Time : <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></p>
+													<p class="mb-0"><span></span> Reports In : <small><?php echo isset($list['test_duartion'])?$list['test_duartion']:''; ?></small></p>
 												</div>
 											</div>
 										</div>
@@ -128,6 +128,36 @@
 window.location.hash="";
 window.location.hash="";//again because google chrome don't insert first hash into history
 window.onhashchange=function(){window.location.hash="";}
+
+if ("onhashchange" in window) {
+    //no alert
+    console.log("The browser supports the hashchange event!");
+}
+
+
+function locationHashChanged() {
+    if (location.hash === "#somecoolfeature") {
+        somecoolfeature();
+    }
+}
+
+window.onhashchange = locationHashChanged;
+
+
+
+// example
+
+// Using the location.hash property to change the anchor part
+function changeHash() {
+    location.hash = (Math.random() > 0.5) ? "666" : "777";
+}
+
+// Alert some text if there has been changes to the anchor part
+function HashHandler() {
+    console.log("The Hash has changed!");
+}
+
+window.addEventListener("hashchange", HashHandler, false);
 </script> 
 <script>
 jQuery.ajax({

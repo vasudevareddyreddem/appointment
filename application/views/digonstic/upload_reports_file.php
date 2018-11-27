@@ -41,7 +41,7 @@
 											<?php if($lis['report_file']!=''){
 											$report_url=$this->config->item('reports_url');
 											?>
-											<a target="_blank" href="<?php echo $report_url.'assets/reportfiles/'.$lis['report_file']; ?>">Downalod</a>
+											<a target="_blank" href="<?php echo $report_url.'assets/reportfiles/'.$lis['report_file']; ?>">Download</a>
 											<?php }  ?>
 											</td>
 											

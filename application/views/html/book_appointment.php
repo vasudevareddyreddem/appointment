@@ -47,11 +47,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select id="doctor_id" name="doctor_id" class="form-control">
+                                    <select id="doctor_id" name="doctor_id" onchange="get_time_slot(this.value);" class="form-control">
                                         <option value="">Select Doctor</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
+                                      
                                     </select>
                                 </div>
 
@@ -67,10 +65,7 @@
                                         <?php $time_list=array("12:00 am","12:30 am","01:00 am","01:30 am","02:00 am","02:30 am","03:00 am","03:30 am","04:00 am","04:30 am","05:00 am","05:30 am","06:00 am","06:30 am","07:00 am","07:30 am","08:00 am","08:30 am","09:00 am","09:30 am","10:00 am","10:30 am","11:00 am","11:30 am","12:00 pm","12:30 pm","01:00 pm","01:30 pm","02:00 pm","02:30 pm","03:00 pm","03:30 pm","04:00 pm","04:30 pm","05:00 pm","05:30 pm","06:00 pm","06:30 pm","07:00 pm","07:30 pm","08:00 pm","08:30 pm","09:00 pm","09:30 pm","10:00 pm","10:30 pm","11:00 pm","11:30 pm"); ?>
 										<select class="form-control" id="time" name="time">
 											<option value="">Select</option>
-											<?php foreach($time_list as $list){ ?>
-												<option value="<?php echo $list; ?>"><?php echo $list; ?></option>
-											<?php } ?>
-										
+											
 										</select>
                                     </div>
                                 </div>
@@ -88,9 +83,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="custom-control custom-checkbox text-warning">
-                                    <input type="checkbox" class="custom-control-input" id="">
-                                    <label class="custom-control-label" for="">Consultation Fee <span id="consultaion_fee"></span> before confirmation. Check once consultation fee </label>
+                                <div class="text-warning form-group row">
+                                    <input type="checkbox" class="col-md-1 form-control" id="terms_conditions" name="terms_conditions">
+                                    <label class="col-md-11 mt-2" for="">Consultation Fee <span id="consultaion_fee"></span> before confirmation. Check once consultation fee </label>
                                 </div>
 
                                 <div class="text-center mt-4">
@@ -144,6 +139,38 @@ function get_consultation_fee(h_id){
 						}
 					}
            });
+	}
+	
+}
+function get_time_slot(d_id){
+	if(d_id!=''){
+	jQuery.ajax({
+   			url: "<?php echo base_url('appointment/get_doctors_time_list');?>",
+   			data: {
+				d_id: d_id,
+				h_id: $('#hospital_id').val(),
+			},
+   			dataType: 'json',
+   			type: 'POST',
+   					success:function(data){
+						//console.log(data);return false;
+						if(data.msg=1){
+							$('#time').empty();
+							$('#time').append("<option>Select Time</option>");
+							for(i=0; i<data.list.length; i++) {
+								$('#time').append("<option value="+data.list[i]+">"+data.list[i]+"</option>");                      
+							 
+							}
+							
+						}else{
+							$('#time').empty();
+							$('#time').append("<option value=''>NO Time Slot</option>");
+						}
+					}
+           });
+	}else{
+		$('#time').empty();
+		$('#time').append("<option value=''>Select</option>");
 	}
 	
 }
@@ -299,6 +326,13 @@ $(document).ready(function() {
                validators: {
 					notEmpty: {
 						message: 'Age is required'
+					}
+				}
+            },
+			terms_conditions: {
+               validators: {
+					notEmpty: {
+						message: 'Checkbox is required'
 					}
 				}
             },
