@@ -58,7 +58,7 @@
 						<p><!--Facebook-->
 						<a target="_blank" href="https://www.facebook.com/Medspaceit-456795708151963/" type="button" class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"></i></a>
 						<!--Twitter-->
-						<a target="_blank" href="https://twitter.com/medspaceit" type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"></i></a>
+						<a target="_blank" href="https://twitter.com/medarogya" type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"></i></a>
 						<!--Google +-->
 						<a target="_blank" href="https://plus.google.com/u/0/113087361523023181095" type="button" class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"></i></a>
 						<!--Linkedin-->

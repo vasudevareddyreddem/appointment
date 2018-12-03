@@ -28,12 +28,12 @@ class Appointment extends In_frontend {
 	public function get_consultation_fee(){
 					$post=$this->input->post();
 					//echo '<pre>';print_r($post);exit;
-					$details=$this->Appointment_model->get_consultation_fee($post['h_id']);
+					$details=$this->Appointment_model->get_doctor_consultation_fee($post['a_id']);
 					//echo '<pre>';print_r($details);exit;
 						if(count($details) > 0)
 						{
 						$data['msg']=1;
-						$data['fee']=$details['appointment_fee'];
+						$data['fee']=$details['consultation_fee'];
 						echo json_encode($data);exit;	
 						}else{
 							$data['msg']=2;

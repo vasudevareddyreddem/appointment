@@ -31,6 +31,11 @@ class Appointment_model extends CI_Model
 		$this->db->where('hos_id',$hos_id) ;
 		return $this->db->get()->row_array();	
 	}
+	public  function get_doctor_consultation_fee($a_id){
+		$this->db->select('hos_id,a_id,consultation_fee')->from('resource_list');
+		$this->db->where('a_id',$a_id) ;
+		return $this->db->get()->row_array();	
+	}
 	public  function get_hospital_departments($h_id){
 		$this->db->select('treament.t_name,treament.t_id')->from('treament');
 		$this->db->join('hospital', 'hospital.hos_id = treament.hos_id', 'left');

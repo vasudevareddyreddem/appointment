@@ -647,7 +647,7 @@ class Diagnostic extends REST_Controller {
 				$server_output = curl_exec ($ch2);
 				//echo '<pre>';print_r($server_output);exit;
 				curl_close ($ch2);
-			 $message = array('status'=>1,'order_item_id'=>$order_item_id,'message'=>'Order successfully calceled');
+			 $message = array('status'=>1,'order_item_id'=>$order_item_id,'message'=>'Order successfully cancelled');
 			 $this->response($message, REST_Controller::HTTP_OK);
 		}else{
 				$message = array('status'=>0,'message'=>'Technical problem will occurred. Please try again once');

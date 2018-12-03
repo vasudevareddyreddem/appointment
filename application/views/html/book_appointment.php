@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select id="hospital_id" name="hospital_id" onchange="get_hospital_department(this.value);get_consultation_fee(this.value);" class="form-control">
+                                    <select id="hospital_id" name="hospital_id" onchange="get_hospital_department(this.value);" class="form-control">
                                         <option value="">Select Hospital</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select id="doctor_id" name="doctor_id" onchange="get_time_slot(this.value);" class="form-control">
+                                    <select id="doctor_id" name="doctor_id" onchange="get_time_slot(this.value);get_consultation_fee(this.value);" class="form-control">
                                         <option value="">Select Doctor</option>
                                       
                                     </select>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="text-warning form-group row">
                                     <input type="checkbox" class="col-md-1 form-control" id="terms_conditions" name="terms_conditions">
-                                    <label class="col-md-11 mt-2" for="">Consultation Fee <span id="consultaion_fee"></span> before confirmation. Check once consultation fee </label>
+                                    <label class="col-md-11 mt-2" for="">Doctor consultation fee is <span id="consultaion_fee"></span> check once, consultation fee before confirmation </label>
                                 </div>
 
                                 <div class="text-center mt-4">
@@ -121,12 +121,12 @@ function checkDate() {
     alert("Date must be in the future");return false;
    }
  }
-function get_consultation_fee(h_id){
-	if(h_id!=''){
+function get_consultation_fee(a_id){
+	if(a_id!=''){
 		jQuery.ajax({
    			url: "<?php echo base_url('appointment/get_consultation_fee');?>",
    			data: {
-				h_id: h_id,
+				a_id: a_id,
 			},
    			dataType: 'json',
    			type: 'POST',

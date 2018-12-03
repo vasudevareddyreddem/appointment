@@ -96,10 +96,10 @@ $db['default'] = array(
 );
 $db['another'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'mlab',
+	'hostname' => '43.255.154.55',
+	'username' => 'mlab_staging_db',
+	'password' => 'mlab_staging_db',
+	'database' => 'mlab_staging_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
