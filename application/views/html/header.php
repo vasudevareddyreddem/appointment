@@ -39,12 +39,12 @@ header('Expires: 0'); // Proxies.
 
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect" href="<?php echo base_url(''); ?>">
-                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="100px">
+                    <img src="<?php echo base_url(); ?>assets/vendor/img/logo1.png" alt="medspace" height="auto" width="85px">
                 </a>
 
                 <!-- Collapse -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span><i class="fa fa-bars fa-2x black-text"></i></span>
                 </button>
 
                 <!-- Links -->
