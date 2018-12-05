@@ -10,7 +10,7 @@ header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
 ?>
-    <title>MedArogya</title>
+ 
     <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/vendor/img/logo1.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

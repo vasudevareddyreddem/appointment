@@ -29,7 +29,7 @@
                         <div class="content-bg col-lg-4 col-md-6 col-sm-12 col-xs-12 ml-auto mt-5 mb-5 p-5" style="">
 
                             <h2 class="pt-1 h1">
-                                <strong>Med<span>Arogya</span></strong>
+                                <strong>Med<span> Arogya</span></strong>
                             </h2>
                             <h6 class="mb-4" style="">
                                 Booking online doctor appointment is made simple with Med Arogya
