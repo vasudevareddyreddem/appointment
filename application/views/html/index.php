@@ -1,3 +1,8 @@
+<head>
+ <title>Online doctor appointment in Tirupati - Med Arogya</title>
+    <meta name="description" content="Med Arogya has developed the best software to book online doctor appointment in Tirupati. It also facilitates online booking for lab tests and pharmacy." />
+    <meta name="keywords" content="online doctor appointment in tirupati, doctor appointment in tirupati, book doctor appointment in tirupati, " />
+</head>
 <style>
 .carousel-item > div {
   float: left;
@@ -20,10 +25,10 @@
         <div class="text-white text-center mx-4 py-4 ">
 
             <h1 class="mt-5 pt-1 h1">
-                <strong>MedArogya</strong>
+                <strong>Med Arogya</strong>
             </h1>
             <h4 class="h4 py-4">
-                Now , doctor booking and ordering medicine is made simple with MedArogya
+                Booking online doctor appointment is made simple with Med Arogya
             </h4>
             <!--Card: Jumbotron-->
             <div class="row">
@@ -186,9 +191,9 @@
                 <div class="col-md-8">
                     <p class="h3"> About Us </p>
 
-                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to go physically to the hospital to book a doctor appointment, but now through the expeditious expansion in software one can book the doctor’s appointment through mobile app or on website, all you need is a smart phone with an internet connection.</p>
+                    <p>The evolution of technology has made the communication process much easier for humans. In the past decade one has to present  physically at the hospital to book a doctor appointment but now through the expeditious expansion in software, one can book online doctor appointment through our mobile app/website, all you need is a smart phone with an internet connection.</p>
 
-                    <p>We at MedArogya has developed a software to book online doctor appointment. This is very helpful to medical care seekers as they can book doctor/hospital/laboratory appointment online anytime and from anywhere. We offer 10% discount through health cards issued by MedArogya.</p>
+                    <p>We at Med Arogya has developed the best software to book online doctor appointment in Tirupati and surronding areas. This is very helpful for medical care seekers, as they can book online doctor/hospital/laboratory appointment at anytime and anywhere. We offer 10% - 50% discount through health cards issued by Med Arogya.</p>
 
                     <p>It helps people to find online medical services like choosing the right hospital, booking doctor appointment, booking diagnostic center appointment, storing medical records, purchasing online medicines etc.</p>
 
