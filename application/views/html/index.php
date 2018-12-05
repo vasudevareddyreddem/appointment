@@ -121,6 +121,7 @@
         </div>
     </section>
     
+<!--
     <section class="mt-5 pt-3 pb-3">
         <style type="text/css" id="slider-css"></style>
         <div class="container">
@@ -200,6 +201,7 @@
             </div>
         </div>
     </section>
+-->
 
     <section class="mt-5">
         <div class="container">
