@@ -18,89 +18,108 @@
 <!--Main layout-->
 <main class="">
 
-    <!--Section: Jumbotron-->
-    <section style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/homebac1.png); background-size: cover;">
+   <!--Section: Jumbotron-->
+    <section class="banner-content" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/ban2.jpg); background-size: cover;">
+        <div class="banner-mask">
+            <!-- Content -->
+            <div class="container">
+                <div class="text-white text-left mx-4 py-5">
+                <!--Card: Jumbotron-->
+                    <div class="row mb-5 pb-4">
+                        <div class="content-bg col-lg-4 col-md-6 col-sm-12 col-xs-12 ml-auto mt-5 mb-5 p-5" style="">
 
-        <!-- Content -->
-        <div class="text-white text-center mx-4 py-4 ">
+                            <h2 class="pt-1 h1">
+                                <strong>Med<span>Arogya</span></strong>
+                            </h2>
+                            <h6 class="mb-4" style="">
+                                Booking online doctor appointment is made simple with Med Arogya
+                            </h6>
+                            <!-- Content -->
+                            <div class="text-center">
+                                <form action="<?php echo base_url('users/search'); ?>" method="post" class="search-form">
 
-            <h1 class="mt-5 pt-1 h1">
-                <strong>Med Arogya</strong>
-            </h1>
-            <h4 class="h4 py-4">
-                Booking online doctor appointment is made simple with Med Arogya
-            </h4>
-            <!--Card: Jumbotron-->
-            <div class="row">
-                <div class="col-md-7 col-sm-12 col-xs-12 mx-auto">
-                    <div class="card mb-4  wow fadeIn">
-
-                        <!-- Content -->
-                        <div class="card-body text-center">
-                            <form action="<?php echo base_url('users/search'); ?>" method="post">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group mb-0">
-                                            <select class="form-control" name="city" id="city" required>
-                                                <option value="">Select city</option>
-                                                <?php if(isset($city_list) && count($city_list)>0){ ?>
-                                                <?php foreach($city_list as $li){ ?>
-                                                <option value="<?php echo $li['hos_bas_city']; ?>">
-                                                    <?php echo $li['hos_bas_city']; ?>
-                                                </option>
-                                                <?php } ?>
-                                                <?php } ?>
-
-                                            </select>
-                                        </div>
+                                    <div class="form-group mb-3">
+                                        <select class="form-control" name="city" id="city" required>
+                                            <option value="">Select city</option>
+                                            <?php if(isset($city_list) && count($city_list)>0){ ?>
+                                            <?php foreach($city_list as $li){ ?>
+                                            <option value="<?php echo $li['hos_bas_city']; ?>">
+                                                <?php echo $li['hos_bas_city']; ?>
+                                            </option>
+                                            <?php } ?>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group mb-0">
-                                            <input type="text" name="search_value" id="search_value" placeholder="Search hospitals / departments" class="form-control">
-                                        </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" name="search_value" id="search_value" placeholder="Search hospitals / departments" class="form-control">
                                     </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <button type="submit" class="btn btn-outline-dark btn-md mt-0">Search</button>
-                                    </div>
-                                </div>
+                                    <button type="submit" class="btn btn-block btn-md">Search</button>
 
-                            </form>
+                                </form>
+                            </div>
+                            <!-- Content -->
+
                         </div>
-
-                        <!-- Content -->
                     </div>
+
+                <!--<div class="row">
+                    <div class="col-md-6 mx-auto mt-3 mb-5">
+                        <div class="row count-home-banner">
+                            <div class="col-md-4 ">
+                                <h1 class="">
+                                    <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?>
+                                </h1>
+                                <h6 class="font-weight-bold">Hospitals</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <h1 class="">
+                                    <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?>
+                                </h1>
+                                <h6 class="font-weight-bold">Departments</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <h1 class="">
+                                    <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?>
+                                </h1>
+                                <h6 class="font-weight-bold">Doctors</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
                 </div>
             </div>
+            <!-- Content -->
+        </div>
+    </section>
+    <!--Section: Jumbotron-->
+    
+    <section class="hdd_counts">
+        <div class="container">
             <div class="row">
-                <!--Card: Jumbotron-->
-                <div class="col-md-6 mx-auto mt-3 mb-5">
-                    <div class="row count-home-banner">
-                        <div class="col-md-4 ">
-                            <h1 class="">
-                                <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?>
-                            </h1>
-                            <h6 class="font-weight-bold">Hospitals</h6>
-                        </div>
-                        <div class="col-md-4">
-                            <h1 class="">
-                                <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?>
-                            </h1>
-                            <h6 class="font-weight-bold">Departments</h6>
-                        </div>
-                        <div class="col-md-4">
-                            <h1 class="">
-                                <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?>
-                            </h1>
-                            <h6 class="font-weight-bold">Doctors</h6>
-                        </div>
-                    </div>
-
+                <div class="col-md-4 text-center white-text h_count p-4">
+                    <i class="fa fa-hospital-o fa-3x"></i>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Hospitals</h5>
+                    <p class="mb-0">
+                        <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?>
+                    </p>
+                </div>
+                <div class="col-md-4 text-center white-text d_count p-4">
+                    <i class="fa fa-user-md fa-3x"></i>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Doctors</h5>
+                    <p class="mb-0">
+                        <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?>
+                    </p>
+                </div>
+                <div class="col-md-4 text-center white-text dep_count p-4">
+                    <i class="fa fa-building fa-3x"></i>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Departments</h5>
+                    <p class="mb-0">
+                        <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?>
+                    </p>
                 </div>
             </div>
         </div>
-        <!-- Content -->
     </section>
-    <!--Section: Jumbotron-->
     
     <section class="mt-5 pt-3 pb-3">
         <style type="text/css" id="slider-css"></style>

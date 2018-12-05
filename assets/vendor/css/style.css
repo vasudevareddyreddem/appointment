@@ -1140,3 +1140,16 @@ footer .list-style-modes{
     letter-spacing: 1px;
     padding: 9px 25px;
 }
+
+.banner-content .search-form .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff;
+    opacity: 0.6; /* Firefox */
+}
+
+.banner-content .search-form .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ffffff;
+}
+
+.banner-content .search-form .form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ffffff;
+}
