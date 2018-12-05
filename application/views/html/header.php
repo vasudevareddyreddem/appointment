@@ -24,10 +24,9 @@ header('Expires: 0'); // Proxies.
 
     <!-- Your custom styles (optional) -->
     <link href="<?php echo base_url(); ?>assets/vendor/css/style.css" rel="stylesheet">
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/vendor/js/jquery-3.3.1.min.js"></script>
-
-</head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/vendor/js/jquery-3.3.1.min.js"></script> 
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114861070-4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,6 +35,9 @@ header('Expires: 0'); // Proxies.
 
   gtag('config', 'UA-114861070-4');
 </script>
+
+</head>
+
 
 
 <body class="grey lighten-5">
