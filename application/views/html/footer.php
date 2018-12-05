@@ -81,7 +81,9 @@
                 <h6 class="font-weight-bold text-uppercase pt-3 mb-3">Get Mobile App</h6>
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <img src="<?php echo base_url(); ?>assets/vendor/img/play-store-windows.png" alt="medspace" height="auto" width="100px">
+                        <a href="https://play.google.com/store/apps/details?id=com.medarogya.appointment&hl=en">
+                            <img src="<?php echo base_url(); ?>assets/vendor/img/play-store-windows.png" alt="medspace" height="auto" width="100px">
+                        </a>
                     </li>
                 </ul>
             </div>
