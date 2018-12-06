@@ -23,6 +23,7 @@ class Users extends In_frontend {
 			$data['hospital_list']=$this->Users_model->get_hospital_count_list();
 			$data['doctors_list']=$this->Users_model->get_hospital_doctors_list();
 			$data['clicnic_list']=$this->Users_model->get_clicnic_list_list();
+			$data['logos_list']=$this->Users_model->get_all_logos_list();
 			//echo '<pre>';print_r($data);exit;
 			$this->load->view('html/index',$data);
 			$this->load->view('html/footer');

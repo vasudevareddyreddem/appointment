@@ -120,74 +120,32 @@
             </div>
         </div>
     </section>
-    
-<!--
+    <?php //echo '<pre>';print_r($logos_list);exit;?>
+<?php if(isset($logos_list) && count($logos_list)>0){ ?>
     <section class="mt-5 pt-3 pb-3">
         <style type="text/css" id="slider-css"></style>
         <div class="container">
             <div class="row">
                 <div id="slider-1" class="carousel carousel-by-item slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
+					<?php $cnt=1;
+					$url=$this->config->item('logos_url');
+						foreach($logos_list as $list){?>
+					<?php if($cnt==1){ ?>
                         <div class="carousel-item active">
                             <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/03658c/dddddd&text=Item+1" alt="First slide">
+                                <img class="d-block img-fluid" src="<?php echo $url.'assets/logo_images/'.$list['image']; ?>" alt="<?php echo $list['org_name']; ?>">
                             </div>
                         </div>
-                        <div class="carousel-item">
+					<?php }else{ ?>
+						<div class="carousel-item">
                             <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/0e7373/dddddd&text=Item+2" alt="Seecond slide">
+                                <img class="d-block img-fluid" src="<?php echo $url.'assets/logo_images/'.$list['image']; ?>" alt="<?php echo $list['org_name']; ?>">
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/265902/dddddd&text=Item+3" alt="Third slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/592512/dddddd&text=Item+4" alt="Fourth slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/d93d04/dddddd&text=Item+5" alt="Five slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/bf1a0b/dddddd&text=Item+6" alt="Six slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/03658c/dddddd&text=Item+7" alt="Seven slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/0e7373/dddddd&text=Item+8" alt="Eight slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/265902/dddddd&text=Item+9" alt="Ninth slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/592512/dddddd&text=Item+10" alt="Tenth slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/d93d04/dddddd&text=Item+11" alt="Eleventh slide">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-                                <img class="d-block img-fluid" src="https://dummyimage.com/1200x800/bf1a0b/dddddd&text=Item+12" alt="Twelveth slide">
-                            </div>
-                        </div>
+					<?php } ?>
+					<?php $cnt++;} ?>
+                        
                     </div>
                     <a class="carousel-control-prev" href="#slider-1" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -201,7 +159,8 @@
             </div>
         </div>
     </section>
--->
+<?php } ?>
+
 
     <section class="mt-5">
         <div class="container">

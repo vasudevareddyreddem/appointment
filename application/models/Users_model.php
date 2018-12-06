@@ -136,6 +136,13 @@ class Users_model extends CI_Model
 		$this->db->where('resource_list.role_id',6);
 		return $this->db->get()->row_array();
 	}
+	/* admin logos list purpoe */
+	public  function get_all_logos_list(){
+		$this->db->select('image,org_name')->from('logos_list');
+		$this->db->where('status',1);
+		return $this->db->get()->result_array(); 
+	}
+
 		
 		
 	

@@ -32,6 +32,7 @@ $config['smsusername']="pracha";
 $config['smspassword']="123456";
 $config['sender']="MEDSIT";
 $config['reports_url']="http://localhost/mlab/";
+$config['logos_url']="http://localhost/hospital/";
 
 /*
 |--------------------------------------------------------------------------
