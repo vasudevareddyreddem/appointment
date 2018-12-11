@@ -92,9 +92,9 @@
                                                     <td>24-11-2018</td>
                                                     <td>Free</td>
                                                     <td>
-                                                        <button class="btn btn-default btn-sm">Generate</button>
+                                                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Generate</button>
                                                         <br>
-                                                        <button class="btn btn-secondary btn-sm">View</button>
+                                                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalCoupon">View</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -171,11 +171,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mx-auto">
-                                            <form id="" name="" action="" method="post">
+                                            <form id="lab_form" name="ip_form" action="" method="post">
 
                                                 <div class="form-group">
                                                     <label>Select City</label>
-                                                    <select id="" class="form-control" name="" onchange="" >
+                                                    <select id="" class="form-control" name="labf_city" onchange="" >
                                                         <option selected disabled>Select</option>
                                                         <option value="">Option 1</option>
                                                         <option value="">Option 2</option>
@@ -187,7 +187,7 @@
                                                 
                                                 <div class="form-group">
                                                     <label>Hospital Name</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="labf_hname">
                                                 </div>
 
                                                 <div class="text-center mt-4">
@@ -263,6 +263,51 @@
 <!--Main layout-->
 
 
+<!--coupon code-->
+<div class="modal fade" id="modalCoupon" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-frame modal-top modal-notify modal-success" role="document" style="max-width: 100%;">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body">
+                <div class="row d-flex justify-content-center align-items-center">
+
+                    <h2>
+                        <span class="badge">SD34op5656</span>
+                    </h2>
+                    <p class="pt-3 mx-4">Copy the code and use it at the checkout to get the discount. It's valid for
+                        <strong><u>two hours only</u></strong>.
+                    </p>
+                    
+                    <a type="button" class="btn btn-outline-success waves-effect btn-md" data-dismiss="modal">Ok, thanks</a>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--coupon code-->
+
+
+<!--generate modal-->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body text-center mt-4">
+                <b>Your Coupon code is successfully generated.</b>
+            </div>
+            <div class="text-center mb-4">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Ok</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--generate modal-->
+
+
 <script>
     $(document).ready(function() {
         $('.dtBasicExample').DataTable();
@@ -302,6 +347,31 @@ $(document).ready(function() {
             $('#ip-coupon').show();
         });
     });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#lab_form').bootstrapValidator({
+        
+        fields: {
+             labf_city: {
+                validators: {
+					notEmpty: {
+						message: 'Old Password is required'
+					}
+				}
+            },
+            labf_hname: {
+                validators: {
+					notEmpty: {
+						message: 'Old Password is required'
+					}
+				}
+            }
+         }
+    })
+     
+});
 </script>
 
 <script>

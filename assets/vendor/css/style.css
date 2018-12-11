@@ -1193,12 +1193,8 @@ footer .list-style-modes{
     border-top-right-radius: 0rem;
 }
 
-.mw-content ul li{
-    margin-right: 40px !important;
-}
-
-.mw-content ul li:last-child{
-    margin-right: 0px !important;
+.list-inline-item:not(:last-child) {
+    margin-right: 1.5rem;
 }
 
 @media (min-width : 768px){
@@ -1211,7 +1207,7 @@ footer .list-style-modes{
     .sm-hide{
         display: none;
     }
-    .mw-content li{
+    .mw-content ul li{
         margin-right: 0px !important;
     }
 }

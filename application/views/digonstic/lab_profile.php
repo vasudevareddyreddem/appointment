@@ -1,5 +1,5 @@
 <!--Main layout-->
-<main class="pt-3">
+<main class="pt-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
 
     <!--Section: Post-->
     <section class="mt-5">
