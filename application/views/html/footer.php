@@ -62,7 +62,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item">
                         <!--Facebook-->
-                        <a target="_blank" href="https://www.facebook.com/Medspaceit-456795708151963/" type="button" class="btn-floating btn-sm btn-fb m-0"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://business.facebook.com/Medarogya/?modal=admin_todo_tour&business_id=2207536092837258" type="button" class="btn-floating btn-sm btn-fb m-0"><i class="fa fa-facebook"></i></a>
                     </li>
                     <li class="list-inline-item">
                         <!--Twitter-->
