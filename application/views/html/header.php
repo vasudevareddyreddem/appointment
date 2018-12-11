@@ -102,6 +102,7 @@ header('Expires: 0'); // Proxies.
                                 <a class="dropdown-item" href="<?php echo base_url('appointment/lists'); ?>">Appointments List</a>
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/cart'); ?>">Lab Cart</a>
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/orders'); ?>">My Diagnostic Orders</a>
+                                <a class="dropdown-item" href="<?php echo base_url('wallet'); ?>">My Wallet</a>
                                 <a class="dropdown-item" href="<?php echo base_url('profile/changepassword'); ?>">Change Password</a>
                                 <a class="dropdown-item" href="<?php echo base_url('dashboard/logout'); ?>">Sign Out</a>
                             </div>

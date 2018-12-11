@@ -1,7 +1,7 @@
-<main class="pt-3">
+<main class="pt-3" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
 
     <!--Section: Post-->
-    <section class="mt-5">
+    <section class="mt-5 mb-4">
         <div class="container">
             <!--Grid row-->
             <div class="row">
@@ -36,7 +36,7 @@
 									  <!-- Third Step -->
 									  <li class="">
 										<a href="#!">
-										  <span class="circle">3</i></span>
+										  <span class="circle">3</span>
 										  <span class="label">Payment Process</span>
 										</a>
 									  </li>

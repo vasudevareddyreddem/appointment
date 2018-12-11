@@ -73,7 +73,7 @@ main {
     padding: 10px;
     left: 50%;
     z-index: 1200;
-    -nimation: signup-response 0.5s 1;
+    -animation: signup-response 0.5s 1;
     -webkit-animation: signup-response 0.5s 1;
     animation-fill-mode: forwards;
 
@@ -81,7 +81,7 @@ main {
     -webkit-animation-delay: 5s;
     /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
-    webkit-box-shadow: -2px 6px 39px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -2px 6px 39px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -2px 6px 39px -8px rgba(0, 0, 0, 0.75);
     box-shadow: -2px 6px 39px -8px rgba(0, 0, 0, 0.75);
 
@@ -1152,4 +1152,66 @@ footer .list-style-modes{
 
 .banner-content .search-form .form-control::-ms-input-placeholder { /* Microsoft Edge */
     color: #ffffff;
+}
+
+
+/*-- My Wallet --*/
+
+.md-hide{
+    display: block;
+}
+
+.sm-hide{
+    display: block;
+}
+
+.navbar .dropdown-menu a {
+    padding: 5px 10px;
+}
+
+.my-wallet .card-header{
+    padding: 0px;
+}
+
+.mw-list li{
+    width: 25%;
+    text-align: center;
+}
+
+.mw-list .nav-tabs .nav-link.active{
+    color: #ffffff;
+    background-color: #2993ff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.mw-list .nav-tabs .nav-link {
+    color: #ffffff;
+    background-color: #596e89;
+    padding: 12px 0px;
+    border: 0px solid transparent; 
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+}
+
+.mw-content ul li{
+    margin-right: 40px !important;
+}
+
+.mw-content ul li:last-child{
+    margin-right: 0px !important;
+}
+
+@media (min-width : 768px){
+    .md-hide{
+        display: none;
+    }
+}
+
+@media (max-width : 768px){
+    .sm-hide{
+        display: none;
+    }
+    .mw-content li{
+        margin-right: 0px !important;
+    }
 }

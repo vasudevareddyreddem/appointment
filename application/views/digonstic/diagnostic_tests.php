@@ -1,6 +1,6 @@
 
 <!--Main layout-->
-<main class="">
+<main class="" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
     <section class="py-4">
         <div class="container">
             <div class="row">
@@ -58,7 +58,7 @@
 					<?php if(isset($packages_list) && count($packages_list)>0){ ?>
 					<?php $cnt=1;foreach($packages_list as $list){ ?>
 					<?php if($cnt<=3){ ?>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
 
                             <!-- Card -->
                             <div class="card">
@@ -147,7 +147,7 @@
 					<div class="row">
                        <?php $cnt=1;foreach($packages_list as $list){ ?>
 					  <?php if($cnt>3){ ?>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
 
                             <!-- Card -->
                             <div class="card">

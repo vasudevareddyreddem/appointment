@@ -1,5 +1,5 @@
 <!--Main layout-->
-<main class="pt-3" style="background-image: url(http://localhost/appointment/assets/vendor/img/bac-icons.png);">
+<main class="pt-5" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
     <div class="container">
 
         <!--Section: Post-->
