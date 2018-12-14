@@ -2,4 +2,4 @@ User-agent: Googlebot
 Disallow: /local/
 Allow: /
 
-Sitemap: http://prachaedu.com/sitemap.xml
+Sitemap: https://medarogya.com/sitemap.xml
