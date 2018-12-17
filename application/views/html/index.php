@@ -16,17 +16,60 @@
 </style>
 
 <!--Main layout-->
-<main class="">
+<main class="" style="margin-top:80px;">
 
    <!--Section: Jumbotron-->
-    <section class="banner-content" style="background-image: url(<?php echo base_url(); ?>assets/vendor/img/ban2.jpg); background-size: cover;">
-        <div class="banner-mask">
-            <!-- Content -->
-            <div class="container">
-                <div class="text-white text-left mx-4 py-5">
+   <!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+ <ol class="carousel-indicators">
+    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="2"></li> 
+	<li data-target="#carousel-example-1z" data-slide-to="3"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <!--First slide-->
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-1.png" alt="First slide">
+    </div>
+    <!--/First slide-->
+    <!--Second slide-->
+    <div class="carousel-item">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-2.png" alt="Second slide">
+    </div>
+    <!--/Second slide-->
+    <!--Third slide-->
+    <div class="carousel-item">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-3.png" alt="Third slide">
+    </div>
+    <!--/Third slide-->  
+	<!--Third slide-->
+    <div class="carousel-item">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-4.png" alt="Third slide">
+    </div>
+    <!--/Third slide-->
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+ <div class="container" >
+ <div class="posi_ab_form " style="">
+                <div class="text-white text-left mx-4 ">
                 <!--Card: Jumbotron-->
                     <div class="row mb-5 pb-4">
-                        <div class="content-bg col-lg-4 col-md-6 col-sm-12 col-xs-12 ml-auto mt-5 mb-5 p-5" style="">
+                        <div class="content-bg ml-auto mt-5 mb-5 p-5" style="width:340px">
 
                             <h2 class="pt-1 h1">
                                 <strong>Med<span> Arogya</span></strong>
@@ -53,7 +96,7 @@
                                     <div class="form-group mb-3">
                                         <input type="text" name="search_value" id="search_value" placeholder="Search hospitals / departments" class="form-control">
                                     </div>
-                                    <button type="submit" class="btn btn-block btn-md">Search</button>
+                                    <button type="submit" class="btn btn-success btn-block btn-md">Search</button>
 
                                 </form>
                             </div>
@@ -61,61 +104,28 @@
 
                         </div>
                     </div>
-
-                <!--<div class="row">
-                    <div class="col-md-6 mx-auto mt-3 mb-5">
-                        <div class="row count-home-banner">
-                            <div class="col-md-4 ">
-                                <h1 class="">
-                                    <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?>
-                                </h1>
-                                <h6 class="font-weight-bold">Hospitals</h6>
-                            </div>
-                            <div class="col-md-4">
-                                <h1 class="">
-                                    <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?>
-                                </h1>
-                                <h6 class="font-weight-bold">Departments</h6>
-                            </div>
-                            <div class="col-md-4">
-                                <h1 class="">
-                                    <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?>
-                                </h1>
-                                <h6 class="font-weight-bold">Doctors</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
                 </div>
             </div>
-            <!-- Content -->
-        </div>
-    </section>
-    <!--Section: Jumbotron-->
+            </div>
+
     
-    <section class="hdd_counts">
+    <section class="hdd_counts py-2" style="background: url(<?php echo base_url(); ?>assets/vendor/img/bac-icons.png);">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 text-center white-text h_count p-4">
                     <i class="fa fa-hospital-o fa-3x"></i>
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Hospitals</h5>
-                    <p class="mb-0">
-                        <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?>
-                    </p>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Hospitals - <span> <?php echo isset($hospital_list['cnt'])?$hospital_list['cnt']:''; ?></span></h5>
+                   
                 </div>
                 <div class="col-md-4 text-center white-text d_count p-4">
                     <i class="fa fa-user-md fa-3x"></i>
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Doctors</h5>
-                    <p class="mb-0">
-                        <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?>
-                    </p>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Doctors - <span> <?php echo isset($doctors_list['cnt'])?$doctors_list['cnt']:''; ?></span></h5>
+                  
                 </div>
                 <div class="col-md-4 text-center white-text dep_count p-4">
                     <i class="fa fa-building fa-3x"></i>
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Departments</h5>
-                    <p class="mb-0">
-                        <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?>
-                    </p>
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Departments - <span>   <?php echo isset($clicnic_list['cnt'])?$clicnic_list['cnt']:''; ?></span></h5>
+                   
                 </div>
             </div>
         </div>
@@ -126,6 +136,7 @@
         <style type="text/css" id="slider-css"></style>
         <div class="container">
             <div class="row">
+			 <p class="h3"> Our Associate Hospitals </p>
                 <div id="slider-1" class="carousel carousel-by-item slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
 					<?php $cnt=1;

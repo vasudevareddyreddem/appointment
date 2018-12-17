@@ -6245,7 +6245,7 @@ a.waves-light {
 }
 
 .btn-success {
-	background-color: #00c851!important;
+	background-color: #4cb235!important;
 	color: #fff!important
 }
 
@@ -9690,11 +9690,18 @@ body.scrollable {
 }
 
 .carousel .carousel-control-prev-icon {
-	background-image: url(../img/svg/arrow_left.svg)
+	background-image: url(../img/svg/arrow_left.svg);
+	    width: 50px;
+    height: 50px;
+    z-index: 2000;
+   
 }
 
 .carousel .carousel-control-next-icon {
-	background-image: url(../img/svg/arrow_right.svg)
+	background-image: url(../img/svg/arrow_right.svg);
+	    width: 50px;
+    height: 50px;
+    z-index: 2000;
 }
 
 .carousel .carousel-indicators li {

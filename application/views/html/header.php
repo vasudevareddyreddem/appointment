@@ -76,9 +76,9 @@ header('Expires: 0'); // Proxies.
                             <a class="nav-link waves-effect" href="<?php echo base_url('diagnostic'); ?>">Diagnostic Tests</a>
                         </li>
                        
-						<!--<li class="nav-item">
-                            <a class="nav-link waves-effect" href="order_medicine.php">Order Medicine</a>
-                        </li>-->
+						<li class="nav-item">
+                            <a class="nav-link waves-effect" href="<?php echo base_url('healthcard'); ?>">Health Card</a>
+                        </li>
                     </ul>
 
                     <!-- Right -->

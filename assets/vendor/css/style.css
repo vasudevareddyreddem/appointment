@@ -3,7 +3,13 @@ p {
     font-weight: 400;
     letter-spacing: 0.2px;
 }
-
+.posi_ab_form{
+	position:absolute;
+	top:7.5%;
+	right:2%;
+	padding:0px;
+	z-index:100;
+}
 .site-blue-color {
     background: #003f7f;
     color: #fff;
@@ -108,6 +114,16 @@ main {
 }
 
 @media (max-width:767.98px) {
+	.posi_ab_form{
+	position:relative;
+	
+}	
+.posi_ab_form .mt-5 {
+	margin-top:0px !important;
+}
+.posi_ab_form .pb-4 {
+	padding-bottom:0px !important;
+}
     .mx-4 {
         margin: 20px !important;
     }
@@ -1075,21 +1091,20 @@ footer .list-style-modes{
 
 /*--- Banner Bottom --*/
 .hdd_counts{
-    width: 70%;
+    /* width: 70%; */
     margin: auto;
-    margin-top: -85px;
+    margin-top: 5px; 
 }
 
 .h_count{
-    background-color: rgba(163, 173, 53, 0.9);
+    background-color: rgb(76, 178, 53);
 }
 
 .d_count{
-    background-color: rgba(89, 110, 137, 0.9);
+    background-color: rgb(0, 63, 127);
 }
-
 .dep_count{
-    background-color: rgba(44, 96, 148, 0.9);
+   background-color: rgb(76, 178, 53);
 }
 
 
