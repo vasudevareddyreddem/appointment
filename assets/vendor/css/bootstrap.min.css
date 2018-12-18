@@ -6080,7 +6080,7 @@ button.close {
 }
 
 .carousel-control-next {
-	right: 0
+	right: -12px !important;
 }
 
 .carousel-control-next-icon,
