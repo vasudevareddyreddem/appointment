@@ -136,6 +136,9 @@ class Users extends In_frontend {
 			'op_wallet_amount'=>isset($wallet_amt_list['op_amount'])?$wallet_amt_list['op_amount']:'',
 			'lab_wallet_amount'=>isset($wallet_amt_list['lab_amount'])?$wallet_amt_list['lab_amount']:'',
 			'wallet_amount_id'=>isset($wallet_amt_list['w_id'])?$wallet_amt_list['w_id']:'',
+			'remaining_ip_wallet'=>isset($wallet_amt_list['ip_amount'])?$wallet_amt_list['ip_amount']:'',
+			'remaining_op_wallet_amount'=>isset($wallet_amt_list['op_amount'])?$wallet_amt_list['op_amount']:'',
+			'remaining_lab_wallet'=>isset($wallet_amt_list['lab_amount'])?$wallet_amt_list['lab_amount']:'',
 			'status'=>1,
 			'create_at'=>date('Y-m-d H:i:s'),
 			);

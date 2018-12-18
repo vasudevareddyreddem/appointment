@@ -15,6 +15,7 @@ class Wallet extends In_frontend {
             {
 					$userdata=$this->session->userdata('app_user');
 					
+					$data['wallet_details']=$this->Wallet_model->get_user_wallet_details($userdata['a_u_id']);
 					$data['appoinment_list']=$this->Wallet_model->get_user_appointment_list($userdata['a_u_id']);
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
@@ -31,14 +32,19 @@ class Wallet extends In_frontend {
 				$hos_id=$appoinment_details['hos_id'];
 				$op='op';
 				$coupon_code=$hos_name.$hos_id.$op.$appoinment_id;
+				$wallet_amt_list=$this->Users_model->get_wallet_amount();
 				$add=array(
 				'hos_id'=>isset($appoinment_details['hos_id'])?$appoinment_details['hos_id']:'',
 				'appointment_id'=>isset($appoinment_id)?$appoinment_id:'',
 				'couponcode_name'=>isset($coupon_code)?$coupon_code:'',
+				'ip_amount_percentage'=>isset($wallet_amt_list['ip_amount_percentage'])?$wallet_amt_list['ip_amount_percentage']:'',
+				'op_amount_percentage'=>isset($wallet_amt_list['op_amount_percentage'])?$wallet_amt_list['op_amount_percentage']:'',
+				'lab_amount_percentage'=>isset($wallet_amt_list['lab_amount_percentage'])?$wallet_amt_list['lab_amount_percentage']:'',
 				'statu'=>1,
 				'created_at'=>date('Y-m-d H:i:s'),
 				'created_by'=>$userdata['a_u_id'],
 				);
+				//echo '<pre>';print_r($wallet_amt_list);exit;
 				$check=$this->Wallet_model->check_couponcode_exists_ornot($appoinment_id,$appoinment_details['hos_id']);
 				if(count($check)>0){
 					$this->session->set_flashdata('error',"Your are already created coupon code. Use below code ".$check['couponcode_name']);

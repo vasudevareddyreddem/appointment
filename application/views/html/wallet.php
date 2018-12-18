@@ -40,15 +40,15 @@
                                     <div class="text-center">
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
-                                                <span>Total Balance :</span> <b>Rs 1000</b>
+                                                <span>Total Balance :</span> <b>Rs <?php echo isset($wallet_details['op_wallet_amount'])?$wallet_details['op_wallet_amount']:''; ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Used :</span> <b>Rs 1000</b>
+                                                <span>Used :</span> <b>Rs <?php if($wallet_details['op_wallet_amount']!=$wallet_details['remaining_op_wallet_amount']){ ?> <?php echo $wallet_details['remaining_op_wallet_amount']-$wallet_details['op_wallet_amount']; ?> <?php }else{ echo "0";} ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Remaining :</span> <b>Rs 1000</b>
+                                                <span>Remaining :</span> <b>Rs <?php echo isset($wallet_details['remaining_op_wallet_amount'])?$wallet_details['remaining_op_wallet_amount']:''; ?></b>
                                             </li>
                                         </ul>
                                     </div>
@@ -115,16 +115,16 @@
                                 <div class="tab-pane fade" id="ip" role="tabpanel" aria-labelledby="ip-tab">
                                     <div class="text-center">
                                         <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <span>Total Balance :</span> <b>Rs 1000</b>
+                                             <li class="list-inline-item">
+                                                <span>Total Balance :</span> <b>Rs <?php echo isset($wallet_details['ip_wallet_amount'])?$wallet_details['ip_wallet_amount']:''; ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Used :</span> <b>Rs 1000</b>
+                                                <span>Used :</span> <b>Rs <?php if($wallet_details['ip_wallet_amount']!=$wallet_details['remaining_ip_wallet']){ ?> <?php echo $wallet_details['remaining_ip_wallet']-$wallet_details['ip_wallet_amount']; ?> <?php }else{ echo "0";} ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Remaining :</span> <b>Rs 1000</b>
+                                                <span>Remaining :</span> <b>Rs <?php echo isset($wallet_details['remaining_ip_wallet'])?$wallet_details['remaining_ip_wallet']:''; ?></b>
                                             </li>
                                         </ul>
                                     </div>
@@ -165,16 +165,16 @@
                                 <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="lab-tab">
                                     <div class="text-center">
                                         <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <span>Total Balance :</span> <b>Rs 1000</b>
+                                              <li class="list-inline-item">
+                                                <span>Total Balance :</span> <b>Rs <?php echo isset($wallet_details['lab_wallet_amount'])?$wallet_details['lab_wallet_amount']:''; ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Used :</span> <b>Rs 1000</b>
+                                                <span>Used :</span> <b>Rs <?php if($wallet_details['lab_wallet_amount']!=$wallet_details['remaining_lab_wallet']){ ?> <?php echo $wallet_details['remaining_lab_wallet']-$wallet_details['lab_wallet_amount']; ?> <?php }else{ echo "0";} ?></b>
                                             </li>
                                             <br class="md-hide">
                                             <li class="list-inline-item">
-                                                <span>Remaining :</span> <b>Rs 1000</b>
+                                                <span>Remaining :</span> <b>Rs <?php echo isset($wallet_details['remaining_lab_wallet'])?$wallet_details['remaining_lab_wallet']:''; ?></b>
                                             </li>
                                         </ul>
                                     </div>
