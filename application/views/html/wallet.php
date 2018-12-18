@@ -53,6 +53,7 @@
                                         </ul>
                                     </div>
                                     <div class="table-responsive">
+									<?php if(isset($appoinment_list) && count($appoinment_list)>0){ ?>
                                         <table id="" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
@@ -83,22 +84,30 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+											<?php foreach($appoinment_list as $list){ ?>
                                                 <tr>
-                                                    <td>Ruler</td>
-                                                    <td>9845xxxx23</td>
-                                                    <td>Hospital</td>
-                                                    <td>Your Heart</td>
-                                                    <td>S Leone</td>
-                                                    <td>24-11-2018</td>
-                                                    <td>Free</td>
+                                                    <td><?php echo isset($list['patinet_name'])?$list['patinet_name']:''; ?></td>
+                                                    <td><?php echo isset($list['mobile'])?$list['mobile']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
+                                                    <td><?php echo isset($list['city'])?$list['city']:''; ?></td>
+                                                    <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
                                                     <td>
-                                                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Generate</button>
+													<?php echo isset($list['date'])?$list['date']:''; ?>
+													<?php echo isset($list['time'])?$list['time']:''; ?>
+													</td>
+                                                    <td><?php echo isset($list['consultation_fee'])?$list['consultation_fee']:''; ?></td>
+                                                    <td>
+                                                        <!--<button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Generate</button>-->
+                                                        <a  href="<?php echo base_url('wallet/generatecoupon/'.base64_encode($list['b_id'])); ?>" class="btn btn-default btn-sm">Generate</a>
                                                         <br>
-                                                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalCoupon">View</button>
+                                                        <a onclick="get_coupon_code('<?php echo $list['b_id']; ?>')" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalCoupon">View</a>
                                                     </td>
                                                 </tr>
+											<?php } ?>
                                             </tbody>
                                         </table>
+										<?php }else{ ?>
+										<?php } ?>
                                     </div>
                                 </div>
                                 
@@ -273,10 +282,10 @@
                 <div class="row d-flex justify-content-center align-items-center">
 
                     <h2>
-                        <span class="badge">SD34op5656</span>
+                        <span class="badge"><span id="couponcode_id"></span></span>
                     </h2>
                     <p class="pt-3 mx-4">Copy the code and use it at the checkout to get the discount. It's valid for
-                        <strong><u>two hours only</u></strong>.
+                        <strong><u>two hours only ( created Time : <span id="couponcode_time"></span>)</u></strong>.
                     </p>
                     
                     <a type="button" class="btn btn-outline-success waves-effect btn-md" data-dismiss="modal">Ok, thanks</a>
@@ -309,6 +318,28 @@
 
 
 <script>
+function get_coupon_code(id){
+	jQuery.ajax({
+		url:'<?php echo base_url('wallet/get_coupon_code'); ?>',
+		data:{
+			b_id:id,
+		},
+		datatype:'JSON',
+		type: 'POST',
+		success: function(data){
+			if(data.msg=1){
+				var da=JSON.parse(data);
+				
+				$('#couponcode_id').append(da.coupon_code_name);
+				$('#couponcode_time').append(da.coupon_c_time);
+			}
+			
+		}
+		
+		
+	});
+	
+}
     $(document).ready(function() {
         $('.dtBasicExample').DataTable();
         $('.dataTables_length').addClass('bs-select');

@@ -118,18 +118,24 @@ class Users extends In_frontend {
 		if(!$this->session->userdata('app_user'))
 		{
 			$post=$this->input->post();
-			//echo '<pre>';print_r($post);
+			//echo '<pre>';print_r($post);exit;
 			$check_email=$this->Users_model->check_email_exits($post['email']);
 			if(count($check_email)>0){
 				$this->session->set_flashdata('error',"Email address already exists. Please another email address.");
 				redirect('users/register');
 			}
+			$wallet_amt_list=$this->Users_model->get_wallet_amount();
+			//echo '<pre>';print_r($wallet_amt_list);exit;
 			$add=array(
 			'name'=>isset($post['name'])?$post['name']:'',
 			'email'=>isset($post['email'])?$post['email']:'',
 			'mobile'=>isset($post['mobile'])?$post['mobile']:'',
 			'password'=>isset($post['confirmpassword'])?md5($post['confirmpassword']):'',
 			'org_password'=>isset($post['confirmpassword'])?$post['confirmpassword']:'',
+			'ip_wallet_amount'=>isset($wallet_amt_list['ip_amount'])?$wallet_amt_list['ip_amount']:'',
+			'op_wallet_amount'=>isset($wallet_amt_list['op_amount'])?$wallet_amt_list['op_amount']:'',
+			'lab_wallet_amount'=>isset($wallet_amt_list['lab_amount'])?$wallet_amt_list['lab_amount']:'',
+			'wallet_amount_id'=>isset($wallet_amt_list['w_id'])?$wallet_amt_list['w_id']:'',
 			'status'=>1,
 			'create_at'=>date('Y-m-d H:i:s'),
 			);

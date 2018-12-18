@@ -142,6 +142,12 @@ class Users_model extends CI_Model
 		$this->db->where('status',1);
 		return $this->db->get()->result_array(); 
 	}
+	/* get wallet amount  list */
+	public  function get_wallet_amount(){
+		$this->db->select('w_id,ip_amount,op_amount,lab_amount')->from('wallet_amount');
+		$this->db->where('status',1);
+		return $this->db->get()->row_array(); 
+	}
 
 		
 		
