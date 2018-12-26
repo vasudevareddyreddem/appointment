@@ -152,14 +152,14 @@ function get_time_slot(d_id){
    			dataType: 'json',
    			type: 'POST',
    					success:function(data){
-						//console.log(data);return false;
+						//console.log(data.list[i]);return false;
 						if(data.msg=1){
 							$('#time').empty();
 							$('#time').append("<option>Select Time</option>");
 							for(i=0; i<data.list.length; i++) {
-								$('#time').append("<option value="+data.list[i]+">"+data.list[i]+"</option>");                      
-							 
-							}
+								//$('#time').append("<option value="+data.list[i]+">xx</option>");                     
+								$('#time').append('<option value="'+data.list[i]+'">'+data.list[i]+'</option>');                      
+							 }
 							
 						}else{
 							$('#time').empty();

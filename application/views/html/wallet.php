@@ -214,6 +214,7 @@
                                 <!-- Wallet History Tab-->
                                 <div class="tab-pane fade" id="whistory" role="tabpanel" aria-labelledby="whistory-tab">
                                     <div class="table-responsive">
+									<?php if(isset($wallet_history_list) && count($wallet_history_list)>0){ ?>
                                         <table id="" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
@@ -241,17 +242,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+											<?php foreach($wallet_history_list as $list){ ?>
                                                 <tr>
-                                                    <td>Ruler</td>
-                                                    <td>9845xxxx23</td>
-                                                    <td>Hospital</td>
-                                                    <td>Your Heart</td>
-                                                    <td>S Leone</td>
-                                                    <td>24-11-2018</td>
-                                                    <td>Free</td>
+                                                    <td><?php echo isset($list['name'])?$list['name']:''; ?></td>
+                                                    <td><?php echo isset($list['mobile'])?$list['mobile']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
+                                                    <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
+                                                    <td>
+													<?php echo isset($list['date'])?$list['date']:''; ?>
+													<?php echo isset($list['time'])?$list['time']:''; ?>
+													</td>
+                                                    <td><?php echo isset($list['consultation_fee'])?$list['consultation_fee']:''; ?></td>
+                                                
                                                 </tr>
+											<?php } ?>
                                             </tbody>
                                         </table>
+									<?php } ?>
                                     </div>
                                 </div>
                             </div>

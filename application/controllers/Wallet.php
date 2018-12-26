@@ -17,6 +17,7 @@ class Wallet extends In_frontend {
 					
 					$data['wallet_details']=$this->Wallet_model->get_user_wallet_details($userdata['a_u_id']);
 					$data['appoinment_list']=$this->Wallet_model->get_user_appointment_list($userdata['a_u_id']);
+					$data['wallet_history_list']=$this->Wallet_model->get_all_wallet_history($userdata['a_u_id']);
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
 					$this->load->view('html/footer');	

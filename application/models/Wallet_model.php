@@ -51,4 +51,15 @@ class Wallet_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	
+	public  function get_all_wallet_history($a_u_id){
+		$this->db->select('coupon_code_history.*,patients_list_1.name,patients_list_1.mobile,patients_list_1.email,resource_list.resource_name,resource_list.consultation_fee,hospital.hos_bas_name,hospital.hos_bas_city,appointments.date,appointments.time')->from('coupon_code_history');
+		$this->db->join('patients_list_1', 'patients_list_1.pid = coupon_code_history.p_id', 'left');
+		$this->db->join('patient_billing', 'patient_billing.b_id = coupon_code_history.b_id', 'left');
+		$this->db->join('hospital', 'hospital.hos_id = patients_list_1.hos_id', 'left');
+		$this->db->join('resource_list', 'resource_list.a_id = patient_billing.doct_id', 'left');
+		$this->db->join('appointments', 'appointments.patient_id = coupon_code_history.p_id', 'left');
+		$this->db->where('appointment_user_id',$a_u_id);
+		return $this->db->get()->result_array();
+	}
+	
 }
