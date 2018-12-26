@@ -7,6 +7,7 @@ class Wallet extends In_frontend {
 	public function __construct() 
 	{
 		parent::__construct();
+		$this->load->model('Appointment_model');
 		$this->load->model('Wallet_model');
 	}
     
@@ -18,6 +19,11 @@ class Wallet extends In_frontend {
 					$data['wallet_details']=$this->Wallet_model->get_user_wallet_details($userdata['a_u_id']);
 					$data['appoinment_list']=$this->Wallet_model->get_user_appointment_list($userdata['a_u_id']);
 					$data['wallet_history_list']=$this->Wallet_model->get_all_wallet_history($userdata['a_u_id']);
+					$data['ip_couponcode_list']=$this->Wallet_model->get_ip_coupon_code_list($userdata['a_u_id']);
+					$data['lab_couponcode_list']=$this->Wallet_model->get_lab_coupon_code_list($userdata['a_u_id']);
+					$data['city_list']=$this->Appointment_model->get_hospital_city_list();
+					$data['tab']=base64_decode($this->uri->segment(3));
+					//echo '<pre>';print_r($data['tab']);exit;
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
 					$this->load->view('html/footer');	
@@ -49,15 +55,62 @@ class Wallet extends In_frontend {
 				$check=$this->Wallet_model->check_couponcode_exists_ornot($appoinment_id,$appoinment_details['hos_id']);
 				if(count($check)>0){
 					$this->session->set_flashdata('error',"Your are already created coupon code. Use below code ".$check['couponcode_name']);
-					redirect('wallet');
+					redirect('wallet/index/'.base64_encode(1));
 				}else{
 					$save=$this->Wallet_model->save_couponcode($add);
 					if(count($save)>0){
 						$this->session->set_flashdata('success',"Coupon code successfully created. Use below code ".$coupon_code);
-						redirect('wallet');
+						redirect('wallet/index/'.base64_encode(1));
 					}else{
 						$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
-						redirect('wallet');
+						redirect('wallet/index/'.base64_encode(1));
+					}
+				}
+				
+				//echo '<pre>';print_r($add);exit;
+					
+			}
+	}
+	public function ipcouponcode(){
+		if($this->session->userdata('app_user'))
+            {
+				$post=$this->input->post();
+				$time=time();
+				$userdata=$this->session->userdata('app_user');
+				$appoinment_details=$this->Wallet_model->hospital_details($post['hospital_id']);
+				$hos_name=mb_substr($appoinment_details['hos_bas_name'], 0, 2);
+				$hos_id=$post['hospital_id'];
+				$ip='Ip';
+				$coupon_code=$hos_name.$hos_id.$ip.$time;
+				$wallet_amt_list=$this->Users_model->get_wallet_amount();
+				$add=array(
+				'hos_id'=>isset($post['hospital_id'])?$post['hospital_id']:'',
+				'appointment_id'=>isset($appoinment_id)?$appoinment_id:'',
+				'couponcode_name'=>isset($coupon_code)?$coupon_code:'',
+				'ip_amount_percentage'=>isset($wallet_amt_list['ip_amount_percentage'])?$wallet_amt_list['ip_amount_percentage']:'',
+				'op_amount_percentage'=>isset($wallet_amt_list['op_amount_percentage'])?$wallet_amt_list['op_amount_percentage']:'',
+				'lab_amount_percentage'=>isset($wallet_amt_list['lab_amount_percentage'])?$wallet_amt_list['lab_amount_percentage']:'',
+				'statu'=>1,
+				'created_at'=>date('Y-m-d H:i:s'),
+				'created_by'=>$userdata['a_u_id'],
+				'type'=>isset($post['type'])?$post['type']:'',
+				);
+				//echo '<pre>';print_r($add);
+				//echo '<pre>';print_r($post);
+				//exit;
+				$check=$this->Wallet_model->check_ip_couponcode_exists_ornot($post['hospital_id'],$coupon_code);
+				if(count($check)>0){
+					$this->session->set_flashdata('error',"Your are already created coupon code. Use below code ".$check['couponcode_name']);
+					redirect('wallet/index/'.base64_encode($post['tab']));
+				}else{
+					$save=$this->Wallet_model->save_couponcode($add);
+					if(count($save)>0){
+						$this->session->set_flashdata('success',"Coupon code successfully created. Use below code ".$coupon_code);
+					redirect('wallet/index/'.base64_encode($post['tab']));
+					}else{
+						$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
+						redirect('wallet/index/'.base64_encode($post['tab']));
+
 					}
 				}
 				

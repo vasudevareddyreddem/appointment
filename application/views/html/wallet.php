@@ -17,13 +17,13 @@
                         <div class="card-header font-weight-bold bg-white mw-list">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="op-tab" data-toggle="tab" href="#op" role="tab" aria-controls="op" aria-selected="true">OP</a>
+                                    <a class="nav-link <?php  if(isset($tab) && $tab==''){ echo "active"; } ?>" id="op-tab" data-toggle="tab" href="#op" role="tab" aria-controls="op" aria-selected="true">OP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="ip-tab" data-toggle="tab" href="#ip" role="tab" aria-controls="ip" aria-selected="false">IP</a>
+                                    <a class="nav-link <?php  if(isset($tab) && $tab==2){ echo "active"; } ?>" id="ip-tab" data-toggle="tab" href="#ip" role="tab" aria-controls="ip" aria-selected="false">IP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="lab-tab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab" aria-selected="false">Lab</a>
+                                    <a class="nav-link <?php  if(isset($tab) && $tab==3){ echo "active"; } ?>" id="lab-tab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab" aria-selected="false">Lab</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="whistory-tab" data-toggle="tab" href="#whistory" role="tab" aria-controls="whistory" aria-selected="false">Wallet History</a>
@@ -36,7 +36,7 @@
                             <div class="tab-content">
                                 
                                 <!--OP Tab-->
-                                <div class="tab-pane fade show active" id="op" role="tabpanel" aria-labelledby="op-tab">
+                                <div class="tab-pane fade show <?php  if(isset($tab) && $tab==''){ echo "active"; } ?>" id="op" role="tabpanel" aria-labelledby="op-tab">
                                     <div class="text-center">
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
@@ -112,7 +112,7 @@
                                 </div>
                                 
                                 <!--IP Tab-->
-                                <div class="tab-pane fade" id="ip" role="tabpanel" aria-labelledby="ip-tab">
+                                <div class="tab-pane <?php  if(isset($tab) && $tab==2){ echo "active"; } ?>" id="ip" role="tabpanel" aria-labelledby="ip-tab">
                                     <div class="text-center">
                                         <ul class="list-inline">
                                              <li class="list-inline-item">
@@ -130,39 +130,65 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mx-auto">
-                                            <form id="ip_form" name="ip_form" action="" method="post">
+                                            <form id="ip_form" name="ip_form" action="<?php echo base_url('wallet/ipcouponcode'); ?>" method="post">
 
                                                 <div class="form-group">
                                                     <label>Select City</label>
-                                                    <select id="" class="form-control" name="ipf_city" onchange="" >
-                                                        <option selected disabled>Select</option>
-                                                        <option value="">Option 1</option>
-                                                        <option value="">Option 2</option>
-                                                        <option value="">Option 3</option>
-                                                        <option value="">Option 4</option>
-                                                        <option value="">Option 5</option>
-                                                    </select>
+                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)">
+														<option value="">Select City</option>
+														<?php if(isset($city_list) && count($city_list)>0){ ?>
+														<?php foreach($city_list as $list){ ?>
+														 <option value="<?php echo $list['hos_bas_city']; ?>"><?php echo $list['hos_bas_city']; ?></option>
+														<?php } ?>
+														<?php } ?>
+													</select>
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <label>Hospital Name</label>
-                                                    <input type="text" class="form-control" name="ipf_hname">
+                                                    <select id="hospital_id" name="hospital_id"  class="form-control">
+														<option value="">Select Hospital</option>
+													</select>
                                                 </div>
+												<input type="hidden" name="type" id="type" value="2">
+												<input type="hidden" name="tab" id="tab" value="2">
 
                                                 <div class="text-center mt-4">
                                                     <button id="ip-submit-btn" type="submit" class="btn btn-primary btn-md mb-4 waves-effect waves-light" role="button">Generate Coupon</button>
                                                 </div>
-                                                
-                                                <div id="ip-coupon" class="text-center">
-                                                    <p>Coupon code is : <b class="text-warning">Qs5bn4</b></p>
-                                                </div>
                                             </form>
                                         </div>
+										<div class="col-md-12">
+										 <table id="" class="table table-striped table-bordered dtBasicExample">
+                                            <thead>
+                                                <tr>
+                                                    <th class="th-sm">Coupon code
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th class="th-sm">Hospital Name
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th class="th-sm">City
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+											<?php foreach($ip_couponcode_list as $list){ ?>
+                                                <tr>
+                                                    <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
+                                                    
+                                                </tr>
+											<?php } ?>
+                                            </tbody>
+                                        </table>
+										</div>
                                     </div>
                                 </div>
                                 
                                 <!--Lab Tab-->
-                                <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="lab-tab">
+                                <div class="tab-pane <?php  if(isset($tab) && $tab==3){ echo "active"; } ?>" id="lab" role="tabpanel" aria-labelledby="lab-tab">
                                     <div class="text-center">
                                         <ul class="list-inline">
                                               <li class="list-inline-item">
@@ -180,34 +206,63 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mx-auto">
-                                            <form id="lab_form" name="ip_form" action="" method="post">
+                                            <form id="lab_form" name="ip_form" action="<?php echo base_url('wallet/ipcouponcode'); ?>" method="post">
 
                                                 <div class="form-group">
                                                     <label>Select City</label>
-                                                    <select id="" class="form-control" name="labf_city" onchange="" >
-                                                        <option selected disabled>Select</option>
-                                                        <option value="">Option 1</option>
-                                                        <option value="">Option 2</option>
-                                                        <option value="">Option 3</option>
-                                                        <option value="">Option 4</option>
-                                                        <option value="">Option 5</option>
-                                                    </select>
+                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)">
+														<option value="">Select City</option>
+														<?php if(isset($city_list) && count($city_list)>0){ ?>
+														<?php foreach($city_list as $list){ ?>
+														 <option value="<?php echo $list['hos_bas_city']; ?>"><?php echo $list['hos_bas_city']; ?></option>
+														<?php } ?>
+														<?php } ?>
+													</select>
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <label>Hospital Name</label>
-                                                    <input type="text" class="form-control" name="labf_hname">
+                                                    <select id="hospital_id1" name="hospital_id" onchange="get_hospital_department(this.value);" class="form-control">
+														<option value="">Select Hospital</option>
+													</select>
                                                 </div>
-
+													<input type="hidden" name="type" id="type" value="3">
+													<input type="hidden" name="tab" id="tab" value="3">
                                                 <div class="text-center mt-4">
                                                     <button id="lab-submit-btn" type="submit" class="btn btn-primary btn-md mb-4 waves-effect waves-light" role="button">Generate Coupon</button>
                                                 </div>
                                                 
-                                                <div id="lab-coupon" class="text-center">
-                                                    <p>Coupon code is : <b class="text-warning">Qs5bn4</b></p>
-                                                </div>
+                                             
                                             </form>
+											
                                         </div>
+										<div class="col-md-12">
+										 <table id="" class="table table-striped table-bordered dtBasicExample">
+                                            <thead>
+                                                <tr>
+                                                    <th class="th-sm">Coupon code
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th class="th-sm">Hospital Name
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                    <th class="th-sm">City
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+											<?php foreach($lab_couponcode_list as $list){ ?>
+                                                <tr>
+                                                    <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
+                                                    <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
+                                                    
+                                                </tr>
+											<?php } ?>
+                                            </tbody>
+                                        </table>
+										</div>
+										
                                     </div>
                                 </div>
                                 
@@ -326,6 +381,34 @@
 
 
 <script>
+function get_hos_list(c_id){
+	if(c_id!=''){
+		jQuery.ajax({
+   			url: "<?php echo base_url('appointment/get_hospital_list');?>",
+   			data: {
+				city: c_id,
+			},
+   			dataType: 'json',
+   			type: 'POST',
+   					success:function(data){
+						console.log(data.msg);
+						if(data.msg=1){
+							$('#hospital_id').empty();
+							$('#hospital_id1').empty();
+							$('#hospital_id').append("<option>Select Hospital</option>");
+							$('#hospital_id1').append("<option>Select Hospital</option>");
+							for(i=0; i<data.list.length; i++) {
+								$('#hospital_id').append("<option value="+data.list[i].hos_id+">"+data.list[i].hos_bas_name+"</option>");                      
+								$('#hospital_id1').append("<option value="+data.list[i].hos_id+">"+data.list[i].hos_bas_name+"</option>");                      
+							 
+							}
+							
+						}
+					}
+           });
+	}
+	
+}
 function get_coupon_code(id){
 	jQuery.ajax({
 		url:'<?php echo base_url('wallet/get_coupon_code'); ?>',

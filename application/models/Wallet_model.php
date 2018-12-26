@@ -62,4 +62,32 @@ class Wallet_model extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	
+	/* ip coupon code  system */
+	public  function check_ip_couponcode_exists_ornot($hos_id,$coupon_code){
+		$this->db->select('*')->from('coupon_code_list');
+		$this->db->where('couponcode_name',$coupon_code);
+		$this->db->where('hos_id',$hos_id);
+		return $this->db->get()->row_array();
+	}
+	public  function hospital_details($hos_id){
+		$this->db->select('hos_bas_name')->from('hospital');
+		$this->db->where('hos_id',$hos_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_ip_coupon_code_list($a_u_id){
+		$this->db->select('coupon_code_list.*,hospital.hos_bas_name,hospital.hos_bas_city')->from('coupon_code_list');
+		$this->db->join('hospital', 'hospital.hos_id = coupon_code_list.hos_id', 'left');
+		$this->db->where('coupon_code_list.created_by',$a_u_id);
+		$this->db->where('coupon_code_list.type',2);
+		return $this->db->get()->result_array();
+	}
+	public  function get_lab_coupon_code_list($a_u_id){
+		$this->db->select('coupon_code_list.*,hospital.hos_bas_name,hospital.hos_bas_city')->from('coupon_code_list');
+		$this->db->join('hospital', 'hospital.hos_id = coupon_code_list.hos_id', 'left');
+		$this->db->where('coupon_code_list.created_by',$a_u_id);
+		$this->db->where('coupon_code_list.type',3);
+		return $this->db->get()->result_array();
+	}
+	/* ip coupon code  system */
+	
 }
