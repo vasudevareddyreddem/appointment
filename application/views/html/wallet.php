@@ -287,6 +287,18 @@
                                                     </th>
                                                     <th class="th-sm">Doctor Name
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th> 
+													<th class="th-sm">Amount
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Coupon code
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Coupon code Amount
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th> 
+													<th class="th-sm">Type
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
                                                     <th class="th-sm">Date & Time
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
@@ -304,6 +316,10 @@
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
                                                     <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
+                                                    <td><?php echo isset($list['amount'])?$list['amount']:''; ?></td>
+                                                    <td><?php echo isset($list['coupon_code'])?$list['coupon_code']:''; ?></td>
+                                                    <td><?php echo isset($list['coupon_code_amount'])?$list['coupon_code_amount']:''; ?></td>
+                                                    <td><?php if($list['type_id']==1){ echo "Op";}else if($list['type_id']==2){ echo "Ip"; }else if($list['type_id']==3) { echo "Lab"; } ?></td>
                                                     <td>
 													<?php echo isset($list['date'])?$list['date']:''; ?>
 													<?php echo isset($list['time'])?$list['time']:''; ?>
@@ -421,6 +437,8 @@ function get_coupon_code(id){
 			if(data.msg=1){
 				var da=JSON.parse(data);
 				
+				$('#couponcode_id').empty();
+				$('#couponcode_time').empty();
 				$('#couponcode_id').append(da.coupon_code_name);
 				$('#couponcode_time').append(da.coupon_c_time);
 			}

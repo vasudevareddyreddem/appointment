@@ -23,7 +23,7 @@ class Wallet extends In_frontend {
 					$data['lab_couponcode_list']=$this->Wallet_model->get_lab_coupon_code_list($userdata['a_u_id']);
 					$data['city_list']=$this->Appointment_model->get_hospital_city_list();
 					$data['tab']=base64_decode($this->uri->segment(3));
-					//echo '<pre>';print_r($data['tab']);exit;
+					//echo '<pre>';print_r($data['wallet_history_list']);exit;
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
 					$this->load->view('html/footer');	
@@ -91,6 +91,7 @@ class Wallet extends In_frontend {
 				'op_amount_percentage'=>isset($wallet_amt_list['op_amount_percentage'])?$wallet_amt_list['op_amount_percentage']:'',
 				'lab_amount_percentage'=>isset($wallet_amt_list['lab_amount_percentage'])?$wallet_amt_list['lab_amount_percentage']:'',
 				'statu'=>1,
+				//'type_id'=>1,
 				'created_at'=>date('Y-m-d H:i:s'),
 				'created_by'=>$userdata['a_u_id'],
 				'type'=>isset($post['type'])?$post['type']:'',
