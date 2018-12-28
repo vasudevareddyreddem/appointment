@@ -58,7 +58,8 @@ class Wallet_model extends CI_Model
 		$this->db->join('hospital', 'hospital.hos_id = patients_list_1.hos_id', 'left');
 		$this->db->join('resource_list', 'resource_list.a_id = patient_billing.doct_id', 'left');
 		$this->db->join('appointments', 'appointments.patient_id = coupon_code_history.p_id', 'left');
-		$this->db->where('appointment_user_id',$a_u_id);
+		$this->db->where('coupon_code_history.appointment_user_id',$a_u_id);
+		$this->db->order_by('coupon_code_history.h_id',"desc");
 		return $this->db->get()->result_array();
 	}
 	

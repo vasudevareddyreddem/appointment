@@ -138,7 +138,7 @@
 
                                                 <div class="form-group">
                                                     <label>Select City</label>
-                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)">
+                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)" >
 														<option value="">Select City</option>
 														<?php if(isset($city_list) && count($city_list)>0){ ?>
 														<?php foreach($city_list as $list){ ?>
@@ -149,7 +149,7 @@
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <select id="hospital_id" name="hospital_id"  class="form-control">
+                                                    <select id="hospital_id" name="hospital_id"  class="form-control" >
 														<option value="">Select Hospital</option>
 													</select>
                                                 </div>
@@ -162,7 +162,7 @@
                                             </form>
                                         </div>
 										<div class="col-md-12">
-										 <table id="" class="table table-striped table-bordered dtBasicExample">
+										 <table id="ip_coupon_list" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">Coupon code
@@ -174,14 +174,31 @@
                                                     <th class="th-sm">City
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
+													<th class="th-sm">Created Date and Time
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Status
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-											<?php foreach($ip_couponcode_list as $list){ ?>
+											<?php foreach($ip_couponcode_list as $list){ 
+												
+												$current_time=$list['created_at'];
+													$date=date('Y-m-d H:i:s');
+													$datetime1 = new DateTime($current_time);
+													$datetime2 = new DateTime($date);
+													$interval = $datetime1->diff($datetime2);
+													//echo '<pre>';print_r($interval);
+													$diff_in_hrs =$interval->format('%h'); ?>
+				
                                                 <tr>
                                                     <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
+                                                    <td><?php echo isset($list['created_at'])?$list['created_at']:''; ?></td>
+                                                    <td><?php if($diff_in_hrs >=0 && $diff_in_hrs <2){ echo "Active";}else{ echo "expired";} ?></td>
                                                     
                                                 </tr>
 											<?php } ?>
@@ -214,7 +231,7 @@
 
                                                 <div class="form-group">
                                                     <label>Select City</label>
-                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)">
+                                                    <select id="city" name="city" class="form-control" onchange="get_hos_list(this.value)" required>
 														<option value="">Select City</option>
 														<?php if(isset($city_list) && count($city_list)>0){ ?>
 														<?php foreach($city_list as $list){ ?>
@@ -225,7 +242,7 @@
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <select id="hospital_id1" name="hospital_id" onchange="get_hospital_department(this.value);" class="form-control">
+                                                    <select id="hospital_id1" name="hospital_id" onchange="get_hospital_department(this.value);" class="form-control" required>
 														<option value="">Select Hospital</option>
 													</select>
                                                 </div>
@@ -240,7 +257,7 @@
 											
                                         </div>
 										<div class="col-md-12">
-										 <table id="" class="table table-striped table-bordered dtBasicExample">
+										 <table id="lab_coupon_list" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">Coupon code
@@ -251,15 +268,31 @@
                                                     </th>
                                                     <th class="th-sm">City
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th> 
+													<th class="th-sm">Created Date and Time
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Status
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-											<?php foreach($lab_couponcode_list as $list){ ?>
+											<?php foreach($lab_couponcode_list as $list){ 
+													$current_time=$list['created_at'];
+													$date=date('Y-m-d H:i:s');
+													$datetime1 = new DateTime($current_time);
+													$datetime2 = new DateTime($date);
+													$interval = $datetime1->diff($datetime2);
+													//echo '<pre>';print_r($interval);
+													$diff_in_hrs =$interval->format('%h'); ?>
+				
                                                 <tr>
                                                     <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
+                                                   <td><?php echo isset($list['created_at'])?$list['created_at']:''; ?></td>
+                                                    <td><?php if($diff_in_hrs >=0 && $diff_in_hrs <2){ echo "Active";}else{ echo "expired";} ?></td>
                                                     
                                                 </tr>
 											<?php } ?>
@@ -323,17 +356,26 @@
                                                     <td><?php echo isset($list['mobile'])?$list['mobile']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
-                                                    <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
+                                                    <td>
+													<?php if($list['type_id']==1){ ?>
+													<?php echo isset($list['resource_name'])?$list['resource_name']:''; ?>
+													<?php } ?>
+													</td>
                                                     <td><?php echo isset($list['coupon_code'])?$list['coupon_code']:''; ?></td>
 													<td><?php echo isset($list['amount'])?$list['amount']:''; ?></td>
                                                     <td><?php echo isset($list['coupon_code_amount'])?$list['coupon_code_amount']:''; ?></td>
 													<td><?php echo (($list['amount'])-($list['coupon_code_amount']));?></td>
                                                     <td><?php if($list['type_id']==1){ echo "Op";}else if($list['type_id']==2){ echo "Ip"; }else if($list['type_id']==3) { echo "Lab"; } ?></td>
-                                                    <td>
+                                                    <?php if($list['type_id']==1){ ?>
+													<td>
 													<?php echo isset($list['date'])?$list['date']:''; ?>
 													<?php echo isset($list['time'])?$list['time']:''; ?>
 													</td>
                                                     <td><?php echo isset($list['consultation_fee'])?$list['consultation_fee']:''; ?></td>
+													<?php }else{ ?>
+														<td>&nbsp;</td>
+														<td>&nbsp;</td>
+													<?php } ?>
                                                 
                                                 </tr>
 											<?php } ?>
@@ -373,7 +415,7 @@
                         <span class="badge"><span id="couponcode_id"></span></span>
                     </h2>
                     <p class="pt-3 mx-4">Copy the code and use it at the checkout to get the discount. It's valid for
-                        <strong><u>two hours only ( created Time : <span id="couponcode_time"></span>)</u></strong>.
+                        <strong><u>two hours only ( Created Time : <span id="couponcode_time"></span>)</u></strong>.
                     </p>
                     
                     <a type="button" class="btn btn-outline-success waves-effect btn-md" data-dismiss="modal">Ok, thanks</a>
@@ -406,6 +448,16 @@
 
 
 <script>
+$(document).ready(function() {
+    $('#lab_coupon_list').DataTable( {
+        "order": [[ 3, "desc" ]]
+    } );
+} );
+$(document).ready(function() {
+    $('#ip_coupon_list').DataTable( {
+        "order": [[ 3, "desc" ]]
+    } );
+} );
 function get_hos_list(c_id){
 	if(c_id!=''){
 		jQuery.ajax({
@@ -420,8 +472,8 @@ function get_hos_list(c_id){
 						if(data.msg=1){
 							$('#hospital_id').empty();
 							$('#hospital_id1').empty();
-							$('#hospital_id').append("<option>Select Hospital</option>");
-							$('#hospital_id1').append("<option>Select Hospital</option>");
+							$('#hospital_id').append("<option value=''>Select Hospital</option>");
+							$('#hospital_id1').append("<option value=''>Select Hospital</option>");
 							for(i=0; i<data.list.length; i++) {
 								$('#hospital_id').append("<option value="+data.list[i].hos_id+">"+data.list[i].hos_bas_name+"</option>");                      
 								$('#hospital_id1').append("<option value="+data.list[i].hos_id+">"+data.list[i].hos_bas_name+"</option>");                      
@@ -469,17 +521,39 @@ $(document).ready(function() {
     $('#ip_form').bootstrapValidator({
         
         fields: {
-             ipf_city: {
+             city: {
                 validators: {
 					notEmpty: {
-						message: 'Old Password is required'
+						message: 'City is required'
 					}
 				}
             },
-            ipf_hname: {
+            hospital_id: {
                 validators: {
 					notEmpty: {
-						message: 'Old Password is required'
+						message: 'Hospital is required'
+					}
+				}
+            }
+         }
+    })
+     
+});
+$(document).ready(function() {
+    $('#lab_form').bootstrapValidator({
+        
+        fields: {
+             city: {
+                validators: {
+					notEmpty: {
+						message: 'City is required'
+					}
+				}
+            },
+            hospital_id: {
+                validators: {
+					notEmpty: {
+						message: 'Hospital is required'
 					}
 				}
             }

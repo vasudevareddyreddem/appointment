@@ -23,7 +23,7 @@ class Wallet extends In_frontend {
 					$data['lab_couponcode_list']=$this->Wallet_model->get_lab_coupon_code_list($userdata['a_u_id']);
 					$data['city_list']=$this->Appointment_model->get_hospital_city_list();
 					$data['tab']=base64_decode($this->uri->segment(3));
-					//echo '<pre>';print_r($data['appoinment_list']);exit;
+					//echo '<pre>';print_r($data['lab_couponcode_list']);exit;
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
 					$this->load->view('html/footer');	
@@ -55,15 +55,15 @@ class Wallet extends In_frontend {
 				$check=$this->Wallet_model->check_couponcode_exists_ornot($appoinment_id,$appoinment_details['hos_id']);
 				if(count($check)>0){
 					$this->session->set_flashdata('error',"Your are already created coupon code. Use below code ".$check['couponcode_name']);
-					redirect('wallet/index/'.base64_encode(1));
+					redirect('wallet/index/');
 				}else{
 					$save=$this->Wallet_model->save_couponcode($add);
 					if(count($save)>0){
 						$this->session->set_flashdata('success',"Coupon code successfully created. Use below code ".$coupon_code);
-						redirect('wallet/index/'.base64_encode(1));
+						redirect('wallet/index/');
 					}else{
 						$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
-						redirect('wallet/index/'.base64_encode(1));
+						redirect('wallet/index/');
 					}
 				}
 				
@@ -129,9 +129,10 @@ class Wallet extends In_frontend {
 		$coupon_code=$this->Wallet_model->get_coupon_code_details($post['b_id']);
 
 		if(count($coupon_code)>0){
+			$times=date(' Y-m-d h:i:s a ', strtotime($coupon_code['created_at']));
 			$data['msg']=1;
 			$data['coupon_code_name']=$coupon_code['couponcode_name'];
-			$data['coupon_c_time']=$coupon_code['created_at'];
+			$data['coupon_c_time']=$times;
 			echo json_encode($data);exit;
 		}else{
 			$data['msg']=0;
