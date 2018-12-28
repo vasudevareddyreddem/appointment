@@ -23,7 +23,7 @@ class Wallet extends In_frontend {
 					$data['lab_couponcode_list']=$this->Wallet_model->get_lab_coupon_code_list($userdata['a_u_id']);
 					$data['city_list']=$this->Appointment_model->get_hospital_city_list();
 					$data['tab']=base64_decode($this->uri->segment(3));
-					//echo '<pre>';print_r($data['wallet_history_list']);exit;
+					//echo '<pre>';print_r($data['appoinment_list']);exit;
 					//echo '<pre>';print_r($data);exit;
 					$this->load->view('html/wallet',$data);
 					$this->load->view('html/footer');	
@@ -80,7 +80,12 @@ class Wallet extends In_frontend {
 				$appoinment_details=$this->Wallet_model->hospital_details($post['hospital_id']);
 				$hos_name=mb_substr($appoinment_details['hos_bas_name'], 0, 2);
 				$hos_id=$post['hospital_id'];
-				$ip='Ip';
+				if($post['type']==2){
+					$ip='Ip';
+				}else{
+					$ip='Lab';
+				}
+				
 				$coupon_code=$hos_name.$hos_id.$ip.$time;
 				$wallet_amt_list=$this->Users_model->get_wallet_amount();
 				$add=array(
