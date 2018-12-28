@@ -18,12 +18,12 @@
                     
                     <!--Grid column-->
                     <div class="col-md-12">
-                        <h1 class="h1 text-center py-2">Medspace Health Card</h1>
+                        <h1 class="h1 text-center py-2">MedArogya Health Card</h1>
                         <!-- Main heading -->
                         <br>
-                        <p> Medspace gives a smart card i.e a health card to each patient or healthcare seeker,  containing his/her complete medical information. It is designed to store patient’s information such as name, age, gender, address, doctor prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. The purpose of collecting medical records is to have an accurate and faster diagnosis that translates into better treatment at lower costs, avoiding unnecessary investigations every time the person visits the  hospital.</p>
+                        <p> MedArogya gives a smart card i.e a health card to each patient or healthcare seeker,  containing his/her complete medical information. It is designed to store patient’s information such as name, age, gender, address, doctor prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. The purpose of collecting medical records is to have an accurate and faster diagnosis that translates into better treatment at lower costs, avoiding unnecessary investigations every time the person visits the  hospital.</p>
                         
-                        <p>When a patient visits the hospital, patient’s information, medical records can be accessed directly through Medspace Health card, and at the end of the process it has the capability to update patient’s information.</p>
+                        <p>When a patient visits the hospital, patient’s information, medical records can be accessed directly through MedArogya Health card, and at the end of the process it has the capability to update patient’s information.</p>
                         <!-- Main heading -->
                     </div>
                     <!--Grid column-->
@@ -38,7 +38,7 @@
                     <div class="col-md-12 mb-3">
 
                         <!-- Main heading -->
-                        <h3 class="h3 mb-3">Medspace Health Card Benefits</h3>
+                        <h3 class="h3 mb-3">MedArogya Health Card Benefits</h3>
                         <ul>
                             <li><p>
                             Health cards are designed to save customers data and have the capacity to update patient healthcare information. 
@@ -57,9 +57,9 @@
                     <div class="col-md-12">
 
                         <!-- Main heading -->
-                        <h3 class="h3 mb-3">Medarogya Online Appointment App - Hospital/ Laboratory / Pharmacy</h3>
+                        <h3 class="h3 mb-3">MedArogya Online Appointment App - Hospital/ Laboratory / Pharmacy</h3>
                         <p>
-                            "Medspace Online Appointment App" is available on Google playstore and can be downloaded easily.  </p>
+                            "MedArogya Online Appointment App" is available on Google playstore and can be downloaded easily.  </p>
                         <!-- Main heading -->
                         
                         <ul> 
@@ -99,7 +99,7 @@
 
                 <h2 class=" h3 text-center py-2">Our Hospital Process</h2>
 
-                <p class="text-center ">Online Doctor Appointment using MedSpace App and Hospital Management Software.</p>
+                <p class="text-center ">Online Doctor Appointment using MedArogya App and Hospital Management Software.</p>
                 <br>
 
                 <!--First row-->
@@ -115,7 +115,7 @@
                             </div>
                             <div class="col-10">
 
-                                <p class="">E-Health Card (MedSpace): Booking OP appointment 
+                                <p class="">E-Health Card (MedArogya): Booking OP appointment 
                                     to particular department in the hospital with date and time Slot.
                                 </p>
                                 <div style="height:15px"></div>
@@ -132,7 +132,7 @@
 
                                 <p class="">After conforming the appointment, hospital authorized person will send allocated date and time
                                     slot, and the confirmation message will be received by the patient in
-                                    Medspace Mobile App. </p>
+                                    MedArogya Mobile App. </p>
                                 <div style="height:15px"></div>
                             </div> 
                         </div>
@@ -144,7 +144,7 @@
                             </div>
                             <div class="col-10">
 
-                                <p class="">Medspace beneficiary or patient will visit the hospital at scheduled time, and the 
+                                <p class="">MedArogya beneficiary or patient will visit the hospital at scheduled time, and the 
                                     receptionist will enter full details of the patient and send to the assigned doctor.</p>
                                 <div style="height:15px"></div>
                             </div>
