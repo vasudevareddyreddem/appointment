@@ -69,7 +69,10 @@
                                                     <th class="th-sm">City
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
-                                                    <th class="th-sm">Doctor Name
+                                                    <th class="th-sm">Department
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Doctor Name
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
                                                     <th class="th-sm">Date & Time
@@ -90,6 +93,7 @@
                                                     <td><?php echo isset($list['mobile'])?$list['mobile']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['city'])?$list['city']:''; ?></td>
+                                                    <td><?php echo isset($list['t_name'])?$list['t_name']:''; ?></td>
                                                     <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
                                                     <td>
 													<?php echo isset($list['date'])?$list['date']:''; ?>
@@ -288,13 +292,17 @@
                                                     <th class="th-sm">Doctor Name
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th> 
-													<th class="th-sm">Amount
-                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
-                                                    </th>
+													
 													<th class="th-sm">Coupon code
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
+													<th class="th-sm">Amount
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
 													<th class="th-sm">Coupon code Amount
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th> 
+													<th class="th-sm">Final Amount
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th> 
 													<th class="th-sm">Type
@@ -316,9 +324,10 @@
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
                                                     <td><?php echo isset($list['resource_name'])?$list['resource_name']:''; ?></td>
-                                                    <td><?php echo isset($list['amount'])?$list['amount']:''; ?></td>
                                                     <td><?php echo isset($list['coupon_code'])?$list['coupon_code']:''; ?></td>
+													<td><?php echo isset($list['amount'])?$list['amount']:''; ?></td>
                                                     <td><?php echo isset($list['coupon_code_amount'])?$list['coupon_code_amount']:''; ?></td>
+													<td><?php echo (($list['amount'])-($list['coupon_code_amount']));?></td>
                                                     <td><?php if($list['type_id']==1){ echo "Op";}else if($list['type_id']==2){ echo "Ip"; }else if($list['type_id']==3) { echo "Lab"; } ?></td>
                                                     <td>
 													<?php echo isset($list['date'])?$list['date']:''; ?>
