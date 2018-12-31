@@ -165,7 +165,10 @@
 										 <table id="ip_coupon_list" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
-                                                    <th class="th-sm">Coupon code
+                                                    <th class="th-sm">Coupon code Id
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Coupon code
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
                                                     <th class="th-sm">Hospital Name
@@ -194,6 +197,7 @@
 													$diff_in_hrs =$interval->format('%h'); ?>
 				
                                                 <tr>
+                                                    <td><?php echo isset($list['c_c_l_id'])?$list['c_c_l_id']:''; ?></td>
                                                     <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
@@ -260,7 +264,10 @@
 										 <table id="lab_coupon_list" class="table table-striped table-bordered dtBasicExample">
                                             <thead>
                                                 <tr>
-                                                    <th class="th-sm">Coupon code
+                                                    <th class="th-sm">Coupon code Id
+                                                        <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
+                                                    </th>
+													<th class="th-sm">Coupon code
                                                         <i class="fa fa-sort float-right mt-1" aria-hidden="true"></i>
                                                     </th>
                                                     <th class="th-sm">Hospital Name
@@ -288,6 +295,7 @@
 													$diff_in_hrs =$interval->format('%h'); ?>
 				
                                                 <tr>
+                                                    <td><?php echo isset($list['c_c_l_id'])?$list['c_c_l_id']:''; ?></td>
                                                     <td><?php echo isset($list['couponcode_name'])?$list['couponcode_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_name'])?$list['hos_bas_name']:''; ?></td>
                                                     <td><?php echo isset($list['hos_bas_city'])?$list['hos_bas_city']:''; ?></td>
@@ -450,12 +458,12 @@
 <script>
 $(document).ready(function() {
     $('#lab_coupon_list').DataTable( {
-        "order": [[ 3, "desc" ]]
+        "order": [[ 4, "desc" ]]
     } );
 } );
 $(document).ready(function() {
     $('#ip_coupon_list').DataTable( {
-        "order": [[ 3, "desc" ]]
+        "order": [[ 4, "desc" ]]
     } );
 } );
 function get_hos_list(c_id){
