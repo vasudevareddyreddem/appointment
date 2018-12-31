@@ -39,7 +39,7 @@ class Wallet extends In_frontend {
 				$hos_id=$appoinment_details['hos_id'];
 				$op='op';
 				$coupon_code=$hos_name.$hos_id.$op.$appoinment_id;
-				$wallet_amt_list=$this->Users_model->get_wallet_amount();
+				$wallet_amt_list=$this->Users_model->get_wallet_amount_percentage_details($appoinment_details['hos_id']);
 				$add=array(
 				'hos_id'=>isset($appoinment_details['hos_id'])?$appoinment_details['hos_id']:'',
 				'appointment_id'=>isset($appoinment_id)?$appoinment_id:'',
@@ -87,7 +87,7 @@ class Wallet extends In_frontend {
 				}
 				
 				$coupon_code=$hos_name.$hos_id.$ip.$time;
-				$wallet_amt_list=$this->Users_model->get_wallet_amount();
+					$wallet_amt_list=$this->Users_model->get_wallet_amount_percentage_details($post['hospital_id']);
 				$add=array(
 				'hos_id'=>isset($post['hospital_id'])?$post['hospital_id']:'',
 				'appointment_id'=>isset($appoinment_id)?$appoinment_id:'',

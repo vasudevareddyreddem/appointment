@@ -148,6 +148,12 @@ class Users_model extends CI_Model
 		$this->db->where('status',1);
 		return $this->db->get()->row_array(); 
 	}
+	public  function get_wallet_amount_percentage_details($hos_id){
+		$this->db->select('*')->from('wallet_amount_percentage');
+		$this->db->where('hospital_id',$hos_id);
+		$this->db->where('status',1);
+		return $this->db->get()->row_array(); 
+	}
 
 		
 		
