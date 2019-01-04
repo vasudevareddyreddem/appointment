@@ -13,6 +13,7 @@
 .carousel-control-next, .carousel-control-prev{
     width: 5%;
 }
+
 </style>
 
 <!--Main layout-->
@@ -20,7 +21,7 @@
 
    <!--Section: Jumbotron-->
    <!--Carousel Wrapper-->
-<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carousel-example-1z"  class="carousel slide carousel-fade" data-ride="">
   <!--Indicators-->
  <ol class="carousel-indicators">
     <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
@@ -33,12 +34,16 @@
   <div class="carousel-inner" role="listbox">
     <!--First slide-->
     <div class="carousel-item active">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-1.png" alt="First slide">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-2.png" alt="First slide">
+	   <div class="carousel-caption">
+        <h1 class="h3-responsive">Online Doctor Appointment In Tirupati</h1>
+      
+      </div>
     </div>
     <!--/First slide-->
     <!--Second slide-->
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-2.png" alt="Second slide">
+      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-1.png" alt="Second slide">
     </div>
     <!--/Second slide-->
     <!--Third slide-->
@@ -199,7 +204,7 @@
                         <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-4 px-4">
                             <div>
                                 <h3 class="card-title pt-2"><strong>Hospitals & Clinics</strong></h3>
-                                <p>MedArogya acts as a bridge in between medical care seekers and hospitals. Join us to help medical care seekers to find and reach you in a fast and easy way.</p>
+                                <p>MedArogya acts as a bridge in between medical care seekers and hospitals. Join us to help medical care seekers to find online doctor appointment in Tirupati in a fast and easy way.</p>
                                 <a target="_blank" href="https://Medspaceit.com/" class="btn btn-outline-white"><i class="fa fa-user-plus left"></i> Register </a>
                             </div>
                         </div>

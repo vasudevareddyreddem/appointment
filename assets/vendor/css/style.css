@@ -10,6 +10,22 @@ p {
 	padding:0px;
 	z-index:100;
 }
+.carousel-caption {
+    position: absolute;
+    left:10% !important;
+	top:40%;
+    z-index: 10;
+	color: #003f7f;
+    text-align: center;
+}
+.carousel-caption h1{
+   font-size:40px;
+   font-weight:600;
+   text-align:left;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #fff;
+   text-shadow: 2px 2px 2px #4cb235;
+}
 .site-blue-color {
     background: #003f7f;
     color: #fff;
@@ -1225,4 +1241,21 @@ footer .list-style-modes{
     .mw-content ul li{
         margin-right: 0px !important;
     }
+	.carousel-caption {
+    position: absolute;
+    left:10% !important;
+	top:20%;
+    z-index: 10;
+	color: #003f7f;
+    text-align: center;
+}
+.carousel-caption h1{
+   font-size:18px !important;
+   font-weight:600;
+   text-align:left;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #fff;
+   text-shadow: none;
+   text-align:center;
+}
 }
