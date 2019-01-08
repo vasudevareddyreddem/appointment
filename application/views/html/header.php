@@ -78,6 +78,11 @@ header('Expires: 0'); // Proxies.
 						<li class="nav-item <?php if($this->uri->segment(1)=='diagnostic'){ echo "active"; } ?>">
                             <a class="nav-link waves-effect" href="<?php echo base_url('diagnostic'); ?>">Diagnostic Tests</a>
                         </li>
+						<li class="nav-item">
+                           <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medarogya.appointment&hl=en">
+                            <img src="<?php echo base_url(); ?>assets/vendor/img/play-store-windows.png" alt="medspace" height="auto" width="100px">
+                        </a>
+                        </li>
                        
 						
                     </ul>

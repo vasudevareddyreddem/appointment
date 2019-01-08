@@ -13,13 +13,13 @@
                 <h6 class="font-weight-bold text-uppercase mt-3 mb-4">Registered Offices</h6>
                 <ul class="list-style-modes">
                     <li>
-                        <a href="#!">Tirupathi</a>
+                        Tirupathi	
                     </li>
                     <li>
-                        <a href="#!">Guntur</a>
+                        Guntur
                     </li>
                     <li>
-                        <a href="#!">Hyderabad</a>
+                       Hyderabad
                     </li>
                 </ul>
             </div>
@@ -29,13 +29,13 @@
                 <h6 class="font-weight-bold text-uppercase mt-3 mb-4">Our Services</h6>
                 <ul class="list-style-modes">
                     <li>
-                        <a href="#!">Doctor Appointment</a>
+                        <a href="<?php echo base_url('appointment'); ?>">Doctor Appointment</a>
                     </li>
                     <li>
-                        <a href="#!"> online Lab tests</a>
+                        <a href="<?php echo base_url('diagnostic'); ?>"> online Lab tests</a>
                     </li>
                     <li>
-                        <a href="#!">software for hospitals/clinics</a>
+                        <a target="_blank" href="http://medspaceit.com/">software for hospitals/clinics</a>
                     </li>
                 </ul>
             </div>
@@ -81,7 +81,7 @@
                 <h6 class="font-weight-bold text-uppercase pt-3 mb-3">Get Mobile App</h6>
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <a href="https://play.google.com/store/apps/details?id=com.medarogya.appointment&hl=en">
+                        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.medarogya.appointment&hl=en">
                             <img src="<?php echo base_url(); ?>assets/vendor/img/play-store-windows.png" alt="medspace" height="auto" width="100px">
                         </a>
                     </li>

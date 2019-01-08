@@ -1,7 +1,8 @@
 <head>
- <title>Health Card</title>
-    <meta name="description" content="#" />
-    <meta name="keywords" content="#" />
+ <title>Health Cards In Tirupati</title>
+    <meta name="description" content=" Get Med Arogya health card in Tirupati and get 20% discount on every OP, IP and Lab tests. These health cards can store 
+	patient’s information regarding doctor's prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. " />
+    <meta name="keywords" content="health cards in tirupati, healthcards in tirupati, tirupati health cards, health card care, healthcards in tirupathi, " />
 </head>
 
 <!--Main layout-->
@@ -21,7 +22,7 @@
                         <h1 class="h1 text-center py-2">MedArogya Health Card</h1>
                         <!-- Main heading -->
                         <br>
-                        <p> MedArogya gives a smart card i.e a health card to each patient or healthcare seeker,  containing his/her complete medical information. It is designed to store patient’s information such as name, age, gender, address, doctor prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. The purpose of collecting medical records is to have an accurate and faster diagnosis that translates into better treatment at lower costs, avoiding unnecessary investigations every time the person visits the  hospital.</p>
+                        <p> MedArogya gives a smart card i.e a health card to each patient or medical care seeker,  containing his/her complete medical information. It is designed to store patient’s information such as name, age, gender, address, doctor prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. The purpose of collecting medical records is to have an accurate and faster diagnosis that translates into better treatment at lower costs, avoiding unnecessary investigations every time the person visits the  hospital.</p>
                         
                         <p>When a patient visits the hospital, patient’s information, medical records can be accessed directly through MedArogya Health card, and at the end of the process it has the capability to update patient’s information.</p>
                         <!-- Main heading -->
@@ -57,9 +58,9 @@
                     <div class="col-md-12">
 
                         <!-- Main heading -->
-                        <h3 class="h3 mb-3">MedArogya Online Appointment App - Hospital/ Laboratory / Pharmacy</h3>
+                        <h3 class="h3 mb-3">MedArogya Online Medical Appointment App - Hospital/ Laboratory / Pharmacy</h3>
                         <p>
-                            "MedArogya Online Appointment App" is available on Google playstore and can be downloaded easily.  </p>
+                            "MedArogya Online Medical Appointment App" is available on Google playstore and can be downloaded easily.  </p>
                         <!-- Main heading -->
                         
                         <ul> 
@@ -99,7 +100,7 @@
 
                 <h2 class=" h3 text-center py-2">Our Hospital Process</h2>
 
-                <p class="text-center ">Online Doctor Appointment using MedArogya App and Hospital Management Software.</p>
+                <p class="text-center ">Book Online Doctor Appointment in Tirupati using MedArogya App on Google playstore .</p>
                 <br>
 
                 <!--First row-->

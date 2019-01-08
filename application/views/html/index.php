@@ -1,7 +1,7 @@
 <head>
  <title>Online doctor appointment in Tirupati - Med Arogya</title>
     <meta name="description" content="Med Arogya has developed the best software to book online doctor appointment in Tirupati. It also facilitates online booking for lab tests and pharmacy." />
-    <meta name="keywords" content="online doctor appointment in tirupati, doctor appointment in tirupati, book doctor appointment in tirupati, " />
+    <meta name="keywords" content="online doctor appointment in tirupati, doctor appointment in tirupati, book doctor appointment in tirupati, online hospital appointment, online medical doctor in tirupati,  " />
 </head>
 <style>
 .carousel-item > div {
@@ -36,7 +36,7 @@
     <div class="carousel-item active">
       <img class="d-block w-100" src="<?php echo base_url(); ?>assets/vendor/img/slider-2.png" alt="First slide">
 	   <div class="carousel-caption">
-        <h1 class="h3-responsive">Online Doctor Appointment In Tirupati</h1>
+        <h1 class="h3-responsive">Now Book Online Doctor Appointment In Tirupati!</h1>
       
       </div>
     </div>
@@ -79,9 +79,9 @@
                             <h2 class="pt-1 h1">
                                 <strong>Med<span> Arogya</span></strong>
                             </h2>
-                            <h6 class="mb-4" style="">
-                                Booking online doctor appointment is made simple with Med Arogya
-                            </h6>
+                            <h2 class="mb-4 h6" style="">
+                                Booking online doctor appointment in Tirupati is made simple with Med Arogya
+                            </h2>
                             <!-- Content -->
                             <div class="text-center">
                                 <form action="<?php echo base_url('users/search'); ?>" method="post" class="search-form">
