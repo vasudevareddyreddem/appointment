@@ -1,28 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users_model extends CI_Model 
+class Users_model extends CI_Model
 
 {
-	function __construct() 
+	function __construct()
 	{
 		parent::__construct();
 		$this->load->database("default");
 	}
-	
-	
+
+
 	public  function check_login($email,$password){
-		$this->db->select('*')->from('appointment_users');	
+		$this->db->select('*')->from('appointment_users');
 		$this->db->where('email', $email);
 		$this->db->where('password', $password);
         return $this->db->get()->row_array();
 	}
 	public  function get_login_user_details($a_u_id){
-		$this->db->select('a_u_id,email')->from('appointment_users');	
+		$this->db->select('a_u_id,email')->from('appointment_users');
 		$this->db->where('a_u_id', $a_u_id);
         return $this->db->get()->row_array();
 	}
 	public  function get_user_details($a_u_id){
-		$this->db->select('*')->from('appointment_users');	
+		$this->db->select('*')->from('appointment_users');
 		$this->db->where('a_u_id', $a_u_id);
         return $this->db->get()->row_array();
 	}
@@ -30,9 +30,9 @@ class Users_model extends CI_Model
 		$this->db->where('a_u_id',$a_u_id);
     	return $this->db->update("appointment_users",$data);
 	}
-	
+
 	public function check_email_exits($email){
-		$this->db->select('*')->from('appointment_users');	
+		$this->db->select('*')->from('appointment_users');
 		$this->db->where('email', $email);
         return $this->db->get()->row_array();
 	}
@@ -42,7 +42,7 @@ class Users_model extends CI_Model
 	}
 	/* forgot passsword */
 	public function get_email_details_check($email){
-		$this->db->select('*')->from('appointment_users');	
+		$this->db->select('*')->from('appointment_users');
 		$this->db->where('email', $email);
         return $this->db->get()->row_array();
 	}
@@ -78,7 +78,7 @@ class Users_model extends CI_Model
 		$this->db->like('treament.t_name', $h_name);
 		return $this->db->get()->result_array();
 	}
-	
+
 	public  function get_hospital_details($h_id){
 		$this->db->select('hospital.hos_bas_name,hospital.hos_bas_logo,hospital.hos_bas_country,hospital.hos_bas_state,hospital.hos_bas_city,hospital.hos_bas_zipcode,hospital.hos_bas_add1,hospital.hos_bas_add2,hospital.hos_bas_city,hospital.hos_id')->from('hospital');
 		$this->db->like('hos_id', $h_id);
@@ -115,7 +115,7 @@ class Users_model extends CI_Model
 		$this->db->where('t_d_status',1);
 		return $this->db->get()->row_array();
 	}
-	
+
 	public  function get_hospital_count_list(){
 		$this->db->select('COUNT(hos_id) as cnt')->from('hospital');
 		$this->db->where('hos_undo',0);
@@ -140,7 +140,7 @@ class Users_model extends CI_Model
 	public  function get_all_logos_list(){
 		$this->db->select('image,org_name')->from('logos_list');
 		$this->db->where('status',1);
-		return $this->db->get()->result_array(); 
+		return $this->db->get()->result_array();
 	}
 	/* get wallet amount  list */
 	public  function get_wallet_amount(){
@@ -152,12 +152,12 @@ class Users_model extends CI_Model
 		$this->db->select('*')->from('wallet_amount_percentage');
 		$this->db->where('hospital_id',$hos_id);
 		$this->db->where('status',1);
-		return $this->db->get()->row_array(); 
+		return $this->db->get()->row_array();
 	}
 
-		
-		
-	
-	
+
+
+
+
 
 }
