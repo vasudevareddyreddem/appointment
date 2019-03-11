@@ -26,18 +26,19 @@ class Api_users_model extends CI_Model
   }
   public function get_pharmcies($city){
 
-    $this->db2->select('a_id phar_id,name')->from('admin');
+    $this->db2->select('a_id phar_id,name,email')->from('admin');
     $this->db2->where('status',1);
     $this->db2->where('role',3);
+		$this->db2->where('city',$city);
 
         return $this->db2->get()->result_array();
   }
 	public function get_labs($city){
 
-    $this->db2->select('a_id phar_id,name')->from('admin');
+    $this->db2->select('a_id phar_id,name,email')->from('admin');
     $this->db2->where('status',1);
     $this->db2->where('role',2);
-
+    $this->db2->where('city',$city);
         return $this->db2->get()->result_array();
   }
   public function get_qrcode($phar){
@@ -52,6 +53,10 @@ class Api_users_model extends CI_Model
 		$this->db2->insert('user_pharmacy_tab',$data);
 		return $this->db2->affected_rows()?1:0;
 
+	}
+	public function insert_med_list($data){
+		$this->db2->insert('cust_orders_tab',$data);
+		return $this->db->affected_rows()?1:0;
 	}
 
 }

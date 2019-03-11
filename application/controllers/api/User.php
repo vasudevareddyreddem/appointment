@@ -40,6 +40,7 @@ class User extends REST_Controller {
     }
     public function get_cities_post(){
       $user_id=$this->post('user_id');
+
     $result= $this->Api_user_checking_model->user_checking($user_id);
     if(count($result)>0){
 
@@ -52,12 +53,14 @@ class User extends REST_Controller {
 
     }
 
+
     $res= $this->api_users_model->get_city_list();
+
     if(count($res)>0){
     $message = array('status'=>1,'message'=>$res);
     $this->response($message, REST_Controller::HTTP_OK);
   }
-  $message = array('status'=>0,'message'=>'Cities list are not found.');
+  $message = array('status'=>0,'message'=>array());
   $this->response($message, REST_Controller::HTTP_OK);
 
     }
@@ -82,7 +85,7 @@ class User extends REST_Controller {
     $message = array('status'=>1,'message'=>$res);
     $this->response($message, REST_Controller::HTTP_OK);
   }
-  $message = array('status'=>0,'message'=>'Pharmacies list are not found.');
+  $message = array('status'=>0,'message'=>array());
   $this->response($message, REST_Controller::HTTP_OK);
 
     }
@@ -176,7 +179,7 @@ if(count($res)>0){
 $message = array('status'=>1,'message'=>$res);
 $this->response($message, REST_Controller::HTTP_OK);
 }
-$message = array('status'=>0,'message'=>'Cities list are not found.');
+$message = array('status'=>0,'message'=>array());
 $this->response($message, REST_Controller::HTTP_OK);
 
 }
@@ -201,11 +204,62 @@ if(count($res)>0){
 $message = array('status'=>1,'message'=>$res);
 $this->response($message, REST_Controller::HTTP_OK);
 }
-$message = array('status'=>0,'message'=>'Labs list are not found.');
+$message = array('status'=>0,'message'=>array());
 $this->response($message, REST_Controller::HTTP_OK);
 
 }
+public function  order_medicine_post(){
+  $user_id=$this->post('user_id');
+$result= $this->Api_user_checking_model->user_checking($user_id);
+if(count($result)>0){
 
+
+}
+else{
+  $message = array('status'=>0,'message'=>'Invalid User');
+  $this->response($message, REST_Controller::HTTP_OK);
+
+
+}
+$address=$this->post('address');
+$phar_id=$this->post('phar_id');
+$config['upload_path']          = './assets/uploads/medicine_list';
+         $config['allowed_types']        = 'gif|jpg|png';
+       $this->load->library('upload', $config);
+if ( ! $this->upload->do_upload('img',time()))
+         {
+                 $error = array('error' => $this->upload->display_errors());
+
+                 $message=array('status'=>0,'message'=>'Image not uploaded try again');
+
+                    $this->response($message, REST_Controller::HTTP_OK);
+
+         }
+ else{
+   $upload_data = $this->upload->data();
+             $img =   $upload_data['file_name'];
+
+
+ }
+ $data=array('cust_id'=>$user_id,
+ 'phar_id'=>$phar_id,
+ 'med_img'=>$img,
+ 'address'=>$address,
+ 'created_date'=>date('Y-m-d H:i:s'),
+ 'created_by'=>$user_id,
+ 'status'=>1,
+
+);
+ $res= $this->api_users_model->insert_med_list($data);
+ if($res==1){
+ $message = array('status'=>1,'message'=>'your order is sent ';
+ $this->response($message, REST_Controller::HTTP_OK);
+}
+$message = array('status'=>0,'message'=>'your order is not sent ';
+$this->response($message, REST_Controller::HTTP_OK);
+
+
+}
 
 //end of lab
     }
