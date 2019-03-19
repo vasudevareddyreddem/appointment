@@ -223,7 +223,7 @@ else{
 }
 $address=$this->post('address');
 $phar_id=$this->post('phar_id');
-$config['upload_path']          = './assets/uploads/medicine_list';
+$config['upload_path']          = './assets/medicine_list';
          $config['allowed_types']        = 'gif|jpg|png';
        $this->load->library('upload', $config);
 if ( ! $this->upload->do_upload('img',time()))
@@ -250,13 +250,15 @@ if ( ! $this->upload->do_upload('img',time()))
  'status'=>1,
 
 );
+//echo '<pre>';print_r($data);exit;
  $res= $this->api_users_model->insert_med_list($data);
  if($res==1){
- $message = array('status'=>1,'message'=>'your order is sent ';
+ $message = array('status'=>1,'message'=>'your order is sent ');
  $this->response($message, REST_Controller::HTTP_OK);
-}
-$message = array('status'=>0,'message'=>'your order is not sent ';
+}else{
+$message = array('status'=>0,'message'=>'your order is not sent ');
 $this->response($message, REST_Controller::HTTP_OK);
+}
 
 
 }
