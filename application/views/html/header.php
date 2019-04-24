@@ -63,7 +63,7 @@ header('Expires: 0'); // Proxies.
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <!-- Left -->
-                    <ul class="navbar-nav mr-auto mar-l50">
+                    <ul class="navbar-nav mr-auto ">
                         <li class="nav-item black-text  <?php if($this->uri->segment(1)==''){ echo "active"; } ?>">
                             <a class="nav-link waves-effect black-text" href="<?php echo base_url(); ?>">Home
                                 <span class="sr-only">(current)</span>
@@ -74,6 +74,10 @@ header('Expires: 0'); // Proxies.
                         </li>
                         <li class="nav-item <?php if($this->uri->segment(1)=='healthcard'){ echo "active"; } ?>">
                             <a class="nav-link waves-effect" href="<?php echo base_url('healthcard'); ?>">Health Card</a>
+                        </li>
+						
+						<li class="nav-item <?php if($this->uri->segment(1)=='joblist'){ echo "active"; } ?>">
+                            <a class="nav-link waves-effect" href="<?php echo base_url('job'); ?>">careers </a>
                         </li>
 						<li class="nav-item <?php if($this->uri->segment(1)=='diagnostic'){ echo "active"; } ?>">
                             <a class="nav-link waves-effect" href="<?php echo base_url('diagnostic'); ?>">Diagnostic Tests</a>
