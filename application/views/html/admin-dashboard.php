@@ -6,69 +6,44 @@
 </head>
 
 <!--Main layout-->
- <main class="mt-5">
+ <main class="mt-5 bg-white">
             <section class="pt-4 wow fadeIn" style="margin-top:100px;">
-			<div class="container">
+			<div class="container" style="min-height:500px;">
 			<form>
 				<div class="row">
 				<div class="col-md-3">
-					hfsdadhfkjsfkjasekfkjas
+					<div class="list-group">
+						<a href="<?php echo base_url('admindashboard'); ?>" class="list-group-item list-group-item-action active">Dashboard</a>
+						<a href="<?php echo base_url('addjob'); ?>" class="list-group-item list-group-item-action ">Add Job</a>
+						<a href="<?php echo base_url('postedjoblist'); ?>" class="list-group-item list-group-item-action">Posted Jobs</a>
+						<a href="<?php echo base_url('appliedlist'); ?>" class="list-group-item list-group-item-action">Applied List</a>
+						
+					</div>
 				</div>
 				<div class="col-md-9">
-				<div class="col-md-9">
+					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="">Name:</label>
-							  <input type="text" class="form-control" id="#" placeholder="Enter name" name="name">
+						  <div class="circle-tile ">
+							<a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+							<div class="circle-tile-content dark-blue">
+							  <div class="circle-tile-description text-faded"> Users</div>
+							  <div class="circle-tile-number text-faded ">265</div>
+							  <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
 							</div>
+						  </div>
 						</div>
+						 
 						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Mobile:</label>
-							  <input type="text" class="form-control" id="#" placeholder="Enter Mobile" name="#">
+						  <div class="circle-tile ">
+							<a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+							<div class="circle-tile-content red">
+							  <div class="circle-tile-description text-faded"> Users Online </div>
+							  <div class="circle-tile-number text-faded ">10</div>
+							  <a class="circle-tile-footer" href="#">More Info<i class="fa fa-chevron-circle-right"></i></a>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Email:</label>
-							  <input type="email" class="form-control" id="#" placeholder="Enter Email" name="#">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">job Catagory:</label>
-							  <input type="email" class="form-control" id="#" placeholder="job Catagory " name="#">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">job title:</label>
-							  <input type="email" class="form-control" id="#" placeholder="job title " name="#">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Total Experince:</label>
-							  <input type="email" class="form-control" id="#" placeholder=" Total Experince " name="#">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Upload Resume:</label>
-							  <input type="file" class="form-control" id="#"  name="#">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Description:</label>
-							  <textarea  class="form-control" id="#"  name="#"></textarea>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<button class="btn btn-success btn-primary">Submit</button>
-						</div>
-					</form>
-				</div>
+						  </div>
+						</div> 
+					  </div>
 				</div>
 				</div>
 			</div>
