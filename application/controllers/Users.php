@@ -103,8 +103,14 @@ class Users extends In_frontend {
 			//echo '<pre>';print_r($check_login);exit;
 			if(count($check_login)>0){
 				$login_details=$this->Users_model->get_login_user_details($check_login['a_u_id']);
+				//echo '<pre>';print_r($login_details);exit;
 				$this->session->set_userdata('app_user',$login_details);
-				redirect('');
+				if($login_details['role']==1){
+					redirect('');
+				}else{
+					redirect('dashboard');
+				}
+				
 			}else{
 				$this->session->set_flashdata('error',"Invalid Email Address or Password!");
 				redirect('users/login');

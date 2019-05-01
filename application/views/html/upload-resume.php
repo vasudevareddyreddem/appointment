@@ -9,59 +9,18 @@
  <main class="mt-5">
             <section class="pt-4 wow fadeIn" style="margin-top:100px;">
 			<div class="container">
-			<form id="uploadresume" name="uploadresume" action="<?php echo base_url('uploadresume/addpost'); ?>" method="post" enctype="multipart/form-data">
+			<form id="uploadresume" name="uploadresume" action="<?php echo base_url('job/upploadresume_post'); ?>" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="post_id" id="post_id" value="<?php echo isset($post_id)?$post_id:''; ?>">
 				<div class="row">
-				
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="">Name:</label>
-							  <input type="text" class="form-control" id="cname" placeholder="Enter name" name="cname">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Mobile:</label>
-							  <input type="text" class="form-control" id="cmobile" placeholder="Enter Mobile" name="cmobile">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Email:</label>
-							  <input type="email" class="form-control" id="cemail" placeholder="Enter Email" name="cemail">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">job Catagory:</label>
-							  <input type="text" class="form-control" id="job_cat" placeholder="job Catagory " name="job_cat">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">job title:</label>
-							  <input type="text" class="form-control" id="job_title" placeholder="job title " name="job_title">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Total Experince:</label>
-							  <input type="email" class="form-control" id="total_exp" placeholder=" Total Experince " name="total_exp">
-							</div>
-						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Upload Resume:</label>
-							  <input type="file" class="form-control" id="resume"  name="resume">
+							  <input type="file" class="form-control" id="resume"  name="resume" required>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="form-group ">
-							  <label for="#">Description:</label>
-							  <textarea  class="form-control" id="description" name="description"></textarea>
-							</div>
-						</div>
+						
 						<div class="col-md-12">
-							<button class="btn btn-success btn-primary">Submit</button>
+							<button  type="submit" class="btn btn-success btn-primary">Submit</button>
 						</div>
 					</form>
 				</div>

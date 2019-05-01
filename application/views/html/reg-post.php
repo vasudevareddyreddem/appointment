@@ -16,7 +16,7 @@
 							<h2 class="text-center">Are Looking for?</h2>
 						</div>
 						<div class="col-md-4">
-						<a href="<?php echo base_url('joblist'); ?>">
+						<a href="<?php echo base_url('job/lists'); ?>">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
 									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/job-looking.png" alt="Support">
@@ -29,7 +29,7 @@
 							</a>
 						</div>
 						<div class="col-md-4">
-						<a href="<?php echo base_url('employeers'); ?>">
+						<a href="<?php echo base_url('jobs'); ?>">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
 									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/employee-search.png" alt="Support">
@@ -42,7 +42,7 @@
 							</a>
 						</div>
 						<div class="col-md-4">
-						<a href="<?php echo base_url('uploadresume'); ?>">
+						<a href="#">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
 									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/resume.png" alt="Support">

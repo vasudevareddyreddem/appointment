@@ -13,7 +13,15 @@ class Dashboard extends In_frontend {
 	{	
 		if($this->session->userdata('app_user'))
 		{	
-			redirect('profile/index');
+			
+			$l_details=$this->session->userdata('app_user');
+			$details=$this->Users_model->get_login_user_details($l_details['a_u_id']);
+			if($details['role']==1){
+				redirect('profile/index');
+			}else{
+				redirect('jobs');
+			}
+			
 		}else{
 			$this->session->set_flashdata('error',"you don't have permission to access");
 			redirect('users/login');

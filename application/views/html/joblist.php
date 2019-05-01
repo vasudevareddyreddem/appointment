@@ -21,30 +21,32 @@
 				</tr>
 				</thead>
 				<tbody>
+				<?php if(isset($jobs_list) && count($jobs_list)>0){ ?>
+				<?php foreach($jobs_list as $list){ ?>
 					<tr>
 						<td>
 						<div class="card">
-						<h5 class="card-header h5"><span>UI Developer - GUI Design</span><span class="pull-right" style="font-size:14px;">Posted by HR, 44 days ago</span></h5>
+						<h5 class="card-header h5"><span><?php echo isset($list['category'])?$list['category']:''; ?></span><span class="pull-right" style="font-size:14px;">Posted by <?php echo isset($list['postedby'])?$list['postedby']:''; ?>, <?php echo isset($list['df_time'])?$list['df_time']:''; ?></span></h5>
 							<div class="card-body">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="">
 											<i class="fa fa-globe" aria-hidden="true"></i>
-												thinkAPPS Solutions Pvt Ltd
+												<?php echo isset($list['title'])?$list['title']:''; ?>
 											 </div>
 											<div class="mt-1">
 											<i class="fa fa-map-marker" aria-hidden="true"></i>
-											Hyderabad <span style="margin-left:50px;"> <strong>Exp : </strong> 4-3 Years</span>
+											<?php echo isset($list['district'])?$list['district']:''; ?> <span style="margin-left:50px;"> <strong>Exp : </strong> <?php echo isset($list['experience'])?$list['experience']:''; ?></span>
 											</div>	
 											<div class="mt-1">
-											<i class="fa fa-key" aria-hidden="true"></i> UI Development,Javascript,JQuery,Bootstrap,Html5,Photoshop,Logo Design,Front End,Web Technologies,Unit Testing
+											<i class="fa fa-key" aria-hidden="true"></i> <?php echo isset($list['description'])?$list['description']:''; ?>
 											</div>
 											<div class="mt-1">
-											<i class="fa fa-graduation-cap" aria-hidden="true"></i> Any Degree
+											<i class="fa fa-graduation-cap" aria-hidden="true"></i><?php echo isset($list['qualifications'])?$list['qualifications']:''; ?>
 											</div>
 										</div>
 										<div class="col-md-12 ">
-											<a href="<?php echo base_url('pricing'); ?>" class="btn btn-primary btn-sm ">Apply Now</a>
+											<a href="<?php echo base_url('job/apply/'.base64_encode($list['j_p_id'])); ?>" class="btn btn-primary btn-sm ">Apply Now</a>
 										</div>
 										
 									</div>
@@ -53,23 +55,26 @@
 						</td>
 					
 					</tr>
+					<?php } ?>
+					<?php } ?>
+					
 				</tbody>
 			</table>
 			</div>
 			<div class="py-4 col-md-4">
+			<?php if(isset($jobs_category) && count($jobs_category)>0){ ?>
 				<div class="card">
 					<div class="card-body">
 					<h5 class="text-cente">Job Catagories</h5>
 					<div class="list-group">
-					  
-					  <a href="#!" class="list-group-item list-group-item-action">Lab Posts</a>
-					  <a href="#!" class="list-group-item list-group-item-action">Admin</a>
-					  <a href="#!" class="list-group-item list-group-item-action">Tesing</a>
-					  <a href="#!" class="list-group-item list-group-item-action disabled">Ward 
-					  </a>
+					<?php foreach($jobs_category as $li){ ?>
+					<a href="<?php echo base_url('job/lists/'.base64_encode($li['category'])); ?>" class="list-group-item list-group-item-action"><?php echo isset($li['category'])?$li['category']:''; ?> &nbsp;(<?php echo isset($li['cnt'])?$li['cnt']:''; ?>)</a>
+					<?php } ?>
+					 
 					</div>
 					</div>
 				</div>
+			<?php } ?>
 			</div>
 			</div>
 			</div>
