@@ -14,7 +14,9 @@ class Jobs extends In_frontend {
 	{	
 		if($this->session->userdata('app_user'))
 		{	
+			$this->load->view('html/sidebar');
 			$this->load->view('html/admin-jobs-dashboard');
+			
 			$this->load->view('html/footer');
 		}else{
 			$this->session->set_flashdata('error',"Please Login/Register, to continue");
