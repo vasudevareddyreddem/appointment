@@ -67,7 +67,6 @@ class Employeer extends In_frontend {
 			redirect('users/login');
 		}
 	}
-	
 	public function add()
 	{
 		if($this->session->userdata('app_user'))
@@ -248,6 +247,7 @@ class Employeer extends In_frontend {
 				redirect('employeer/plans');	
 			}
 			$add=array(
+			'p_type'=>isset($post['p_type'])?$post['p_type']:'',
 			'p_amt'=>isset($post['amount'])?$post['amount']:'',
 			'no_of_resume_view'=>isset($post['no_of_resume_view'])?$post['no_of_resume_view']:'',
 			'expiry_date'=>isset($post['expiry_date'])?$post['expiry_date']:'',
@@ -332,6 +332,7 @@ class Employeer extends In_frontend {
 			}
 			$u_data=array(
 			'p_amt'=>isset($post['amount'])?$post['amount']:'',
+			'p_type'=>isset($post['p_type'])?$post['p_type']:'',
 			'no_of_resume_view'=>isset($post['no_of_resume_view'])?$post['no_of_resume_view']:'',
 			'expiry_date'=>isset($post['expiry_date'])?$post['expiry_date']:'',
 			'p_name'=>isset($post['plan_name'])?$post['plan_name']:'',
@@ -350,6 +351,21 @@ class Employeer extends In_frontend {
 				redirect('users/login');
 			}	
 	}
+	public function plandetails()
+	{	
+		if($this->session->userdata('app_user'))
+		{
+			$app_user=$this->session->userdata('app_user');
+			$data['plans_list']=$this->Employeer_model->get_all_plans_list($app_user['a_u_id']);
+			//echo '<pre>';print_r($data);exit;
+			$this->load->view('html/employeer/pricing',$data);
+			$this->load->view('html/footer');
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('users/login');
+		}
+	}
+	
 	
 	
 	

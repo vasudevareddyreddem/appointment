@@ -51,7 +51,7 @@ class Employeer_model extends CI_Model
 		return $this->db->insert_id();
 	}
 	public function get_plans_list($id){
-		$this->db->select('j_p_id,p_amt,no_of_resume_view,expiry_date,p_name,status,create_at')->from('job_plans');
+		$this->db->select('j_p_id,p_amt,no_of_resume_view,expiry_date,p_name,status,create_at,p_type')->from('job_plans');
 		$this->db->where('created_by',$id);
 		$this->db->where('status !=',2);
 		return $this->db->get()->result_array();
@@ -61,7 +61,7 @@ class Employeer_model extends CI_Model
 		return $this->db->update('job_plans',$data);
 	}
 	public  function get_plan_details($p_id){
-		$this->db->select('j_p_id,p_amt,no_of_resume_view,expiry_date,p_name,status,create_at')->from('job_plans');
+		$this->db->select('j_p_id,p_amt,no_of_resume_view,expiry_date,p_name,status,create_at,p_type')->from('job_plans');
 		$this->db->where('j_p_id',$p_id);
 		return $this->db->get()->row_array();
 	}
@@ -72,6 +72,22 @@ class Employeer_model extends CI_Model
 		$this->db->where('created_by',$a_u_id);
 		$this->db->where('status !=',2);
 		return $this->db->get()->row_array();  
+	}
+	
+	public  function get_all_plans_list(){
+		$this->db->select('j_p_id,p_amt,no_of_resume_view,expiry_date,p_name,status,create_at,p_type')->from('job_plans');
+		$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	public  function get_user_details($id){
+		$this->db->select('a_u_id,name,email,mobile,address')->from('appointment_users');
+		$this->db->where('a_u_id',$id);
+		return $this->db->get()->row_array(); 
+	}
+	public  function save_plan_payment($data){
+		$this->db->insert('plan_payments',$data);
+		return $this->db->insert_id();
+		
 	}
 	
 	

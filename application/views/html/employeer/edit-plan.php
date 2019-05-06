@@ -7,6 +7,12 @@
 							<div class="row">
 						<div class="col-md-6">
 							<div class="form-group ">
+							  <label for="">Plan Type :</label>
+							  <input type="text" class="form-control" id="p_type" placeholder="Enter Plan type" name="p_type" value="<?php echo isset($details['p_type'])?$details['p_type']:''; ?>">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group ">
 							  <label for="">Amount :</label>
 							  <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount" value="<?php echo isset($details['p_amt'])?$details['p_amt']:''; ?>">
 							</div>

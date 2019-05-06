@@ -117,11 +117,14 @@ header('Expires: 0'); // Proxies.
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/cart'); ?>">Lab Cart</a>
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/orders'); ?>">My Diagnostic Orders</a>
                                 <a class="dropdown-item" href="<?php echo base_url('wallet'); ?>">My Wallet</a>
+								 <a class="dropdown-item" href="<?php echo base_url('jobs/userappliedlist'); ?>">User applied List</a>
+
 								<?php }else if($user_details['role']==2){ ?>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs'); ?>">Dashboard</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/add'); ?>">Add Job</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/lists'); ?>">Posted Jobs</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/appliedlist'); ?>">Applied List</a>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs/appliedliststatus'); ?>">Users status list</a>
 
 								<?php  }else if($user_details['role']==3){ ?>
 										<a class="dropdown-item" href="<?php echo base_url('employeer/dashboard'); ?>">Dashboard</a>

@@ -96,5 +96,33 @@ class Api_users_model extends CI_Model
 		$this->db->where('a_u_id',$a_id);
 		return $this->db->update('appointment_users',$data);
 	}
+	
+	public  function get_job_list(){
+		$this->db->select('TIMEDIFF( jp.created_at, now() ) as df_time,jp.j_p_id,jp.description,jp.category,jp.title,jp.qualifications,jp.experience,jp.district,jp.last_to_apply,jp.status,au.name as postedby')->from('job_posts as jp');
+		$this->db->join('appointment_users as au','au.a_u_id=jp.created_by','left');
+		$this->db->where('jp.status',1);
+		return $this->db->get()->result_array(); 
+	}
+	 public  function check_post_appiled($a_u_id,$post_id){
+		$this->db->select('u_a_p_id')->from('user_appiled_post_list');
+		$this->db->where('created_by',$a_u_id);
+		$this->db->where('post_id',$post_id);
+		return $this->db->get()->row_array();  
+	 }
+	 
+	 public  function save_resume($data){
+		 $this->db->insert('user_appiled_post_list',$data);
+		 return $this->db->insert_id();
+		 
+	 }
+	 
+	 public  function get_user_job_list($id){
+		$this->db->select('u.u_a_p_id,u.user_id,u.post_id,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
+		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
+		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
+		$this->db->where('u.user_id',$id);
+		$this->db->where('u.status',0);
+		return $this->db->get()->result_array();  
+	 }
 
 }

@@ -1,3 +1,4 @@
+
 				<div class="col-md-9">
 					<table class="table table-bordered " id="dtBasicExample">
 			<thead>
@@ -10,7 +11,7 @@
 					<th>District</th>
 					<th>Resume</th>
 					<th>Applied Date</th>
-					<th>Action</th>
+					<th>Status</th>
 				
 				</tr>
 				</thead>
@@ -25,19 +26,13 @@
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
 							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
 							<td>
-							<?php if($resume_pay==0){ ?>
-								<?php if(isset($li['resume']) && $li['resume']!=''){ ?>
-								<a style="color:blue" onclick="update_resume_cnt('<?php echo $li['user_id']; ?>','<?php echo $li['post_id']; ?>');"   href="<?php echo base_url('assets/resume/'.$li['resume']); ?>" download>Download</a>
-								<?php } ?>
-							<?php }else{ ?>
-								<a style="color:blue"  href="<?php echo base_url('employeer/plandetails'); ?>">Download</a>
+							<?php if(isset($li['resume']) && $li['resume']!=''){ ?>
+							<a style="color:blue" href="<?php echo base_url('assets/resume/'.$li['resume']); ?>" download>Download</a>
 							<?php } ?>
 							</td>
 							<td><?php echo isset($li['created_at'])?$li['created_at']:''; ?></td>
-							<td>
-								<a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($li['u_a_p_id']) ?>');admindedeletemsgreject(1);" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm btn-block">Call for interview </button>
-								<a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($li['u_a_p_id']) ?>');admindedeletemsgrejects(2);" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm btn-block  mt-1">Reject </button>
-							</td>
+							<td><?php  if($li['status']==1){ echo "Call for interview"; }else if($li['status']==2){ echo "Reject"; } ?></td>
+							
 						</tr>
 					<?php $cnt++;} ?>
 				<?php } ?>
@@ -94,20 +89,6 @@
     </div>
 </div>
 <script>
-function update_resume_cnt(u_id,p_id){
-	jQuery.ajax({
-		url: "<?php echo base_url('jobs/update_resume_cnt');?>",
-		data: {
-			user_id:u_id,
-			post_id:p_id,
-		},
-		dataType: 'json',
-		type: 'POST',
-		success: function (data) {
-			//console.log(data.msg);
-		}
-	});
-}
 function sentcommet(){
 	if($('#comment').val()==''){
 		alert('Commnet is required');return false;

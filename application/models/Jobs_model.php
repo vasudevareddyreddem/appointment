@@ -70,10 +70,27 @@ class Jobs_model extends CI_Model
 	}
 	
 	public  function get_job_applied_joblist($a_u_id){
-		$this->db->select('u.u_a_p_id,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
+		$this->db->select('u.u_a_p_id,u.user_id,u.post_id,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
 		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
 		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
 		$this->db->where('j.created_by',$a_u_id);
+		$this->db->where('u.status',0);
+		return $this->db->get()->result_array();  
+	}
+	public  function get_job_user_applied_joblist($a_u_id){
+		$this->db->select('u.u_a_p_id,u.user_id,u.status,u.post_id,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
+		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
+		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
+		$this->db->where('u.user_id',$a_u_id);
+		$this->db->where('u.status',0);
+		return $this->db->get()->result_array();  
+	}
+	public  function get_job_applied_joblist_status($a_u_id){
+		$this->db->select('u.u_a_p_id,u.status,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
+		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
+		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
+		$this->db->where('j.created_by',$a_u_id);
+		$this->db->where('u.status !=',0);
 		return $this->db->get()->result_array();  
 	}
 	public  function update_comment($u_a_p_id,$data){
@@ -85,7 +102,33 @@ class Jobs_model extends CI_Model
 		$this->db->select('count(u_a_p_id) as cnt')->from('user_appiled_post_list as u');
 		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
 		$this->db->where('j.created_by',$a_u_id);
-		return $this->db->get()->result_array();  
+		return $this->db->get()->row_array();  
+	}
+	public function get_post_list_list($a_u_id){
+		$this->db->select('count(j_p_id) as cnt')->from('job_posts');
+		$this->db->where('created_by',$a_u_id);
+		return $this->db->get()->row_array();  
+	}
+	public function save_resume_cnt($data){
+		$this->db->insert('resume_cnt_list',$data);
+		return $this->db->insert_id();
+	}
+	public  function check_resumt_cnt($u_id,$p_id,$a_u_id){
+		$this->db->select('r_c_id')->from('resume_cnt_list');
+		$this->db->where('r_user_id',$u_id);
+		$this->db->where('post_id',$p_id);
+		$this->db->where('created_by',$a_u_id);
+		return $this->db->get()->row_array(); 	
+	}
+	public  function get_resumes_cnt($id){
+		$this->db->select('sum(resume_cnt) as cnt')->from('plan_payments');
+		$this->db->where('created_by',$id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_resumes_count($id){
+		$this->db->select('count(r_c_id) as cnt')->from('resume_cnt_list');
+		$this->db->where('created_by',$id);
+		return $this->db->get()->row_array();
 	}
 	
 }

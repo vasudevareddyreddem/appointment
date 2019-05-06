@@ -16,7 +16,8 @@ class Jobs extends In_frontend {
 		{	
 			$log_details=$this->session->userdata('app_user');
 			$data['applied_users']=$this->Jobs_model->get_job_applied_user_list($log_details['a_u_id']);
-			$this->load->view('html/admin-jobs-dashboard');
+			$data['post_list']=$this->Jobs_model->get_post_list_list($log_details['a_u_id']);
+			$this->load->view('html/admin-jobs-dashboard',$data);
 			$this->load->view('html/footer');
 		}else{
 			$this->session->set_flashdata('error',"Please Login/Register, to continue");
@@ -44,8 +45,45 @@ class Jobs extends In_frontend {
 		{	
 			$log_details=$this->session->userdata('app_user');
 			$data['appiled_list']=$this->Jobs_model->get_job_applied_joblist($log_details['a_u_id']);
+			$p_resum_cnt=$this->Jobs_model->get_resumes_cnt($log_details['a_u_id']);
+			$c_resum_count=$this->Jobs_model->get_resumes_count($log_details['a_u_id']);
+			if($p_resum_cnt['cnt']>$c_resum_count['cnt']){
+				$data['resume_pay']=0;
+			}else{
+				$data['resume_pay']=1;
+			}
 			//echo '<pre>';print_r($data);exit;
 			$this->load->view('html/applyed-list',$data);
+			$this->load->view('html/footer');
+		}else{
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
+			redirect('users/login');
+		}
+				
+	}
+	public function userappliedlist()
+	{	
+		if($this->session->userdata('app_user'))
+		{	
+			$log_details=$this->session->userdata('app_user');
+			$data['appiled_list']=$this->Jobs_model->get_job_user_applied_joblist($log_details['a_u_id']);
+			//echo '<pre>';print_r($data);exit;
+			$this->load->view('html/user-applyed-list',$data);
+			$this->load->view('html/footer');
+		}else{
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
+			redirect('users/login');
+		}
+				
+	}
+	public function appliedliststatus()
+	{	
+		if($this->session->userdata('app_user'))
+		{	
+			$log_details=$this->session->userdata('app_user');
+			$data['appiled_list']=$this->Jobs_model->get_job_applied_joblist_status($log_details['a_u_id']);
+			//echo '<pre>';print_r($data);exit;
+			$this->load->view('html/applyed_list_status',$data);
 			$this->load->view('html/footer');
 		}else{
 			$this->session->set_flashdata('error',"Please Login/Register, to continue");
@@ -152,12 +190,10 @@ class Jobs extends In_frontend {
 			redirect('users/login');
 		}	
 	}
-	
-	
 	public function application_status(){
 		if($this->session->userdata('app_user'))
 		{ 
-			$userdetails=$this->session->userdata('ftp_details');
+			$userdetails=$this->session->userdata('app_user');
 			$post=$this->input->post();
 			//echo '<pre>';print_r($post);exit;
 			$add=array(
@@ -174,6 +210,40 @@ class Jobs extends In_frontend {
 				$data['msg']=0;
 				echo json_encode($data);exit;
 			}
+		}else{
+				$data['msg']=2;
+				echo json_encode($data);exit;
+		}
+	}
+	public function update_resume_cnt(){
+		if($this->session->userdata('app_user'))
+		{ 
+			$userdetails=$this->session->userdata('app_user');
+			$post=$this->input->post();
+			//echo '<pre>';print_r($post);exit;
+			$add=array(
+			'r_user_id'=>isset($post['user_id'])?$post['user_id']:'',
+			'post_id'=>isset($post['post_id'])?$post['post_id']:'',
+			'created_ay'=>date('Y-m-d H:i:s'),
+			'created_by'=>$userdetails['a_u_id'],
+			);
+			$check=$this->Jobs_model->check_resumt_cnt($post['user_id'],$post['post_id'],$userdetails['a_u_id']);
+			if(Count($check)>0){
+				$data['msg']=0;
+				echo json_encode($data);exit;
+			}else{
+				$save=$this->Jobs_model->save_resume_cnt($add);
+				//echo $this->db->last_query();exit;
+				if(count($save)>0){
+					$data['msg']=1;
+					echo json_encode($data);exit;
+				}else{
+					$data['msg']=0;
+					echo json_encode($data);exit;
+				}
+				
+			}
+			
 		}else{
 				$data['msg']=2;
 				echo json_encode($data);exit;

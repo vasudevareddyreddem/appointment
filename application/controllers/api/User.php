@@ -385,5 +385,71 @@ public  function orders_list_post(){
 		 }
 	}
 
-//end of lab
-    }
+	//end of lab
+	//job  listing  purpose 
+		public  function user_joblist_post(){
+				 $user_id=$this->post('user_id');
+				 if($user_id==''){
+						$message = array('status'=>0,'message'=>'User id is required');
+						$this->response($message, REST_Controller::HTTP_OK);
+				 }
+				$job_list=$this->api_users_model->get_user_job_list($user_id);
+				if(count($job_list)>0){
+					$message = array('status'=>1,'list'=>$job_list,'path'=>base_url('assets/resume/'),'message'=>'User applied job list details are found');
+					$this->response($message, REST_Controller::HTTP_OK);
+				}else{
+					$message = array('status'=>0,'message'=>'User applied job list details not found');
+					$this->response($message, REST_Controller::HTTP_OK);
+				}
+		}
+		public  function joblist_post(){
+				$job_list=$this->api_users_model->get_job_list();
+				if(count($job_list)>0){
+					$message = array('status'=>1,'list'=>$job_list,'message'=>'Job list details are found');
+					$this->response($message, REST_Controller::HTTP_OK);
+				}else{
+					$message = array('status'=>0,'message'=>'Job list details not found');
+					$this->response($message, REST_Controller::HTTP_OK);
+				}
+		}
+		public  function apply_job_post(){
+			 $user_id=$this->post('user_id');
+			 $post_id=$this->post('post_id');
+			 if($user_id==''){
+					$message = array('status'=>0,'message'=>'User id is required');
+					$this->response($message, REST_Controller::HTTP_OK);
+			 }if($post_id==''){
+					$message = array('status'=>0,'message'=>'Post id is required');
+					$this->response($message, REST_Controller::HTTP_OK);
+			 }
+			 if(count($_FILES)==0){
+				$message = array('status'=>0,'message'=>'Resume is required');
+				$this->response($message, REST_Controller::HTTP_OK);	
+			}
+			$check=$this->api_users_model->check_post_appiled($user_id,$post_id);
+			if(count($check)>0){
+				$message = array('status'=>0,'message'=>'You already applied this position. Please try again');
+				$this->response($message, REST_Controller::HTTP_OK);		
+			}
+			$pic=$_FILES['resume']['name'];
+			$picname = str_replace(" ", "", $pic);
+			$imagename=microtime().basename($picname);
+			$imgname = str_replace(" ", "", $imagename);
+			move_uploaded_file($_FILES['resume']['tmp_name'], "assets/resume/" . $imgname);
+			$add=array(
+			'user_id'=>isset($user_id)?$user_id:'',
+			'post_id'=>isset($post_id)?$post_id:'',
+			'resume'=>isset($imgname)?$imgname:'',
+			'created_at'=>date('Y-m-d H:i:s'),
+			'created_by'=>isset($user_id)?$user_id:'',
+			);
+			$save=$this->api_users_model->save_resume($add);
+			if(count($save)>0){
+				$message = array('status'=>1,'u_a_p_id'=>$save,'message'=>'Your job application has been sent successfully');
+				$this->response($message, REST_Controller::HTTP_OK);
+			}else{
+				$message = array('status'=>0,'message'=>'Technical problem will occurred. Please try again');
+				$this->response($message, REST_Controller::HTTP_OK);
+			}
+		}
+}

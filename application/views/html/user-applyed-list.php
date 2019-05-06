@@ -10,7 +10,7 @@
 					<th>District</th>
 					<th>Resume</th>
 					<th>Applied Date</th>
-					<th>Action</th>
+					<th>Status</th>
 				
 				</tr>
 				</thead>
@@ -25,18 +25,13 @@
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
 							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
 							<td>
-							<?php if($resume_pay==0){ ?>
 								<?php if(isset($li['resume']) && $li['resume']!=''){ ?>
 								<a style="color:blue" onclick="update_resume_cnt('<?php echo $li['user_id']; ?>','<?php echo $li['post_id']; ?>');"   href="<?php echo base_url('assets/resume/'.$li['resume']); ?>" download>Download</a>
 								<?php } ?>
-							<?php }else{ ?>
-								<a style="color:blue"  href="<?php echo base_url('employeer/plandetails'); ?>">Download</a>
-							<?php } ?>
 							</td>
 							<td><?php echo isset($li['created_at'])?$li['created_at']:''; ?></td>
 							<td>
-								<a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($li['u_a_p_id']) ?>');admindedeletemsgreject(1);" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm btn-block">Call for interview </button>
-								<a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($li['u_a_p_id']) ?>');admindedeletemsgrejects(2);" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm btn-block  mt-1">Reject </button>
+							<?php if($li['status']==1){ echo "Call for interview";}else if($li['status']==5){ echo "reject"; }else{  echo "Pending"; } ?>
 							</td>
 						</tr>
 					<?php $cnt++;} ?>

@@ -4,10 +4,16 @@
 				<a href="<?php echo base_url('employeer/planslist'); ?>">Plan List</a>
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/planspost'); ?>">
 							<div class="row">
+							<div class="col-md-6">
+							<div class="form-group ">
+							  <label for="">Plan Type :</label>
+							  <input type="text" class="form-control" id="p_type" placeholder="Enter Plan type" name="p_type" required>
+							</div>
+						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="">Amount :</label>
-							  <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount">
+							  <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount" required>
 							</div>
 						</div>
 						<div class="col-md-6">
