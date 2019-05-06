@@ -34,13 +34,12 @@ class Job extends In_frontend {
 				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
 				redirect('job/lists');
 			}
+			$data['post_id']=$post_id;
 			$log_details=$this->session->userdata('app_user');
 			$payment_details=$this->Jobs_model->check_wallet_amount($log_details['a_u_id']);
-			echo '<pre>';print_r($payment_details);exit;
-			if($post['money']<$check['remaining_wallet_amount']){
-				$this->load->view('html/upload-resume',$post);
-				$this->load->view('html/footer');	
-			}
+			$this->load->view('html/upload-resume',$data);
+			$this->load->view('html/footer');	
+			
 		}else{
 			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
@@ -76,18 +75,13 @@ class Job extends In_frontend {
 					move_uploaded_file($_FILES['resume']['tmp_name'], "assets/resume/" . $documents);
 			}
 			$add=array(
+			'user_id'=>isset($log_details['a_u_id'])?$log_details['a_u_id']:'',
 			'post_id'=>isset($post['post_id'])?$post['post_id']:'',
-			'cname'=>isset($post['cname'])?$post['cname']:'',
-			'cmobile'=>isset($post['cmobile'])?$post['cmobile']:'',
-			'cemail'=>isset($post['cemail'])?$post['cemail']:'',
-			'job_cat'=>isset($post['job_cat'])?$post['job_cat']:'',
-			'job_title'=>isset($post['job_title'])?$post['job_title']:'',
-			'total_exp'=>isset($post['total_exp'])?$post['total_exp']:'',
-			'description'=>isset($post['description'])?$post['description']:'',
 			'resume'=>isset($documents)?$documents:'',
 			'created_at'=>date('Y-m-d H:i:s'),
 			'created_by'=>$log_details['a_u_id'],
 			);
+			//echo '<pre>';print_r($add);exit;
 			$save=$this->Jobs_model->save_resume($add);
 			if(count($save)>0){
 				$this->session->set_flashdata('success',"Your job application has been sent successfully");

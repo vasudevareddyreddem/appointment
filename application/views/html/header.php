@@ -1,3 +1,5 @@
+
+<?php //echo '<pre>';print_r($user_details);exit; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,11 +110,26 @@ header('Expires: 0'); // Proxies.
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo isset($user_details['name'])?ucfirst($user_details['name']):''; ?></a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+							
                                 <a class="dropdown-item" href="<?php echo base_url('profile'); ?>">My Profile</a>
+								<?php if($user_details['role']==1){ ?>
                                 <a class="dropdown-item" href="<?php echo base_url('appointment/lists'); ?>">Appointments List</a>
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/cart'); ?>">Lab Cart</a>
                                 <a class="dropdown-item" href="<?php echo base_url('diagnostic/orders'); ?>">My Diagnostic Orders</a>
                                 <a class="dropdown-item" href="<?php echo base_url('wallet'); ?>">My Wallet</a>
+								<?php }else if($user_details['role']==2){ ?>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs'); ?>">Dashboard</a>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs/add'); ?>">Add Job</a>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs/lists'); ?>">Posted Jobs</a>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs/appliedlist'); ?>">Applied List</a>
+
+								<?php  }else if($user_details['role']==3){ ?>
+										<a class="dropdown-item" href="<?php echo base_url('employeer/dashboard'); ?>">Dashboard</a>
+								       <a class="dropdown-item" href="<?php echo base_url('employeer/add'); ?>">Add Employee</a>
+								       <a class="dropdown-item" href="<?php echo base_url('employeer/index'); ?>">Employee List</a>
+								       <a class="dropdown-item" href="<?php echo base_url('employeer/plans'); ?>">Plans</a>
+								
+								<?php } ?>
                                 <a class="dropdown-item" href="<?php echo base_url('profile/changepassword'); ?>">Change Password</a>
                                 <a class="dropdown-item" href="<?php echo base_url('dashboard/logout'); ?>">Sign Out</a>
                             </div>

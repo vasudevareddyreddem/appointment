@@ -70,14 +70,22 @@ class Jobs_model extends CI_Model
 	}
 	
 	public  function get_job_applied_joblist($a_u_id){
-		$this->db->select('u.u_a_p_id,u.cname,u.resume,u.total_exp,u.created_at,j.district,j.qualifications,j.title,j.category')->from('user_appiled_post_list as u');
+		$this->db->select('u.u_a_p_id,u.resume,as.name,u.created_at,j.title,j.category,j.qualifications,j.experience,j.district')->from('user_appiled_post_list as u');
 		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
+		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
 		$this->db->where('j.created_by',$a_u_id);
 		return $this->db->get()->result_array();  
 	}
 	public  function update_comment($u_a_p_id,$data){
 		$this->db->where('u_a_p_id',$u_a_p_id);
 		return $this->db->update('user_appiled_post_list',$data);	
+	}
+	//dashboard
+	public function get_job_applied_user_list($a_u_id){
+		$this->db->select('count(u_a_p_id) as cnt')->from('user_appiled_post_list as u');
+		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
+		$this->db->where('j.created_by',$a_u_id);
+		return $this->db->get()->result_array();  
 	}
 	
 }

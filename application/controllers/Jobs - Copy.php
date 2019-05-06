@@ -14,8 +14,6 @@ class Jobs extends In_frontend {
 	{	
 		if($this->session->userdata('app_user'))
 		{	
-			$log_details=$this->session->userdata('app_user');
-			$data['applied_users']=$this->Jobs_model->get_job_applied_user_list($log_details['a_u_id']);
 			$this->load->view('html/admin-jobs-dashboard');
 			$this->load->view('html/footer');
 		}else{
