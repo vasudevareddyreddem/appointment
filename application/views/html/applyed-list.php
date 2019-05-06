@@ -1,25 +1,4 @@
-<head>
- <title>Health Cards In Tirupati</title>
-    <meta name="description" content=" Get Med Arogya health card in Tirupati and get 20% discount on every OP, IP and Lab tests. These health cards can store 
-	patient’s information regarding doctor's prescription, lab test reports, prescribed medicines, no. of hospital visits and many more. " />
-    <meta name="keywords" content="health cards in tirupati, healthcards in tirupati, tirupati health cards, health card care, healthcards in tirupathi, " />
-</head>
 
-<!--Main layout-->
- <main class="mt-5 bg-white">
-            <section class="pt-4 wow fadeIn" style="margin-top:100px;">
-			<div class="container" style="min-height:500px;">
-			<form>
-				<div class="row">
-				<div class="col-md-3">
-					<div class="list-group">
-						<a href="<?php echo base_url('jobs'); ?>" class="list-group-item list-group-item-action active">Dashboard</a>
-						<a href="<?php echo base_url('jobs/add'); ?>" class="list-group-item list-group-item-action ">Add Job</a>
-						<a href="<?php echo base_url('jobs/lists'); ?>" class="list-group-item list-group-item-action">Posted Jobs</a>
-						<a href="<?php echo base_url('jobs/appliedlist'); ?>" class="list-group-item list-group-item-action">Applied List</a>
-						
-					</div>
-				</div>
 				<div class="col-md-9">
 					<table class="table table-bordered " id="dtBasicExample">
 			<thead>
@@ -41,9 +20,9 @@
 					<?php $cnt=1;foreach($appiled_list as $li){ ?>
 						<tr>
 							<td><?php echo $cnt; ?></td>
-							<td><?php echo isset($li['cname'])?$li['cname']:''; ?></td>
+							<td><?php echo isset($li['name'])?$li['name']:''; ?></td>
 							<td><?php echo isset($li['qualifications'])?$li['qualifications']:''; ?></td>
-							<td><?php echo isset($li['total_exp'])?$li['total_exp']:''; ?></td>
+							<td><?php echo isset($li['experience'])?$li['experience']:''; ?></td>
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
 							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
 							<td>

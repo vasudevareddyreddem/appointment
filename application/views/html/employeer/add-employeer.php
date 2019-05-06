@@ -6,31 +6,31 @@
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="">Name:</label>
-							  <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+							  <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Mobile:</label>
-							  <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile">
+							  <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" required>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Email Id:</label>
-							  <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+							  <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Password</label>
-							  <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pwd">
+							  <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pwd" required >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Confirm Password</label>
-							  <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm Password" name="confirmpwd">
+							  <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm Password" name="confirmpwd" required>
 							</div>
 						</div>
 						<div class="col-md-6">

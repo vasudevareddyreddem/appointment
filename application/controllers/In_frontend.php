@@ -20,9 +20,6 @@ class In_frontend extends CI_Controller {
 				$app_user=$this->session->userdata('app_user');
 				$data['user_details']=$this->Users_model->get_user_details($app_user['a_u_id']);
 				$this->load->view('html/header',$data);
-				if($app_user['role']!=1){
-					$this->load->view('html/sidebar',$data);
-				}
 			}else{
 				$this->load->view('html/header');
 			}
