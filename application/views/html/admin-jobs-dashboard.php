@@ -5,9 +5,9 @@
     <meta name="keywords" content="health cards in tirupati, healthcards in tirupati, tirupati health cards, health card care, healthcards in tirupathi, " />
 </head>
 
-
-				<div class="col-md-9">
-					<div class="row">
+<div class="container">
+				<div class="col-md-12">
+					<div class="row add">
 						<div class="col-md-6">
 						  <div class="circle-tile ">
 							<a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
@@ -30,6 +30,7 @@
 						  </div>
 						</div> 
 					  </div>
+				</div>
 				</div>
 				</div>
 			</div>

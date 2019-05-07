@@ -1,5 +1,7 @@
 
-				<div class="col-md-9">
+					<div class="container">
+					<div class="row add">
+			<div class="col-md-12">
 					<table class="table table-bordered " id="dtBasicExample">
 			<thead>
 				<tr>
@@ -35,6 +37,8 @@
 				<?php } ?>
 				</tbody>
 			</table>
+				</div>
+				</div>
 				</div>
 				</div>
 			</div>

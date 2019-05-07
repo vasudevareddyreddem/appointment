@@ -1,5 +1,5 @@
-
-				<div class="col-md-9">
+<div class="container">
+				<div class="col-md-12 add table-responsive">
 					<table class="table table-bordered " id="dtBasicExample">
 			<thead>
 				<tr>
@@ -33,6 +33,7 @@
 					
 				</tbody>
 			</table>
+				</div>
 				</div>
 				</div>
 			</div>

@@ -1,8 +1,8 @@
 
-				<div class="col-md-9">
-			
+				<div class="container">
+			<div class="col-md-12">
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/addpost'); ?>">
-							<div class="row">
+							<div class="row add">
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="">Name:</label>
@@ -46,6 +46,7 @@
 				
 				</div>
 				</form>
+				</div>
 				</div>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 
-				<div class="col-md-9">
+				<div class="container">
+			<div class="col-md-12 add">
 				<h1>Add Plans</h1>
 				<a href="<?php echo base_url('employeer/planslist'); ?>">Plan List</a>
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/planspost'); ?>">
@@ -42,6 +43,7 @@
 				
 				</div>
 				</form>
+				</div>
 				</div>
 				</div>
 			</div>

@@ -1,8 +1,8 @@
-
-				<div class="col-md-9">
+<div class="container">
+				<div class="col-md-12">
 			
 				<form id="addjob" name="addjob" method="post" action="<?php echo base_url('jobs/addpost'); ?>">
-							<div class="row">
+							<div class="row add">
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="">Job Title:</label>
@@ -63,6 +63,7 @@
 				
 				</div>
 				</form>
+				</div>
 				</div>
 				</div>
 			</div>

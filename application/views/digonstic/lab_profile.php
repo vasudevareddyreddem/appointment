@@ -53,12 +53,7 @@
                                     </ul>
                                 </div>
                                 <?php } ?>
-                                <!--<div class="ml-5">
-                                    <label class="mb-0">Next Slot</label>
-                                    <ul class="list-inline list-styled">
-                                        <li class="list-inline-item"><small>Tomorrow at 6:30PM</small></li>
-                                    </ul>
-                                </div>-->
+                                
                             </div>
 
                         </div>

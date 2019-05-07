@@ -80,10 +80,7 @@
                                             <label class="grey-text font-size-20 mb-1"><b>
                                                     <?php echo isset($list['test_names'])?$list['test_names']:''; ?></b></label>
                                         </li>
-                                        <!--<li class="list-block mr-3">
-												<i class="fa fa-user"></i>
-												<label class="grey-text font-size-20 mb-1">1283 tests booked</label>
-											</li>-->
+                                       
                                         <li class="list mr-3">
                                             <i class="fa fa-user"></i>
                                             <label class="grey-text font-size-20 mb-1">Home Sample Pickup </label>
