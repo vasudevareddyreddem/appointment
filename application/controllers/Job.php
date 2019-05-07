@@ -8,7 +8,6 @@ class Job extends In_frontend {
 	{
 		parent::__construct();
 		$this->load->model('Jobs_model');
-		$this->db = $this->load->database('default', TRUE);
 		
 	}
 	public function index()

@@ -8,7 +8,6 @@ class Employeer extends In_frontend {
 	{
 		parent::__construct();
 		$this->load->model('Employeer_model');
-		$this->db2 = $this->load->database('another', TRUE);
 		
 	}
 	public function index()
@@ -42,6 +41,8 @@ class Employeer extends In_frontend {
 	}
 	public function dashboard()
 	{	
+				echo '<pre>';print_r('hlo');exit;
+
 		if($this->session->userdata('app_user'))
 		{
 			$app_user=$this->session->userdata('app_user');
