@@ -1,6 +1,6 @@
-
-				<div class="col-md-9">
-				<h1>Edit Plan</h1>
+                <div class="container">
+				<div class="col-md-12 add">
+				<h3>Edit Plans</h3>
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/editplanspost'); ?>">
 					<input type="hidden" name="j_p_id" id="j_p_id" value="<?php echo isset($details['j_p_id'])?$details['j_p_id']:''; ?>">
 

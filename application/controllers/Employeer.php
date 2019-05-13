@@ -175,7 +175,9 @@ class Employeer extends In_frontend {
 			'updated_at'=>date('Y-m-d H:i:s'),
 			'profile_pic'=>isset($pic)?$pic:'',
 			);
-			$save=$this->Employeer_model->save_employee($add);
+		//echo '<pre>';print_r($add);exit;
+
+			$save=$this->Employeer_model->update_emp_status($post['a_u_id'],$add);
 				if(count($save)>0){
 					$this->session->set_flashdata('success',"Employee details updated successfully");
 					redirect('employeer/index');
@@ -224,7 +226,7 @@ class Employeer extends In_frontend {
 			$u_data=array('status'=>2,'updated_at'=>date('Y-m-d H:i:s'));
 			$update=$this->Employeer_model->update_emp_status($a_u_id,$u_data);
 			if(count($update)>0){
-				$this->session->set_flashdata('success',"Employee delete successfully");
+				$this->session->set_flashdata('success',"Employee deleted successfully");
 				redirect('employeer/index');
 			}else{
 				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again.");
@@ -283,9 +285,9 @@ class Employeer extends In_frontend {
 			$update=$this->Employeer_model->update_plan_status($p_id,$u_data);
 			if(count($update)>0){
 					if($statu==1){
-						$this->session->set_flashdata('success',"Plan deactivate successfully");
+						$this->session->set_flashdata('success',"Plan deactivated successfully");
 					}else{
-						$this->session->set_flashdata('success',"Plan activate successfully");
+						$this->session->set_flashdata('success',"Plan activated successfully");
 					}
 					redirect('employeer/planslist');
 			}else{

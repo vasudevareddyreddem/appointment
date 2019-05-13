@@ -1,6 +1,8 @@
 
 					<div class="container">
+					
 					<div class="row add">
+					<h3>Employee List</h3>
 			<div class="col-md-12">
 					<table class="table table-bordered " id="dtBasicExample">
 			<thead>
@@ -29,8 +31,14 @@
 							<td><?php if($li['status']==1){ echo "Active"; }else{ echo "Deactive"; }; ?></td>
 							<td>
 								<a href="<?php echo base_url('employeer/edit/'.base64_encode($li['a_u_id'])); ?>" class="btn btn-success btn-sm btn-block">Edit</a>
-								<a href="<?php echo base_url('employeer/status/'.base64_encode($li['a_u_id']).'/'.base64_encode($li['status'])); ?>" class="btn btn-danger btn-sm btn-block confirmation"><?php if($li['status']==0){ echo "Active"; }else{ echo "Deactive"; }; ?></a>
-								&nbsp; <a href="<?php echo base_url('employeer/delete/'.base64_encode($li['a_u_id'])); ?>" class="btn btn-warning btn-sm btn-block confirmation">Delete</a>
+								<?php if($li['status']==1){ ?>
+								<a href="<?php echo base_url('employeer/status/'.base64_encode($li['a_u_id']).'/'.base64_encode($li['status'])); ?>" class="btn btn-danger btn-sm btn-block confirmation1"><?php if($li['status']==0){ echo "Active"; }else{ echo "Deactive"; }; ?></a>
+
+								<?php }else{ ?>
+								<a href="<?php echo base_url('employeer/status/'.base64_encode($li['a_u_id']).'/'.base64_encode($li['status'])); ?>" class="btn btn-danger btn-sm btn-block confirmation0"><?php if($li['status']==0){ echo "Active"; }else{ echo "Deactive"; }; ?></a>
+
+								<?php } ?>
+								&nbsp; <a href="<?php echo base_url('employeer/delete/'.base64_encode($li['a_u_id'])); ?>" class="btn btn-warning btn-sm btn-block confirmation2">Delete</a>
 							</td>
 						</tr>
 					<?php $cnt++;} ?>
@@ -53,8 +61,12 @@
 
 <script>
  $(document).ready(function() {
-      $('.confirmation').on('click', function() {
-        return confirm('Are you sure ?');
+      $('.confirmation2').on('click', function() {
+        return confirm('Are you sure want to delete?');
+      });$('.confirmation0').on('click', function() {
+        return confirm('Are you sure want to activate?');
+      });$('.confirmation1').on('click', function() {
+        return confirm('Are you sure want to deactivate?');
       });
     });
 </script>

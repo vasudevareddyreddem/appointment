@@ -14,6 +14,7 @@ class Users_model extends CI_Model
 		$this->db->select('*')->from('appointment_users');
 		$this->db->where('email', $email);
 		$this->db->where('password', $password);
+		$this->db->where('status',1);
         return $this->db->get()->row_array();
 	}
 	public  function get_login_user_details($a_u_id){
