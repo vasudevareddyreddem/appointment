@@ -1,8 +1,11 @@
 
 				<div class="container">
+				<h3 style="margin-top:100px;">Add  Employee</h3>
 			<div class="col-md-12">
+			
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/addpost'); ?>">
-							<div class="row add">
+				
+							<div class="row" style="margin-top:10px;">
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="">Name:</label>

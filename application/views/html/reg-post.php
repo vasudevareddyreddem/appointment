@@ -13,7 +13,7 @@
 				<div class="row">
 				
 						<div class="col-md-12 py-4">
-							<h2 class="text-center">Are Looking for?</h2>
+							<h2 class="text-center">Are you looking for?</h2>
 						</div>
 						<div class="col-md-4">
 						<a href="<?php echo base_url('job/lists'); ?>">
