@@ -3,8 +3,8 @@
 				<h3 style="margin-top:100px;">Add  Employee</h3>
 			<div class="col-md-12">
 			
-				<!--<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/addpost'); ?>">	-->
-				   <form id="defaultForm" method="post"  action="">
+				
+				   <form id="addemp" method="post" name="addemp" method="post" action="<?php echo base_url('employeer/addpost'); ?>">
 				
 							<div class="row" style="margin-top:10px;">
 						<div class="col-md-6">
@@ -16,25 +16,25 @@
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Mobile:</label>
-							  <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" >
+							  <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile" name="firstName" >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Email Id:</label>
-							  <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" >
+							  <input type="email" class="form-control" id="email" placeholder="Enter Email" name="firstName" >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Password</label>
-							  <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pwd"  >
+							  <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="firstName"  >
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group ">
 							  <label for="#">Confirm Password</label>
-							  <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm Password" name="confirmpwd" >
+							  <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm Password" name="firstName" >
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -71,20 +71,14 @@ $(document).ready(function() {
     };
     $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
 
-    $('#defaultForm').bootstrapValidator({
-//        live: 'disabled',
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
+    $('#addemp').bootstrapValidator({
+//      
         fields: {
             firstName: {
                 group: '.col-lg-4',
                 validators: {
                     notEmpty: {
-                        message: 'The first name is required and cannot be empty'
+                        message: 'This field is required'
                     }
                 }
             },
