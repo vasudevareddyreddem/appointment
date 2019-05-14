@@ -1,11 +1,14 @@
 <div class="container">
 				<div class="col-md-12 add table-responsive">
+				
 					<table class="table table-bordered " id="dtBasicExample">
+					<h3>Posted Jobs<h3>
 			<thead>
 				<tr>
 					<th>Job Title</th>
+					<th>Category Name</th>
 					<th>Qualification</th>
-					<th>Experence</th>
+					<th>Experience</th>
 					<th>District</th>
 					<th>last date to apply</th>
 					<th>Status</th>
@@ -18,6 +21,7 @@
 					<?php foreach($jobs_list as $lis){ ?>
 						<tr>
 							<td><?php echo isset($lis['title'])?$lis['title']:''; ?></td>
+							<td><?php echo isset($lis['category'])?$lis['category']:''; ?></td>
 							<td><?php echo isset($lis['qualifications'])?$lis['qualifications']:''; ?></td>
 							<td><?php echo isset($lis['experience'])?$lis['experience']:''; ?></td>
 							<td><?php echo isset($lis['district'])?$lis['district']:''; ?></td>

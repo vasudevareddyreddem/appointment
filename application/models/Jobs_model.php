@@ -20,7 +20,7 @@ class Jobs_model extends CI_Model
 		return $this->db->update('job_posts',$data);
 	}
 	public  function get_active_joblist($a_u_id){
-		$this->db->select('j_p_id,title,qualifications,experience,district,last_to_apply,status')->from('job_posts');
+		$this->db->select('j_p_id,title,category,qualifications,experience,district,last_to_apply,status')->from('job_posts');
 		$this->db->where('created_by',$a_u_id);
 		$this->db->where('status !=',2);
 		return $this->db->get()->result_array();

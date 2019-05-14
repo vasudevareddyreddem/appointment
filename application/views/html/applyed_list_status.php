@@ -1,16 +1,15 @@
 <div class="container">
 				<div class="col-md-12 add table-responsive">
 					<table class="table table-bordered " id="dtBasicExample">
+					<h3>User Status List<h3>
 			<thead>
 				<tr>
 					<th>Sr.no</th>
 					<th>Name</th>
-					<th>Qualification</th>
-					<th>Experence</th>
 					<th>Applied for</th>
-					<th>District</th>
+					<th>Job Title</th>
 					<th>Resume</th>
-					<th>Applied Date</th>
+					<th>Applied Date & Time</th>
 					<th>Status</th>
 				
 				</tr>
@@ -21,17 +20,15 @@
 						<tr>
 							<td><?php echo $cnt; ?></td>
 							<td><?php echo isset($li['name'])?$li['name']:''; ?></td>
-							<td><?php echo isset($li['qualifications'])?$li['qualifications']:''; ?></td>
-							<td><?php echo isset($li['experience'])?$li['experience']:''; ?></td>
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
-							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
+							<td><?php echo isset($li['title'])?$li['title']:''; ?></td>
 							<td>
 							<?php if(isset($li['resume']) && $li['resume']!=''){ ?>
 							<a style="color:blue" href="<?php echo base_url('assets/resume/'.$li['resume']); ?>" download>Download</a>
 							<?php } ?>
 							</td>
 							<td><?php echo isset($li['created_at'])?$li['created_at']:''; ?></td>
-							<td><?php  if($li['status']==1){ echo "Call for interview"; }else if($li['status']==2){ echo "Reject"; } ?></td>
+							<td><?php  if($li['status']==1){ echo "Called for interview"; }else if($li['status']==2){ echo "Rejected"; } ?></td>
 							
 						</tr>
 					<?php $cnt++;} ?>

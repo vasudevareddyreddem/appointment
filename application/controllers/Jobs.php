@@ -153,9 +153,9 @@ class Jobs extends In_frontend {
 			$update=$this->Jobs_model->update_jobpost($id,$update);
 			if(count($update)>0){
 				if($stat==1){
-					$this->session->set_flashdata('success',"Job deactivate successfully");
+					$this->session->set_flashdata('success',"Job deactivated successfully");
 				}else{
-					$this->session->set_flashdata('success',"Job activate successfully");
+					$this->session->set_flashdata('success',"Job activated successfully");
 				}
 				redirect('jobs/lists/');
 			}else{
@@ -198,7 +198,32 @@ class Jobs extends In_frontend {
 			//echo '<pre>';print_r($post);exit;
 			$add=array(
 			'comment'=>isset($post['comment'])?$post['comment']:'',
-			'status'=>isset($post['status'])?$post['status']:'',
+			'status'=>1,
+			'updated_at'=>date('Y-m-d H:i:s'),
+			);
+			$update=$this->Jobs_model->update_comment(base64_decode($post['u_a_p_id']),$add);
+			//echo $this->db->last_query();exit;
+			if(count($update)>0){
+				$data['msg']=1;
+				echo json_encode($data);exit;
+			}else{
+				$data['msg']=0;
+				echo json_encode($data);exit;
+			}
+		}else{
+				$data['msg']=2;
+				echo json_encode($data);exit;
+		}
+	}
+	public function reject_status(){
+		if($this->session->userdata('app_user'))
+		{ 
+			$userdetails=$this->session->userdata('app_user');
+			$post=$this->input->post();
+			//echo '<pre>';print_r($post);exit;
+			$add=array(
+			'comment'=>isset($post['comment'])?$post['comment']:'',
+			'status'=>2,
 			'updated_at'=>date('Y-m-d H:i:s'),
 			);
 			$update=$this->Jobs_model->update_comment(base64_decode($post['u_a_p_id']),$add);
