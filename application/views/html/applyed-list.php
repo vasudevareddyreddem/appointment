@@ -6,6 +6,9 @@
 				<tr>
 					<th>Sr.no</th>
 					<th>Name</th>
+					<th>Qualification</th>
+					<th>Experience</th>
+					<th>District</th>
 					<th>Applied for</th>
 					<th>Job Title</th>
 					<th>Resume</th>
@@ -20,6 +23,9 @@
 						<tr>
 							<td><?php echo $cnt; ?></td>
 							<td><?php echo isset($li['name'])?$li['name']:''; ?></td>
+							<td><?php echo isset($li['qualifications'])?$li['qualifications']:''; ?></td>
+							<td><?php echo isset($li['experience'])?$li['experience']:''; ?></td>
+							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
 							<td><?php echo isset($li['title'])?$li['title']:''; ?></td>
 							<td>
@@ -28,7 +34,7 @@
 								<a style="color:blue" onclick="update_resume_cnt('<?php echo $li['user_id']; ?>','<?php echo $li['post_id']; ?>');"   href="<?php echo base_url('assets/resume/'.$li['resume']); ?>" download>Download</a>
 								<?php } ?>
 							<?php }else{ ?>
-								<a style="color:blue"  href="<?php echo base_url('assets/resume/'.$li['resume']); ?>">Download</a>
+								<a style="color:blue"  href="<?php echo base_url('employeer/plandetails'); ?>">Download</a>
 							<?php } ?>
 							</td>
 							<td><?php echo isset($li['created_at'])?$li['created_at']:''; ?></td>

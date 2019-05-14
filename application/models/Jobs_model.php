@@ -35,12 +35,13 @@ class Jobs_model extends CI_Model
 	}
 	// carrer page purposer
 	 public function get_all_active_joblist($type){
-		$this->db->select('TIMEDIFF( jp.created_at, now() ) as df_time,jp.j_p_id,jp.description,jp.category,jp.title,jp.qualifications,jp.experience,jp.district,jp.last_to_apply,jp.status,au.name as postedby')->from('job_posts as jp');
+		$this->db->select('( jp.created_at ) as df_time,jp.j_p_id,jp.description,jp.category,jp.title,jp.qualifications,jp.experience,jp.district,jp.last_to_apply,jp.status,au.name as postedby')->from('job_posts as jp');
 		$this->db->join('appointment_users as au','au.a_u_id=jp.created_by','left');
 		if(isset($type) && $type!=''){
 			$this->db->where('jp.category',$type);
 		}
 		$this->db->where('jp.status',1);
+		$this->db->where('jp.last_to_apply >=',date('Y-m-d'));
 		return $this->db->get()->result_array(); 
 	 }
 	 
@@ -48,6 +49,7 @@ class Jobs_model extends CI_Model
 		$this->db->select('count(jp.j_p_id) as cnt ,category')->from('job_posts as jp');
 		$this->db->where('jp.status',1);
 		$this->db->group_by('jp.category');
+		$this->db->where('jp.last_to_apply >=',date('Y-m-d'));
 		return $this->db->get()->result_array();  
 	 }
 	 // check wallet amount 
@@ -82,7 +84,6 @@ class Jobs_model extends CI_Model
 		$this->db->join('job_posts as j','j.j_p_id=u.post_id','left');
 		$this->db->join('appointment_users as as','as.a_u_id=u.user_id','left');
 		$this->db->where('u.user_id',$a_u_id);
-		$this->db->where('u.status',0);
 		return $this->db->get()->result_array();  
 	}
 	public  function get_job_applied_joblist_status($a_u_id){
@@ -130,5 +131,31 @@ class Jobs_model extends CI_Model
 		$this->db->where('created_by',$id);
 		return $this->db->get()->row_array();
 	}
+	
+	
+	/* employer should not be able to apply for job*/
+	public  function check_empoyee_applyed_jobs($a_u_id){
+		$this->db->select('role,a_u_id')->from('appointment_users');
+		$this->db->where('a_u_id',$a_u_id);
+		$this->db->where('appointment_users.role',2);
+        return $this->db->get()->row_array();	
+	}
+	/* admin should not be able to apply for job*/
+	public function check_admin_applyed_jobs($a_u_id){
+	$this->db->select('role,a_u_id')->from('appointment_users');
+		$this->db->where('a_u_id',$a_u_id);
+		$this->db->where('appointment_users.role',3);
+        return $this->db->get()->row_array();	
+	}
+	public function check_last_date_applyed_jobs($j_p_id){
+	$this->db->select('j_p_id,last_to_apply')->from('job_posts');
+		$this->db->where('j_p_id',$j_p_id);
+		$this->db->where('job_posts.status',1);
+        return $this->db->get()->row_array();	
+	}
+	
+	
+	
+	
 	
 }

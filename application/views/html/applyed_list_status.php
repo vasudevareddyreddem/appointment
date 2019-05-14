@@ -6,6 +6,9 @@
 				<tr>
 					<th>Sr.no</th>
 					<th>Name</th>
+					<th>Qualification</th>
+					<th>Experience</th>
+					<th>District</th>
 					<th>Applied for</th>
 					<th>Job Title</th>
 					<th>Resume</th>
@@ -20,6 +23,9 @@
 						<tr>
 							<td><?php echo $cnt; ?></td>
 							<td><?php echo isset($li['name'])?$li['name']:''; ?></td>
+							<td><?php echo isset($li['qualifications'])?$li['qualifications']:''; ?></td>
+							<td><?php echo isset($li['experience'])?$li['experience']:''; ?></td>
+							<td><?php echo isset($li['district'])?$li['district']:''; ?></td>
 							<td><?php echo isset($li['category'])?$li['category']:''; ?></td>
 							<td><?php echo isset($li['title'])?$li['title']:''; ?></td>
 							<td>

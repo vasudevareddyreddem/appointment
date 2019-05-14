@@ -1,8 +1,11 @@
 
 				<div class="container">
 			<div class="col-md-12 add">
+			<div class="">
+			<a href="<?php echo base_url('employeer/planslist'); ?>" class="btn btn-primary pull-right">Plans List</a>
+			</div>
 				<h1>Add Plans</h1>
-				<a href="<?php echo base_url('employeer/planslist'); ?>">Plans List</a>
+				
 				<form id="addemp" name="addemp" method="post" action="<?php echo base_url('employeer/planspost'); ?>">
 							<div class="row">
 							<div class="col-md-6">

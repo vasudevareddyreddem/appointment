@@ -14,10 +14,12 @@ class Employeer_model extends CI_Model
 		$this->db->insert('appointment_users',$data);
 		return $this->db->insert_id();
 	}
-	public function check_employee_exist($email){
-		$this->db->select('a_u_id')->from('appointment_users');
+	
+	
+	public function check_employee_exist($email,$mobile){
+		$this->db->select('email,mobile')->from('appointment_users');
 		$this->db->where('email',$email);
-		$this->db->where('status !=',2);
+		$this->db->or_where('mobile',$mobile);
 		return $this->db->get()->row_array();
 	}
 	public  function get_all_emplist($a_u_id){

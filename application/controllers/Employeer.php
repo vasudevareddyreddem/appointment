@@ -110,12 +110,21 @@ class Employeer extends In_frontend {
 		if($this->session->userdata('app_user'))
 		{	
 			$post=$this->input->post();
+			//echo'<pre>';print_r($post);exit;
 			$app_user=$this->session->userdata('app_user');
-			$check=$this->Employeer_model->check_employee_exist($post['email']);
-			if(count($check)>0){
-				$this->session->set_flashdata('error',"Email id already exist. Use another email id.");
-				redirect('employeer/add');	
+			$check=$this->Employeer_model->check_employee_exist($post['email'],$post['mobile']);
+		if(count($check)>0){
+			if($check['email']==$post['email']){
+				$this->session->set_flashdata('error','Email Id already exists. Please use another Email Id');
+			}else if($check['mobile']==$post['mobile']){
+				$this->session->set_flashdata('error','Mobile Number already exists. Please use another Mobile Number');
+			}else{
+				$this->session->set_flashdata('error','Both Email Id and Mobile number already exists. Please use another Email Id and Mobile Number');
 			}
+			
+			redirect('employeer/add');	
+		}
+		
 			if(isset($_FILES['profile_pic']['name']) && $_FILES['profile_pic']['name']!=''){
 				$temp = explode(".", $_FILES["profile_pic"]["name"]);
 				$pic = round(microtime(true)) . '.' . end($temp);
@@ -153,13 +162,22 @@ class Employeer extends In_frontend {
 			//echo '<pre>';print_r($post);exit;
 			$app_user=$this->session->userdata('app_user');
 			$details=$this->Employeer_model->get_employee_details($post['a_u_id']);
-			if($details['email']!=$post['email']){
-				$check=$this->Employeer_model->check_employee_exist($post['email']);
-				if(count($check)>0){
-					$this->session->set_flashdata('error',"Email id already exist. Use another email id.");
-					redirect('employeer/edit/'.base64_encode($post['a_u_id']));	
-				}	
+			
+			if($details['email']!=$post['email']||$details['mobile']!=$post['mobile']){
+			$check=$this->Employeer_model->check_employee_exist($post['email'],$post['mobile']);
+			if(count($check)>0){
+				if($check['email']==$post['email']){
+					$this->session->set_flashdata('error','Email Id already exists. Please use another Email Id');
+				}else if($check['mobile']==$post['mobile']){
+					$this->session->set_flashdata('error','Mobile Number already exists. Please use another Mobile Number');
+				}else{
+					$this->session->set_flashdata('error','Both Email Id and Mobile number already exists. Please use another Email Id and Mobile Number');
+				}
+				
+				redirect('employeer/edit/'.base64_encode($post['a_u_id']));
 			}
+		}
+			
 			if(isset($_FILES['profile_pic']['name']) && $_FILES['profile_pic']['name']!=''){
 				unlink('assets/profile_pic/'.$details['profile_pic']);
 				$temp = explode(".", $_FILES["profile_pic"]["name"]);

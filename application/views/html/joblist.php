@@ -68,7 +68,7 @@
 					<h5 class="text-cente">Job Catagories</h5>
 					<div class="list-group">
 					<?php foreach($jobs_category as $li){ ?>
-					<a href="<?php echo base_url('job/lists/'.base64_encode($li['category'])); ?>" class="list-group-item list-group-item-action"><?php echo isset($li['category'])?$li['category']:''; ?> &nbsp;(<?php echo isset($li['cnt'])?$li['cnt']:''; ?>)</a>
+					<a  href="<?php echo base_url('job/lists/'.base64_encode($li['category'])); ?>" class="list-group-item list-group-item-action"><?php echo isset($li['category'])?$li['category']:''; ?> &nbsp;(<?php echo isset($li['cnt'])?$li['cnt']:''; ?>)</a>
 					<?php } ?>
 					 
 					</div>

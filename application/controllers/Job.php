@@ -27,18 +27,39 @@ class Job extends In_frontend {
 	public  function apply(){
 		if($this->session->userdata('app_user'))
 		{
-			
+			$log_details=$this->session->userdata('app_user');
+             		//echo'<pre>';print_r($log_details);exit;
+
 			$post_id=base64_decode($this->uri->segment(3));
 			if($post_id==''){
 				$this->session->set_flashdata('error',"Technical problem will occurred. Please try again");
 				redirect('job/lists');
 			}
+			$check=$this->Jobs_model->check_empoyee_applyed_jobs($log_details['a_u_id']);
+           if(count($check)>0){
+					$this->session->set_flashdata('error',"employer should not be able to apply for job");
+					redirect('');
+				}	
+			$admincheck=$this->Jobs_model->check_admin_applyed_jobs($log_details['a_u_id']);
+           if(count($admincheck)>0){
+					$this->session->set_flashdata('error',"Admin should not be able to apply for job");
+					redirect('');
+				}	
+			$check_last_date=$this->Jobs_model->check_last_date_applyed_jobs($post_id);
+             		//echo'<pre>';print_r($check_last_date);exit;
+                $today_date=date('Y-m-d');
+			  $last_date=$check_last_date['last_to_apply'];
+			  if($today_date <= $last_date){  
+				
 			$data['post_id']=$post_id;
 			$log_details=$this->session->userdata('app_user');
 			$payment_details=$this->Jobs_model->check_wallet_amount($log_details['a_u_id']);
 			$this->load->view('html/upload-resume',$data);
 			$this->load->view('html/footer');	
-			
+			  }else{
+			$this->session->set_flashdata('error','Apply job Last date expire');
+			redirect('');	  
+			  }
 		}else{
 			$this->session->set_flashdata('error',"Please Login/Register, to continue");
 			redirect('users/login');
