@@ -39,6 +39,21 @@ class Jobs extends In_frontend {
 		}
 				
 	}
+	public function plans()
+	{	
+		if($this->session->userdata('app_user'))
+		{	
+			$log_details=$this->session->userdata('app_user');
+			$data['plan_list']=$this->Jobs_model->get_plans_details($log_details['a_u_id']);
+			$data['c_resum_count']=$this->Jobs_model->get_resumes_count($log_details['a_u_id']);
+			//echo '<pre>';print_r($data);exit;
+			$this->load->view('html/plan_details_list',$data);
+			$this->load->view('html/footer');
+		}else{
+			$this->session->set_flashdata('error',"Please Login/Register, to continue");
+			redirect('users/login');
+		}
+	}
 	public function appliedlist()
 	{	
 		if($this->session->userdata('app_user'))

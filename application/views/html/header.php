@@ -121,6 +121,7 @@ header('Expires: 0'); // Proxies.
 
 								<?php }else if($user_details['role']==2){ ?>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs'); ?>">Dashboard</a>
+								       <a class="dropdown-item" href="<?php echo base_url('jobs/plans'); ?>">Plan details</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/add'); ?>">Add Job</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/lists'); ?>">Posted Jobs</a>
 								       <a class="dropdown-item" href="<?php echo base_url('jobs/appliedlist'); ?>">Applied List</a>

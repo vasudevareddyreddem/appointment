@@ -148,10 +148,19 @@ class Jobs_model extends CI_Model
         return $this->db->get()->row_array();	
 	}
 	public function check_last_date_applyed_jobs($j_p_id){
-	$this->db->select('j_p_id,last_to_apply')->from('job_posts');
+		$this->db->select('j_p_id,last_to_apply')->from('job_posts');
 		$this->db->where('j_p_id',$j_p_id);
 		$this->db->where('job_posts.status',1);
         return $this->db->get()->row_array();	
+	}
+	public  function get_plans_details($a_id){
+		$this->db->select('j.p_type,j.p_name,j.no_of_resume_view,pp.user_id,pp.plan_id,pp.p_amt,pp.resume_cnt,pp.created_at')->from('plan_payments as pp');
+		$this->db->join('job_plans as j','j.j_p_id=pp.plan_id','left');
+		$this->db->where('user_id',$a_id);
+        return $this->db->get()->result_array();
+	}
+	public  function get_resume_cnt(){
+		
 	}
 	
 	
