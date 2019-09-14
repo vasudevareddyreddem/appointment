@@ -19,7 +19,7 @@
 						<a href="<?php echo base_url('job/lists'); ?>">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
-									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/job-looking.png" alt="Support">
+									<img class="d-flex mr-3" src="<?php echo base_url(); ?>assets/vendor/img/job-looking.png" alt="Support">
 									<div class="media-body">
 										<h4 class=" font-weight-bold py-4">Looking for job</h4>
 
@@ -32,7 +32,7 @@
 						<a href="<?php echo base_url('users/login');?>">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
-									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/employee-search.png" alt="Support">
+									<img class="d-flex mr-3" src="<?php echo base_url(); ?>assets/vendor/img/employee-search.png" alt="Support">
 									<div class="media-body">
 										<h4 class=" font-weight-bold py-4">For Employees</h4>
 
@@ -45,7 +45,7 @@
 						<a href="#">
 							 <div class="card mb-4">
 								 <div class="media pt-3 pl-2 pr-3 pb-3 bg-f5f5f5">
-									<img class="d-flex mr-3" src="http://localhost/appointment/assets/vendor/img/resume.png" alt="Support">
+									<img class="d-flex mr-3" src="<?php echo base_url(); ?>assets/vendor/img/resume.png" alt="Support">
 									<div class="media-body">
 										<h4 class=" font-weight-bold py-4">Upload Resume</h4>
 

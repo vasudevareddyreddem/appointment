@@ -85,7 +85,7 @@ class Payment extends In_frontend {
 			$save=$this->Employeer_model->save_plan_payment($add);
 			if(count($save)>0){
 				$this->session->set_flashdata('success',"Plan payment successfully Completed.");
-				redirect('employeer/appliedlist');
+				redirect('jobs/appliedlist');
 			}else{
 				$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
 				redirect('employeer/plandetails');
